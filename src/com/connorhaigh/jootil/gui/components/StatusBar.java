@@ -1,7 +1,6 @@
 package com.connorhaigh.jootil.gui.components;
 
-import javafx.beans.property.ReadOnlyStringProperty;
-import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -16,7 +15,7 @@ public class StatusBar extends HBox
 	 */
 	public StatusBar()
 	{
-		this.statusProperty = new ReadOnlyStringWrapper("Ready");
+		this.statusProperty = new SimpleStringProperty("Ready");
 		
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));
@@ -53,10 +52,10 @@ public class StatusBar extends HBox
 	 * Returns the status property.
 	 * @return the status property
 	 */
-	public ReadOnlyStringProperty statusProperty()
+	public SimpleStringProperty statusProperty()
 	{
-		return this.statusProperty.getReadOnlyProperty();
+		return this.statusProperty;
 	}
 	
-	private ReadOnlyStringWrapper statusProperty;
+	private SimpleStringProperty statusProperty;
 }

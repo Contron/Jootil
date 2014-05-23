@@ -1,13 +1,12 @@
 package com.connorhaigh.jootil.gui.components;
 
-import com.connorhaigh.jootil.gui.styles.Styles;
-
-import javafx.beans.property.ReadOnlyStringProperty;
-import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+
+import com.connorhaigh.jootil.gui.styles.Styles;
 
 public class HeaderBox extends VBox
 {
@@ -18,8 +17,8 @@ public class HeaderBox extends VBox
 	 */
 	public HeaderBox(String header, String description)
 	{
-		this.headerProperty = new ReadOnlyStringWrapper(header);
-		this.descriptionProperty = new ReadOnlyStringWrapper(description);
+		this.headerProperty = new SimpleStringProperty(header);
+		this.descriptionProperty = new SimpleStringProperty(description);
 		
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));
@@ -78,20 +77,20 @@ public class HeaderBox extends VBox
 	 * Returns the header property.
 	 * @return the header property
 	 */
-	public ReadOnlyStringProperty headerProperty()
+	public SimpleStringProperty headerProperty()
 	{
-		return this.headerProperty.getReadOnlyProperty();
+		return this.headerProperty;
 	}
 	
 	/**
 	 * Returns the description property.
 	 * @return the description property
 	 */
-	public ReadOnlyStringProperty descriptionProperty()
+	public SimpleStringProperty descriptionProperty()
 	{
-		return this.descriptionProperty.getReadOnlyProperty();
+		return this.descriptionProperty;
 	}
 	
-	private ReadOnlyStringWrapper headerProperty;
-	private ReadOnlyStringWrapper descriptionProperty;
+	private SimpleStringProperty headerProperty;
+	private SimpleStringProperty descriptionProperty;
 }

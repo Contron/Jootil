@@ -22,13 +22,13 @@ public class AboutStage extends Stage
 	 * @param image the large image for the display
 	 * @param name the name of the application
 	 * @param developer the developer (or developers) of the application
-	 * @param website the website for the application
 	 * @param year the year of the release
+	 * @param website the web site for the application
 	 */
-	public static void showAboutStage(Window owner, Image image, String name, String developer, String website, String year)
+	public static void showAboutStage(Window owner, Image image, String name, String developer, String year, String website)
 	{
 		//show
-		AboutStage aboutStage = new AboutStage(owner, image, name, developer, website, year);
+		AboutStage aboutStage = new AboutStage(owner, image, name, developer, year, website);
 		aboutStage.showAndWait();
 	}
 	
@@ -38,10 +38,10 @@ public class AboutStage extends Stage
 	 * @param image the large image for the display
 	 * @param name the name of the application
 	 * @param developer the developer (or developers) of the application
-	 * @param website the website for the application
 	 * @param year the year of the release
+	 * @param website the web site for the application
 	 */
-	public AboutStage(Window owner, Image image, String name, String developer, String website, String year)
+	public AboutStage(Window owner, Image image, String name, String developer, String year, String website)
 	{
 		//setup stage
 		this.initOwner(owner);

@@ -5,6 +5,7 @@ import java.beans.XMLEncoder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 import com.connorhaigh.jootil.Jootil;
 
@@ -40,7 +41,8 @@ public class ObjectsManager<Element>
 			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects loading error: " + exception.getMessage()));
 			
 			//read
-			this.objectGroup = (ObjectGroup<Element>) xmlDecoder.readObject();
+			this.objectGroup = new ObjectGroup<Element>();
+			this.objectGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
 		catch (Exception exception)
 		{
@@ -64,7 +66,7 @@ public class ObjectsManager<Element>
 			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects saving error: " + exception.getMessage()));
 			
 			//write
-			xmlEncoder.writeObject(this.objectGroup);
+			xmlEncoder.writeObject(this.objectGroup.getInternalObjects());
 		}
 		catch (Exception exception)
 		{

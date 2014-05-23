@@ -5,6 +5,7 @@ import java.beans.XMLEncoder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 
 import com.connorhaigh.jootil.Jootil;
 
@@ -27,6 +28,7 @@ public class SettingsManager
 	/**
 	 * Loads the settings from file.
 	 */
+	@SuppressWarnings("unchecked")
 	public void load()
 	{
 		//check directories
@@ -40,7 +42,8 @@ public class SettingsManager
 			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings load error: " + exception.getMessage()));
 			
 			//read
-			this.settingGroup = (SettingGroup) xmlDecoder.readObject();
+			this.settingGroup = new SettingGroup();
+			this.settingGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
 		}
 		catch (Exception exception)
 		{
@@ -64,7 +67,7 @@ public class SettingsManager
 			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings save error: " + exception.getMessage()));
 			
 			//write
-			xmlEncoder.writeObject(this.settingGroup);
+			xmlEncoder.writeObject(this.settingGroup.getInternalSettings());
 		}
 		catch (Exception exception)
 		{

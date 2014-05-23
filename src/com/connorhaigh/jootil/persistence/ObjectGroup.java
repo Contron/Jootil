@@ -3,6 +3,9 @@ package com.connorhaigh.jootil.persistence;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class ObjectGroup<Element> implements Serializable
 {
 	/**
@@ -10,7 +13,7 @@ public class ObjectGroup<Element> implements Serializable
 	 */
 	public ObjectGroup()
 	{
-		this.objects = new ArrayList<Element>();
+		this.objects = FXCollections.observableArrayList();
 	}
 	
 	/**
@@ -92,7 +95,7 @@ public class ObjectGroup<Element> implements Serializable
 	 * Sets the list of objects in this group.
 	 * @param objects the list of objects
 	 */
-	public void setObjects(ArrayList<Element> objects)
+	public void setObjects(ObservableList<Element> objects)
 	{
 		this.objects = objects;
 	}
@@ -101,12 +104,32 @@ public class ObjectGroup<Element> implements Serializable
 	 * Returns the list of objects in this group.
 	 * @return the list of objects
 	 */
-	public ArrayList<Element> getObjects()
+	public ObservableList<Element> getObjects()
 	{
 		return this.objects;
 	}
 	
+	/**
+	 * Sets the non-observable objects list of this group.
+	 * This is used when loading the group.
+	 * @param objects the objects list
+	 */
+	protected void setInternalObjects(ArrayList<Element> objects)
+	{
+		this.objects = FXCollections.observableArrayList(this.objects);
+	}
+	
+	/**
+	 * Returns the non-observable settings map of this group.
+	 * This is used when saving the group.
+	 * @return the objects list
+	 */
+	protected ArrayList<Element> getInternalObjects()
+	{
+		return new ArrayList<Element>(this.objects);
+	}
+	
 	public static final long serialVersionUID = 1;
 	
-	private ArrayList<Element> objects;
+	private ObservableList<Element> objects;
 }

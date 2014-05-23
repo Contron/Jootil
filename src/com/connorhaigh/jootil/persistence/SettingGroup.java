@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
+
 public class SettingGroup
 {
 	/**
@@ -11,7 +14,7 @@ public class SettingGroup
 	 */
 	public SettingGroup()
 	{
-		this.settings = new HashMap<String, Object>();
+		this.settings = FXCollections.observableHashMap();
 	}
 	
 	/**
@@ -115,7 +118,7 @@ public class SettingGroup
 	 * Sets the settings map of this group.
 	 * @param settings the settings map
 	 */
-	public void setSettings(HashMap<String, Object> settings)
+	public void setSettings(ObservableMap<String, Object> settings)
 	{
 		this.settings = settings;
 	}
@@ -124,12 +127,32 @@ public class SettingGroup
 	 * Returns the settings map of this group.
 	 * @return the settings map
 	 */
-	public HashMap<String, Object> getSettings()
+	public ObservableMap<String, Object> getSettings()
 	{
 		return this.settings;
 	}
 	
+	/**
+	 * Sets the non-observable settings map of this group.
+	 * This is used when loading the group.
+	 * @param settings the settings map
+	 */
+	protected void setInternalSettings(HashMap<String, Object> settings)
+	{
+		this.settings = FXCollections.observableMap(settings);
+	}
+	
+	/**
+	 * Returns the non-observable settings map of this group.
+	 * This is used when saving the group.
+	 * @return the settings map
+	 */
+	protected HashMap<String, Object> getInternalSettings()
+	{
+		return new HashMap<String, Object>(this.settings);
+	}
+	
 	public static final long serialVersionUID = 1;
 	
-	private HashMap<String, Object> settings;
+	private ObservableMap<String, Object> settings;
 }

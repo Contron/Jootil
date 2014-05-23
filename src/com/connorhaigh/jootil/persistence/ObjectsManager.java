@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.persistence.objects;
+package com.connorhaigh.jootil.persistence;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import com.connorhaigh.jootil.Jootil;
-import com.connorhaigh.jootil.persistence.Persistence;
 
 public class ObjectsManager<Element>
 {
@@ -19,7 +18,7 @@ public class ObjectsManager<Element>
 	public ObjectsManager(File directory, String name)
 	{
 		this.directory = directory;
-		this.file = new File(this.directory, name + Persistence.EXTENSION);
+		this.file = new File(this.directory, name + ".xml");
 		
 		this.objectGroup = new ObjectGroup<Element>();
 	}

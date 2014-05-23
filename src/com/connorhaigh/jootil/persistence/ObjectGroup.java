@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.persistence.objects;
+package com.connorhaigh.jootil.persistence;
 
 import java.io.Serializable;
 import java.util.ArrayList;

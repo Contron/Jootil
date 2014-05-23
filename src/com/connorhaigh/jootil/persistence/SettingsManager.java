@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.persistence.settings;
+package com.connorhaigh.jootil.persistence;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import com.connorhaigh.jootil.Jootil;
-import com.connorhaigh.jootil.persistence.Persistence;
 
 public class SettingsManager 
 {
@@ -20,7 +19,7 @@ public class SettingsManager
 	public SettingsManager(File directory, String name, SettingGroup settingGroup)
 	{
 		this.directory = directory;
-		this.file = new File(this.directory, name + Persistence.EXTENSION);
+		this.file = new File(this.directory, name + ".xml");
 		
 		this.settingGroup = settingGroup;
 	}

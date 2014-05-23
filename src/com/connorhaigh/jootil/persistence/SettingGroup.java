@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.persistence.settings;
+package com.connorhaigh.jootil.persistence;
 
 import java.util.Collection;
 import java.util.HashMap;

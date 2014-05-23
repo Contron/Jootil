@@ -2,6 +2,7 @@ package com.connorhaigh.jootil.gui.components;
 
 import com.connorhaigh.jootil.gui.styles.Styles;
 
+import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -53,6 +54,42 @@ public class HeaderBox extends VBox
 	public void setDescription(String description)
 	{
 		this.descriptionProperty.set(description);
+	}
+	
+	/**
+	 * Returns the header of this box.
+	 * @return the header
+	 */
+	public String getHeader()
+	{
+		return this.headerProperty.get();
+	}
+	
+	/**
+	 * Returns the description of this box.
+	 * @return the description
+	 */
+	public String getDescription()
+	{
+		return this.descriptionProperty.get();
+	}
+	
+	/**
+	 * Returns the header property.
+	 * @return the header property
+	 */
+	public ReadOnlyStringProperty headerProperty()
+	{
+		return this.headerProperty.getReadOnlyProperty();
+	}
+	
+	/**
+	 * Returns the description property.
+	 * @return the description property
+	 */
+	public ReadOnlyStringProperty descriptionProperty()
+	{
+		return this.descriptionProperty.getReadOnlyProperty();
 	}
 	
 	private ReadOnlyStringWrapper headerProperty;

@@ -20,7 +20,7 @@ To install Jootil, you can build from the repo, or alternatively download the pr
 
 Documentation
 -----
-For a more in-depth look at the features of the library, be sure to check out the wiki pages.
+For a more in-depth look at the features of the library, be sure to check out the wiki pages - they'll cover the most common classes.
 
 Contributing
 -----

@@ -1,0 +1,85 @@
+package com.connorhaigh.jootil.utilities;
+
+import java.text.DecimalFormat;
+
+public class Files 
+{
+	/**
+	 * Returns the friendly size of a file.
+	 * @param size the size of the file
+	 * @return the friendly size
+	 */
+	public static String getSize(int size)
+	{
+		//check
+		if (size < 1024)
+			return (size + " bytes");
+		else if (size < (1024 * 1024))
+			return ((size / 1024) + " KB");
+		else if (size < (1024 * 1024 * 1024))
+			return (Files.SMALL_DECIMAL_FORMAT.format((double) size / (1024 * 1024)) + " MB");
+		else
+			return (Files.LARGE_DECIMAL_FORMAT.format((double) size / (1024 * 1024 * 1024)) + " GB");
+	}
+	
+	/**
+	 * Returns the name of a full-path file.
+	 * @param path the path
+	 * @return the name of the file
+	 */
+	public static String getName(String path)
+	{
+		//get slash index
+		int slashIndex = path.lastIndexOf('/');
+		if (slashIndex == -1)
+			return path;
+		
+		return path.substring(slashIndex + 1);
+	}
+	
+	/**
+	 * Returns the extension of a file.
+	 * @param file the file name
+	 * @return the extension of the file
+	 */
+	public static String getExtension(String file)
+	{
+		//get dot index
+		int dotIndex = file.indexOf('.');
+		if (dotIndex == -1)
+			return file;
+		
+		return file.substring(dotIndex + 1);
+	}
+	
+	/**
+	 * Returns the remaining time for a file transfer.
+	 * @param current the current bytes transferred
+	 * @param total the total bytes to transfer
+	 * @param speed the speed of the transfer
+	 * @return the remaining time
+	 */
+	public static String getRemainingTime(int current, int total, int speed)
+	{
+		//result
+		StringBuilder result = new StringBuilder();
+		
+		//get time
+		int time = ((total - current) / speed);
+		int hours = (time / 3600);
+		int minutes = (time / 60);
+		int seconds = (time % 60);
+		
+		//append result
+		if (hours > 0)
+			result.append(hours + " hours, ");
+		if (minutes > 0)
+			result.append(minutes + " minutes, ");
+		result.append(seconds + " seconds");
+		
+		return result.toString();
+	}
+	
+	public static final DecimalFormat SMALL_DECIMAL_FORMAT = new DecimalFormat("##.00");
+	public static final DecimalFormat LARGE_DECIMAL_FORMAT = new DecimalFormat("##.0");
+}

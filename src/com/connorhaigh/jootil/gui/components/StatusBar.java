@@ -15,7 +15,7 @@ public class StatusBar extends HBox
 	 */
 	public StatusBar()
 	{
-		this.statusProperty = new SimpleStringProperty("Ready");
+		this.statusProperty = new SimpleStringProperty("Ready.");
 		
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));

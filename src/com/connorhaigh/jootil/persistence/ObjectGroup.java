@@ -116,7 +116,7 @@ public class ObjectGroup<Element> implements Serializable
 	 */
 	protected void setInternalObjects(ArrayList<Element> objects)
 	{
-		this.objects = FXCollections.observableArrayList(this.objects);
+		this.objects = FXCollections.observableArrayList(objects);
 	}
 	
 	/**

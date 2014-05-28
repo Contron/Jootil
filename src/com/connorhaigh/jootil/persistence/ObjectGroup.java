@@ -1,12 +1,11 @@
 package com.connorhaigh.jootil.persistence;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ObjectGroup<Element> implements Serializable
+public class ObjectGroup<Element>
 {
 	/**
 	 * Create a new object group.

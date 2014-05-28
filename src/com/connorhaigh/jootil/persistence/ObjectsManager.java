@@ -75,6 +75,15 @@ public class ObjectsManager<Element>
 	}
 	
 	/**
+	 * Sets the object group for this manager.
+	 * @param objectGroup the object group
+	 */
+	public void setObjectGroup(ObjectGroup<Element> objectGroup)
+	{
+		this.objectGroup = objectGroup;
+	}
+	
+	/**
 	 * Returns the object group for this manager.
 	 * @return the object group
 	 */

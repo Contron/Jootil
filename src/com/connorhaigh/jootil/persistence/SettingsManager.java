@@ -76,6 +76,15 @@ public class SettingsManager
 	}
 	
 	/**
+	 * Sets the setting group for this manager.
+	 * @param settingGroup the setting group
+	 */
+	public void setSettingGroup(SettingGroup settingGroup)
+	{
+		this.settingGroup = settingGroup;
+	}
+	
+	/**
 	 * Returns the setting group for this manager.
 	 * @return the setting group
 	 */

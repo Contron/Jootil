@@ -110,9 +110,8 @@ public class ObjectGroup<Element> implements Serializable
 	}
 	
 	/**
-	 * Sets the non-observable objects list of this group.
-	 * This is used when loading the group.
-	 * @param objects the objects list
+	 * Sets the internal list of objects for this group.
+	 * @param objects the list of objects
 	 */
 	protected void setInternalObjects(ArrayList<Element> objects)
 	{
@@ -120,9 +119,8 @@ public class ObjectGroup<Element> implements Serializable
 	}
 	
 	/**
-	 * Returns the non-observable settings map of this group.
-	 * This is used when saving the group.
-	 * @return the objects list
+	 * Returns the internal list of objects for this group.
+	 * @return the internal list of objects
 	 */
 	protected ArrayList<Element> getInternalObjects()
 	{

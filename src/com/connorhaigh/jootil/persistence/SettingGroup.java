@@ -133,9 +133,8 @@ public class SettingGroup
 	}
 	
 	/**
-	 * Sets the non-observable settings map of this group.
-	 * This is used when loading the group.
-	 * @param settings the settings map
+	 * Sets the internal settings of this group.
+	 * @param the settings map
 	 */
 	protected void setInternalSettings(HashMap<String, Object> settings)
 	{
@@ -143,8 +142,7 @@ public class SettingGroup
 	}
 	
 	/**
-	 * Returns the non-observable settings map of this group.
-	 * This is used when saving the group.
+	 * Returns the internal settings of this group.
 	 * @return the settings map
 	 */
 	protected HashMap<String, Object> getInternalSettings()

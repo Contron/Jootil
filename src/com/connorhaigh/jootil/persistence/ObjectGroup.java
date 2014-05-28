@@ -127,7 +127,5 @@ public class ObjectGroup<Element> implements Serializable
 		return new ArrayList<Element>(this.objects);
 	}
 	
-	public static final long serialVersionUID = 1;
-	
 	private ObservableList<Element> objects;
 }

@@ -150,7 +150,5 @@ public class SettingGroup
 		return new HashMap<String, Object>(this.settings);
 	}
 	
-	public static final long serialVersionUID = 1;
-	
 	private ObservableMap<String, Object> settings;
 }

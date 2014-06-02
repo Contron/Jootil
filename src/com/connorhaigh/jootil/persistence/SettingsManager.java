@@ -37,11 +37,8 @@ public class SettingsManager
 		
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
-			//setup
-			xmlDecoder.setOwner(this);
-			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings load error: " + exception.getMessage()));
-			
 			//read
+			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings load error: " + exception.getMessage()));
 			this.settingGroup = new SettingGroup();
 			this.settingGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
 		}
@@ -62,11 +59,8 @@ public class SettingsManager
 		
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
-			//setup
-			xmlEncoder.setOwner(this);
-			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings save error: " + exception.getMessage()));
-			
 			//write
+			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings save error: " + exception.getMessage()));
 			xmlEncoder.writeObject(this.settingGroup.getInternalSettings());
 		}
 		catch (Exception exception)

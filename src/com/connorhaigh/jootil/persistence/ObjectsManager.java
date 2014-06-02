@@ -36,11 +36,8 @@ public class ObjectsManager<Element>
 		
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
-			//setup
-			xmlDecoder.setOwner(this);
-			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects loading error: " + exception.getMessage()));
-			
 			//read
+			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects loading error: " + exception.getMessage()));
 			this.objectGroup = new ObjectGroup<Element>();
 			this.objectGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
@@ -61,11 +58,8 @@ public class ObjectsManager<Element>
 		
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
-			//setup
-			xmlEncoder.setOwner(this);
-			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects saving error: " + exception.getMessage()));
-			
 			//write
+			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects saving error: " + exception.getMessage()));
 			xmlEncoder.writeObject(this.objectGroup.getInternalObjects());
 		}
 		catch (Exception exception)

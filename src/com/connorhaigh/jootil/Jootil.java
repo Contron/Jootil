@@ -1,7 +1,6 @@
 package com.connorhaigh.jootil;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 public class Jootil 
 {
@@ -38,6 +37,4 @@ public class Jootil
 	{
 		return new File(Jootil.getApplicationDirectory(clazz), name);
 	}
-	
-	public static final Logger LOGGER = Logger.getLogger("Jootil");
 }

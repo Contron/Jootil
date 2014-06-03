@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import com.connorhaigh.jootil.Jootil;
-
 public class ObjectsManager<Element>
 {
 	/**
@@ -27,9 +25,10 @@ public class ObjectsManager<Element>
 	
 	/**
 	 * Loads the objects from file.
+	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
-	public void load()
+	public void load() throws FileNotFoundException
 	{
 		//check directories
 		if (!this.directory.exists() || !this.file.exists())
@@ -38,20 +37,15 @@ public class ObjectsManager<Element>
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects loading error: " + exception.getMessage()));
-			this.objectGroup = new ObjectGroup<Element>();
 			this.objectGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
-		}
-		catch (Exception exception)
-		{
-			Jootil.LOGGER.info("Could not load objects for " + this);
 		}
 	}
 	
 	/**
 	 * Saves the objects to file.
+	 * @throws FileNotFoundException if the file could not be found
 	 */
-	public void save()
+	public void save() throws FileNotFoundException
 	{
 		//create directories
 		if (!this.directory.exists())
@@ -60,12 +54,7 @@ public class ObjectsManager<Element>
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML objects saving error: " + exception.getMessage()));
 			xmlEncoder.writeObject(this.objectGroup.getInternalObjects());
-		}
-		catch (Exception exception)
-		{
-			Jootil.LOGGER.severe("Could not save objects for " + this);
 		}
 	}
 	
@@ -74,17 +63,15 @@ public class ObjectsManager<Element>
 	 * @param file the file to load
 	 * @return the object
 	 * @throws FileNotFoundException if the file could not be found
+	 * @throws ClassCastException if the object is not an instance of this manager's class
 	 */
 	@SuppressWarnings("unchecked")
-	public Element loadLocal(File file) throws FileNotFoundException
+	public Element loadLocal(File file) throws FileNotFoundException, ClassCastException
 	{
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(file)))
 		{
 			//read
-			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML local object loading error: " + exception.getMessage()));
-			Element element = (Element) xmlDecoder.readObject();
-			
-			return element;
+			return (Element) xmlDecoder.readObject();
 		}
 	}
 	
@@ -99,7 +86,6 @@ public class ObjectsManager<Element>
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(file)))
 		{
 			//write
-			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML local object saving error: " + exception.getMessage()));
 			xmlEncoder.writeObject(element);
 		}
 	}

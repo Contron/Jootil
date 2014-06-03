@@ -4,10 +4,9 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
-
-import com.connorhaigh.jootil.Jootil;
 
 public class SettingsManager 
 {
@@ -27,9 +26,10 @@ public class SettingsManager
 	
 	/**
 	 * Loads the settings from file.
+	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
-	public void load()
+	public void load() throws FileNotFoundException
 	{
 		//check directories
 		if (!this.directory.exists() || !this.file.exists())
@@ -38,20 +38,15 @@ public class SettingsManager
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			xmlDecoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings load error: " + exception.getMessage()));
-			this.settingGroup = new SettingGroup();
 			this.settingGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
-		}
-		catch (Exception exception)
-		{
-			Jootil.LOGGER.info("Could not load settings for " + this);
 		}
 	}
 	
 	/**
 	 * Saves the settings to file.
+	 * @throws FileNotFoundException if the file could not be found
 	 */
-	public void save()
+	public void save() throws FileNotFoundException
 	{
 		//create directories
 		if (!this.directory.exists())
@@ -60,12 +55,7 @@ public class SettingsManager
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.setExceptionListener(exception -> Jootil.LOGGER.info("XML settings save error: " + exception.getMessage()));
 			xmlEncoder.writeObject(this.settingGroup.getInternalSettings());
-		}
-		catch (Exception exception)
-		{
-			Jootil.LOGGER.severe("Could not load objects for " + this);
 		}
 	}
 	

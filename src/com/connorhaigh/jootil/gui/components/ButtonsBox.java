@@ -7,7 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
-import com.connorhaigh.jootil.gui.styles.Styles;
+import com.connorhaigh.jootil.utilities.Styles;
 
 public class ButtonsBox extends HBox
 {

@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.gui.styles;
+package com.connorhaigh.jootil.utilities;
 
 public class Styles 
 {
@@ -18,7 +18,9 @@ public class Styles
 	
 	public static final String CONTROL_ALL_BORDER = "-fx-border-width: 1 1 1 1;";
 	public static final String CONTROL_TOP_BORDER = "-fx-border-width: 1 0 0 0;";
+	public static final String CONTROL_LEFT_BORDER = "-fx-border-width: 0 1 0 0;";
 	public static final String CONTROL_BOTTOM_BORDER = "-fx-border-width: 0 0 1 0;";
+	public static final String CONTROL_RIGHT_BORDER = "-fx-border-width: 0 0 0 1;";
 	public static final String CONTROL_TOP_BOTTOM_BORDER = "-fx-border-width: 1 0 1 0;";
 	public static final String CONTROL_LEFT_RIGHT_BORDER = "-fx-border-width: 0 1 0 1;";
 }

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-import com.connorhaigh.jootil.gui.styles.Styles;
+import com.connorhaigh.jootil.utilities.Styles;
 
 public class HeaderBox extends VBox
 {

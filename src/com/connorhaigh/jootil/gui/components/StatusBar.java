@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-import com.connorhaigh.jootil.gui.styles.Styles;
+import com.connorhaigh.jootil.utilities.Styles;
 
 public class StatusBar extends HBox
 {

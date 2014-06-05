@@ -42,6 +42,14 @@ public class ButtonsBox extends HBox
 	}
 	
 	/**
+	 * Create a new blank buttons box.
+	 */
+	public ButtonsBox()
+	{
+		this(true, true);
+	}
+	
+	/**
 	 * Sets the action to perform when the 'OK' button is clicked.
 	 * @param eventHandler the event handler
 	 */

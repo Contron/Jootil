@@ -26,15 +26,23 @@ public class HeaderBox extends VBox
 		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_BOTTOM_BORDER));
 		
 		//header label
-		Label headerLabel = new Label(header);
+		Label headerLabel = new Label();
 		headerLabel.setFont(Font.font(18));
 		headerLabel.textProperty().bind(this.headerProperty);
 		this.getChildren().add(headerLabel);
 		
 		//description label
-		Label descriptionLabel = new Label(description);
+		Label descriptionLabel = new Label();
 		descriptionLabel.textProperty().bind(this.descriptionProperty);
 		this.getChildren().add(descriptionLabel);
+	}
+	
+	/**
+	 * Create a new blank header box.
+	 */
+	public HeaderBox()
+	{
+		this(null, null);
 	}
 	
 	/**

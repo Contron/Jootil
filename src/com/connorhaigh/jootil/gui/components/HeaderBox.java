@@ -23,7 +23,7 @@ public class HeaderBox extends VBox
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setSpacing(10);
-		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_BOTTOM_BORDER));
+		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND_COLOUR, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_BOTTOM_BORDER));
 		
 		//header label
 		Label headerLabel = new Label();

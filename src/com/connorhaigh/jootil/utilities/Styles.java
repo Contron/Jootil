@@ -12,7 +12,8 @@ public class Styles
 		return String.join(" ", rules);
 	}
 	
-	public static final String CONTROL_BACKGROUND = "-fx-background-color: white;";
+	public static final String CONTROL_BACKGROUND_COLOUR = "-fx-background-color: white;";
+	public static final String CONTROL_TRANSPARENT_BACKGROUND_COLOUR = "-fx-background-color: transparent;";
 	
 	public static final String CONTROL_BORDER_COLOUR = "-fx-border-color: gray;";
 	

@@ -20,7 +20,7 @@ public class StatusBar extends HBox
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setSpacing(10);
-		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_TOP_BORDER));
+		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND_COLOUR, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_TOP_BORDER));
 		
 		//status label
 		Label statusLabel = new Label();

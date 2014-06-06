@@ -17,7 +17,7 @@ public class LocalObjectManager<Element>
 	 * @throws ClassCastException if the object is not an instance of this manager's class
 	 */
 	@SuppressWarnings("unchecked")
-	public Element loadLocal(File file) throws FileNotFoundException, ClassCastException
+	public Element load(File file) throws FileNotFoundException, ClassCastException
 	{
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(file)))
 		{
@@ -32,7 +32,7 @@ public class LocalObjectManager<Element>
 	 * @param element the object to save
 	 * @throws FileNotFoundException if the file could not be found
 	 */
-	public void saveLocal(File file, Element element) throws FileNotFoundException
+	public void save(File file, Element element) throws FileNotFoundException
 	{
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(file)))
 		{

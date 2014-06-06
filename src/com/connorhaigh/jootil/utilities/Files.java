@@ -1,5 +1,11 @@
 package com.connorhaigh.jootil.utilities;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
 public class Files 
@@ -78,6 +84,48 @@ public class Files
 		result.append(seconds + " seconds");
 		
 		return result.toString();
+	}
+	
+	/**
+	 * Reads a text file fully.
+	 * @param file the file to read
+	 * @return the contents
+	 * @throws IOException if the file could not be read
+	 */
+	public static String readText(File file) throws IOException
+	{
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file))))
+		{
+			//result
+			StringBuilder result = new StringBuilder();
+			String line = null;
+			
+			//read
+			while ((line = bufferedReader.readLine()) != null)
+				result.append(line + "\n");
+			
+			return result.toString();
+		}
+	}
+	
+	/**
+	 * Reads a binary file fully.
+	 * @param file the file to read
+	 * @return the contents
+	 * @throws IOException if the file could not be read
+	 */
+	public static byte[] readBinary(File file) throws IOException
+	{
+		try (FileInputStream fileInputStream = new FileInputStream(file); ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream())
+		{
+			//read
+			byte[] buffer = new byte[4096];
+			int bytes = 0;
+			while ((bytes = fileInputStream.read(buffer)) != -1)
+				byteArrayOutputStream.write(buffer, 0, bytes);
+			
+			return byteArrayOutputStream.toByteArray();
+		}
 	}
 	
 	public static final DecimalFormat SMALL_DECIMAL_FORMAT = new DecimalFormat("##.00");

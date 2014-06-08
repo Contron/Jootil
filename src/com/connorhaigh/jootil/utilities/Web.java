@@ -30,7 +30,7 @@ public class Web
 			//read
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null)
-				result.append(line + "\n");
+				result.append(line + System.lineSeparator());
 			
 			return result.toString();
 		}

@@ -44,6 +44,24 @@ public class Files
 	}
 	
 	/**
+	 * Returns the friendly name of a file.
+	 * @param path the file
+	 * @return the friendly name of the file
+	 */
+	public static String getFriendlyName(File file)
+	{
+		//get name
+		String name = file.getName();
+		
+		//get dot index
+		int dotIndex = name.lastIndexOf('.');
+		if (dotIndex == -1)
+			return name;
+		
+		return name.substring(0, dotIndex);
+	}
+	
+	/**
 	 * Returns the extension of a file.
 	 * @param file the file name
 	 * @return the extension of the file

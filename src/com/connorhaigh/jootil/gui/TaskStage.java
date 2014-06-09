@@ -48,7 +48,7 @@ public class TaskStage extends Stage
 	{
 		this.task = task;
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_CANCELLED, event -> this.close());
-		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_FAILED, event -> this.failed());
+		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_FAILED, event -> this.close());
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> this.close());
 		
 		//setup stage
@@ -106,19 +106,6 @@ public class TaskStage extends Stage
 	{
 		if (this.task.isRunning()) 
 			event.consume();
-	}
-	
-	/**
-	 * Failed the current task.
-	 */
-	private void failed()
-	{
-		//show
-		PromptStage promptStage = new PromptStage(this, "Error", "The task encountered an unexpected error and cannot continue.");
-		promptStage.showAndWait();
-		
-		//close
-		this.close();
 	}
 	
 	/**

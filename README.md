@@ -1,9 +1,9 @@
 Jootil
 =======
 
-A comprehensive Java library to provide the crucial plumbing for any JavaFX application., allowing you to focus on actually developing your application rather than the plumbing behind it.
+A comprehensive Java library to provide additional useful plumbing for a JavaFX application, allowing you to focus on actually developing it.
 
-In contrast to most other application frameworks (such as Spring), Jootil requires no messy XML or pre-set configuration. It's designed to simply provide the abilities that any application would want alongside it.
+Jootil requires no messy XML or pre-set configuration. It's designed to simply provide the abilities that any application would want alongside it.
 
 Common and useful features include:
 - Settings manager to load and save application settings in XML files

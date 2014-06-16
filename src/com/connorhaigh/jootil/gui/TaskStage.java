@@ -24,16 +24,17 @@ public class TaskStage extends Stage
 	 * Create a new task stage to monitor a task's progress, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param task the task to monitor
+	 * @param title the title of the task
 	 * @param if the task is cancellable
 	 * @param modal if the task should be modal
 	 */
-	public static void showTaskStage(Window owner, Task<?> task, boolean cancellable, boolean modal)
+	public static void showTaskStage(Window owner, Task<?> task, String title, boolean cancellable, boolean modal)
 	{
 		//start
 		Tasks.start(task);
 		
 		//show
-		TaskStage taskStage = new TaskStage(owner, task, cancellable, modal);
+		TaskStage taskStage = new TaskStage(owner, task, title, cancellable, modal);
 		taskStage.showAndWait();
 	}
 	
@@ -41,10 +42,11 @@ public class TaskStage extends Stage
 	 * Create a new progress stage to monitor a task's progress.
 	 * @param owner the owner of the stage
 	 * @param task the task to monitor
+	 * @param title the title of the task
 	 * @param if the task is cancellable
 	 * @param modal if the task should be modal
 	 */
-	public TaskStage(Window owner, Task<?> task, boolean cancellable, boolean modal)
+	public TaskStage(Window owner, Task<?> task, String title, boolean cancellable, boolean modal)
 	{
 		this.task = task;
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_CANCELLED, event -> this.close());
@@ -56,8 +58,8 @@ public class TaskStage extends Stage
 		this.initModality(modal ? Modality.APPLICATION_MODAL : Modality.NONE);
 		this.setResizable(false);
 		this.setMinWidth(350);
+		this.setTitle(title);
 		this.getIcons().add(new Image("/images/icons/task.png"));
-		this.titleProperty().bind(this.task.titleProperty());
 		this.setOnCloseRequest(event -> this.tryClose(event));
 		
 		//root pane
@@ -70,9 +72,8 @@ public class TaskStage extends Stage
 		borderPane.setCenter(contentPane);
 		
 		//header label
-		Label headerLabel = new Label();
+		Label headerLabel = new Label(title);
 		headerLabel.setFont(Font.font(18));
-		headerLabel.textProperty().bind(this.task.titleProperty());
 		contentPane.getChildren().add(headerLabel);
 		
 		//description label

@@ -38,8 +38,8 @@ public class Cryptography
 	public static Cipher getCipherInstance(int mode, SecretKeySpec secretKeySpec) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException
 	{
 		//get instance
-		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-		cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		cipher.init(mode, secretKeySpec);
 		
 		return cipher;
 	}

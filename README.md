@@ -10,6 +10,7 @@ Common and useful features include:
 - Objects manager to load and save persistent objects between sessions, also in XML files
 - A range of pre-built dialog boxes to use and extend (such as message and input dialogs)
 - A range of pre-built controls to compliment these dialogs (such as a status bar)
+- Localisation features to allow bilingual application development
 - Utility classes to facilitate with common tasks (such as formatting a file's size to something human-readable)
 - Style classes to facilitate with building styles for nodes
 

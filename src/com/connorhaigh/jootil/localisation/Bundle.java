@@ -38,7 +38,7 @@ public class Bundle
 	 */
 	public String retrieveLocalisation(String key)
 	{
-		return this.properties.getProperty(key, key);
+		return this.properties.getProperty(key, String.format("No Matching Key (%s)", key));
 	}
 	
 	/**

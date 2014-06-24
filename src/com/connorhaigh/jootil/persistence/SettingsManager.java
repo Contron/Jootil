@@ -27,9 +27,10 @@ public class SettingsManager
 	/**
 	 * Loads the settings from file.
 	 * @throws FileNotFoundException if the file could not be found
+	 * @throws ClassCastException if the saved data could not be cast to a hash map
 	 */
 	@SuppressWarnings("unchecked")
-	public void load() throws FileNotFoundException
+	public void load() throws FileNotFoundException, ClassCastException
 	{
 		//check directories
 		if (!this.directory.exists() || !this.file.exists())

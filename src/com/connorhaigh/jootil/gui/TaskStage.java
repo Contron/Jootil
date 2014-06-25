@@ -52,6 +52,7 @@ public class TaskStage extends Stage
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_CANCELLED, event -> this.close());
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_FAILED, event -> this.close());
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event -> this.close());
+		this.cancellable = cancellable;
 		
 		//setup stage
 		this.initOwner(owner);
@@ -91,7 +92,7 @@ public class TaskStage extends Stage
 		//buttons box
 		ButtonsBox buttonsBox = new ButtonsBox(false, true);
 		buttonsBox.setOnCancel(event -> this.cancel());
-		buttonsBox.getCancelButton().setDisable(!cancellable);
+		buttonsBox.getCancelButton().setDisable(!this.cancellable);
 		borderPane.setBottom(buttonsBox);
 		
 		//show
@@ -105,8 +106,15 @@ public class TaskStage extends Stage
 	 */
 	private void tryClose(WindowEvent event)
 	{
-		if (this.task.isRunning()) 
-			event.consume();
+		if (this.cancellable)
+		{
+			this.cancel();
+		}
+		else
+		{
+			if (this.task.isRunning()) 
+				event.consume();
+		}
 	}
 	
 	/**
@@ -119,4 +127,5 @@ public class TaskStage extends Stage
 	}
 	
 	private Task<?> task;
+	private boolean cancellable;
 }

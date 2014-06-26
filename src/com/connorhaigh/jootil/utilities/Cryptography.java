@@ -19,9 +19,9 @@ public class Cryptography
 	public static SecretKeySpec getSecretKeySpec(String key) throws NoSuchAlgorithmException
 	{
 		//digest and return
-		MessageDigest messageDigest = MessageDigest.getInstance("SHA");
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 		messageDigest.update(key.getBytes());
-		SecretKeySpec secretKeySpec = new SecretKeySpec(messageDigest.digest(), 0, 16, "AES");
+		SecretKeySpec secretKeySpec = new SecretKeySpec(messageDigest.digest(), 0, messageDigest.getDigestLength(), "AES");
 		
 		return secretKeySpec;
 	}

@@ -47,7 +47,7 @@ public class DeveloperConsoleStage extends Stage
 		
 		//setup stage
 		this.initOwner(owner);
-		this.setTitle("Development Console");
+		this.setTitle("Developer Console");
 		this.getIcons().add(new Image("/images/icons/console.png"));
 		
 		//root vbox

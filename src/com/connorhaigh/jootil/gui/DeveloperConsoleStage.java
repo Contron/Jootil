@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -37,12 +38,13 @@ public class DeveloperConsoleStage extends Stage
 	public DeveloperConsoleStage(Window owner)
 	{
 		this.commands = new HashMap<String, Command>();
-		this.commands.put("help", new Command(() -> this.listHelp(), "Displays the list of commands"));
-		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clears the console text"));
-		this.commands.put("exit", new Command(() -> this.exitConsole(), "Exits the console"));
+		this.commands.put("help", new Command(() -> this.listHelp(), "Display the list of commands"));
+		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clear the console text"));
+		this.commands.put("close", new Command(() -> this.closeConsole(), "Close the console"));
+		this.commands.put("exit", new Command(() -> this.exitPlatform(), "Exit the platform"));
 		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
-		this.commands.put("properties", new Command(() -> this.dumpProperties(), "Dumps all system properties"));
-		this.commands.put("environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dumps all environment variables"));
+		this.commands.put("properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
+		this.commands.put("environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
 		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Run the garbage collector"));
 		
 		//setup stage
@@ -86,7 +88,7 @@ public class DeveloperConsoleStage extends Stage
 	{
 		//header text
 		this.logTextArea.setText("");
-		this.logTextArea.appendText("Development console initialised\n");
+		this.logTextArea.appendText("Developer console initialised\n");
 		this.logTextArea.appendText("Type 'help' for available commands\n\n");
 	}
 	
@@ -184,12 +186,24 @@ public class DeveloperConsoleStage extends Stage
 	 * Close the console.
 	 * @return the output
 	 */
-	private String exitConsole()
+	private String closeConsole()
 	{
 		//close
 		this.close();
 		
 		return "Closed the console";
+	}
+	
+	/**
+	 * Exit the platform.
+	 * @return the output
+	 */
+	private String exitPlatform()
+	{
+		//exit
+		Platform.exit();
+		
+		return "Exited the platform";
 	}
 	
 	/**

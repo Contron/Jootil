@@ -12,30 +12,29 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import com.connorhaigh.jootil.utilities.Files;
 
-public class DevelopmentConsoleStage extends Stage
+public class DeveloperConsoleStage extends Stage
 {
 	/**
-	 * Create a new development console stage.
+	 * Create a new developer console stage.
 	 * @param owner the owner of the stage
 	 */
-	public static void showDevelopmentConsoleStage(Window owner)
+	public static void showDeveloperConsoleStage(Window owner)
 	{
 		//show
-		DevelopmentConsoleStage developmentConsoleStage = new DevelopmentConsoleStage(owner);
-		developmentConsoleStage.show();
+		DeveloperConsoleStage developerConsoleStage = new DeveloperConsoleStage(owner);
+		developerConsoleStage.show();
 	}
 	
 	/**
-	 * Create a new prompt dialog stage.
+	 * Create a new developer console stage.
 	 * @param owner the owner of the stage
 	 */
-	public DevelopmentConsoleStage(Window owner)
+	public DeveloperConsoleStage(Window owner)
 	{
 		this.commands = new HashMap<String, Command>();
 		this.commands.put("help", new Command(() -> this.listHelp(), "Displays the list of commands"));
@@ -48,7 +47,6 @@ public class DevelopmentConsoleStage extends Stage
 		
 		//setup stage
 		this.initOwner(owner);
-		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle("Development Console");
 		this.getIcons().add(new Image("/images/icons/console.png"));
 		

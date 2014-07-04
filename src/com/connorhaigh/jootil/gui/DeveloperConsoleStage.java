@@ -41,15 +41,18 @@ public class DeveloperConsoleStage extends Stage
 		this.commands.put("help", new Command(() -> this.listHelp(), "Display the list of commands"));
 		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clear the console text"));
 		this.commands.put("close", new Command(() -> this.closeConsole(), "Close the console"));
+		this.commands.put("version", new Command(() -> this.showVersion(), "Display the current runtime version"));
 		this.commands.put("exit", new Command(() -> this.exitPlatform(), "Exit the platform"));
 		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
-		this.commands.put("properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
-		this.commands.put("environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
+		this.commands.put("dump_properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
+		this.commands.put("dump_environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
 		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Run the garbage collector"));
 		
 		//setup stage
 		this.initOwner(owner);
 		this.setTitle("Developer Console");
+		this.setMinWidth(200);
+		this.setMinHeight(200);
 		this.getIcons().add(new Image("/images/icons/console.png"));
 		
 		//root vbox
@@ -195,6 +198,22 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
+	 * Display the version of the Java runtime.
+	 * @return the version
+	 */
+	private String showVersion()
+	{
+		return String.format
+		(
+			"Java %s (%s), on %s (version %s)", 
+			System.getProperty("java.version"), 
+			System.getProperty("java.vendor"), 
+			System.getProperty("os.name"), 
+			System.getProperty("os.version")
+		);
+	}
+	
+	/**
 	 * Exit the platform.
 	 * @return the output
 	 */
@@ -304,6 +323,10 @@ class Command
 		return this.action.run();
 	}
 	
+	/**
+	 * Returns the description of this command.
+	 * @return the description
+	 */
 	public String getDescription()
 	{
 		return this.description;

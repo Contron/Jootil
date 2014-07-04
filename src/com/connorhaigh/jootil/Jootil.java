@@ -2,8 +2,24 @@ package com.connorhaigh.jootil;
 
 import java.io.File;
 
-public class Jootil 
+import com.connorhaigh.jootil.gui.DeveloperConsoleStage;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Jootil extends Application
 {
+	public static void main(String[] args)
+	{
+		Jootil.launch(args);
+	}
+	
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		DeveloperConsoleStage.showDeveloperConsoleStage(arg0);
+	}
+	
 	/**
 	 * Returns the default application directory for the specified class.
 	 * This should ideally be the application's main class.

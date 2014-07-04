@@ -15,7 +15,7 @@ public class Files
 	 * @param size the size of the file
 	 * @return the friendly size
 	 */
-	public static String getSize(int size)
+	public static String getSize(long size)
 	{
 		//check
 		if (size < 1024)

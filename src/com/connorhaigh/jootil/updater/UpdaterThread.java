@@ -6,18 +6,20 @@ import java.net.URL;
 
 import javafx.application.Platform;
 
-import com.connorhaigh.jootil.Jootil;
 import com.connorhaigh.jootil.updater.gui.UpdateAvailableStage;
 
 public class UpdaterThread extends Thread
 {
 	/**
 	 * Create a new updater thread.
+	 * @param clazz the application's main class
 	 * @param jarFile the location of the JAR file to check for differences
 	 * @param updatePage the page the user can navigate to for downloading the JAR file
 	 */
-	public UpdaterThread(String jarFile, String updatePage)
+	public UpdaterThread(Class<?> clazz, String jarFile, String updatePage)
 	{
+		this.clazz = clazz;
+		
 		this.jarFile = jarFile;
 		this.updatePage = updatePage;
 	}
@@ -44,7 +46,7 @@ public class UpdaterThread extends Thread
 		try
 		{
 			//get local jar file
-			String localJarLocation = Jootil.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			String localJarLocation = this.clazz.getProtectionDomain().getCodeSource().getLocation().getPath();
 			File localJarFile = new File(localJarLocation);
 			
 			//get remove jar file
@@ -63,13 +65,18 @@ public class UpdaterThread extends Thread
 			long localFileSize = localJarFile.length();
 			long remoteFileSize = httpUrlConnection.getContentLengthLong();
 			
+			//get dates
+			long localLastModified = localJarFile.lastModified();
+			long remoteLastModified = httpUrlConnection.getLastModified();
+			
 			//skip if zero length
 			if (localFileSize <= 0 || remoteFileSize <= 0)
 				return;
 			
-			//check sizes
+			//check sizes and dates
 			if (localFileSize != remoteFileSize)
-				this.displayNotificationWindow();
+				if (remoteLastModified > localLastModified)
+					this.displayNotificationWindow();
 		}
 		catch (Exception exception)
 		{
@@ -89,6 +96,8 @@ public class UpdaterThread extends Thread
 			updateAvailableStage.showAndWait();
 		});
 	}
+	
+	private Class<?> clazz;
 	
 	private String jarFile;
 	private String updatePage;

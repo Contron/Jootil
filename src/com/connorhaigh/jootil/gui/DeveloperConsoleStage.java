@@ -1,5 +1,6 @@
 package com.connorhaigh.jootil.gui;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -38,15 +40,9 @@ public class DeveloperConsoleStage extends Stage
 	public DeveloperConsoleStage(Window owner)
 	{
 		this.commands = new HashMap<String, Command>();
-		this.commands.put("help", new Command(() -> this.listHelp(), "Display the list of commands"));
-		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clear the console text"));
-		this.commands.put("close", new Command(() -> this.closeConsole(), "Close the console"));
-		this.commands.put("version", new Command(() -> this.showVersion(), "Display the current runtime version"));
-		this.commands.put("exit", new Command(() -> this.exitPlatform(), "Exit the platform"));
-		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
-		this.commands.put("dump_properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
-		this.commands.put("dump_environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
-		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Run the garbage collector"));
+		
+		this.history = new ArrayList<String>();
+		this.historyIndex = -1;
 		
 		//setup stage
 		this.initOwner(owner);
@@ -74,6 +70,15 @@ public class DeveloperConsoleStage extends Stage
 		this.inputTextField.setPrefColumnCount(50);
 		this.inputTextField.setFont(Font.font("Monospaced"));
 		this.inputTextField.setOnAction(event -> this.executeCommand());
+		this.inputTextField.setOnKeyPressed(event ->
+		{
+			//navigate
+			KeyCode keyCode = event.getCode();
+			if (keyCode == KeyCode.UP)
+				this.navigateHistory(1);
+			else if (keyCode == KeyCode.DOWN)
+				this.navigateHistory(-1);
+		});
 		vbox.getChildren().add(this.inputTextField);
 		
 		//initialise
@@ -89,6 +94,17 @@ public class DeveloperConsoleStage extends Stage
 	 */
 	public void initialiseConsole()
 	{
+		//default commands
+		this.commands.put("help", new Command(() -> this.listHelp(), "Display the list of commands"));
+		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clear the console text"));
+		this.commands.put("close", new Command(() -> this.closeConsole(), "Close the console"));
+		this.commands.put("version", new Command(() -> this.showVersion(), "Display the current runtime version"));
+		this.commands.put("exit", new Command(() -> this.exitPlatform(), "Exit the platform"));
+		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
+		this.commands.put("dump_properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
+		this.commands.put("dump_environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
+		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Run the garbage collector"));
+		
 		//header text
 		this.logTextArea.setText("");
 		this.logTextArea.appendText("Developer console initialised\n");
@@ -137,6 +153,10 @@ public class DeveloperConsoleStage extends Stage
 		this.logTextArea.appendText("> " + name + "\n");
 		this.inputTextField.setText("");
 		
+		//add to history
+		this.history.add(0, name);
+		this.historyIndex = -1;
+		
 		if (!this.commands.containsKey(name))
 		{
 			//unknown
@@ -151,6 +171,22 @@ public class DeveloperConsoleStage extends Stage
 
 		//append
 		this.logTextArea.appendText(result + "\n");
+	}
+	
+	/**
+	 * Navigate through the command history.
+	 * @param increment the incrementation
+	 */
+	private void navigateHistory(int increment)
+	{
+		//change
+		int newIndex = (this.historyIndex + increment);
+		if (newIndex <= -1 || newIndex >= this.history.size())
+			return;
+		
+		//set
+		this.historyIndex = newIndex;
+		this.inputTextField.setText(this.history.get(this.historyIndex));
 	}
 	
 	/**
@@ -296,6 +332,9 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	private HashMap<String, Command> commands;
+	
+	private ArrayList<String> history;
+	private int historyIndex;
 	
 	private TextArea logTextArea;
 	private TextField inputTextField;

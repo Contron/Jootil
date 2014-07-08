@@ -20,7 +20,7 @@ public class ObjectsManager<Element>
 		this.directory = directory;
 		this.file = new File(this.directory, name + ".xml");
 		
-		this.objectGroup = new ObjectGroup<Element>();
+		this.objectsGroup = new ObjectsGroup<Element>();
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class ObjectsManager<Element>
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			this.objectGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
+			this.objectsGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
 	}
 	
@@ -55,30 +55,30 @@ public class ObjectsManager<Element>
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.writeObject(this.objectGroup.getInternalObjects());
+			xmlEncoder.writeObject(this.objectsGroup.getInternalObjects());
 		}
 	}
 	
 	/**
-	 * Sets the object group for this manager.
-	 * @param objectGroup the object group
+	 * Sets the objects group for this manager.
+	 * @param objectsGroup the objects group
 	 */
-	public void setObjectGroup(ObjectGroup<Element> objectGroup)
+	public void setObjectsGroup(ObjectsGroup<Element> objectGroup)
 	{
-		this.objectGroup = objectGroup;
+		this.objectsGroup = objectGroup;
 	}
 	
 	/**
-	 * Returns the object group for this manager.
-	 * @return the object group
+	 * Returns the objects group for this manager.
+	 * @return the objects group
 	 */
-	public ObjectGroup<Element> getObjectGroup()
+	public ObjectsGroup<Element> getObjectsGroup()
 	{
-		return this.objectGroup;
+		return this.objectsGroup;
 	}
 	
 	private File directory;
 	private File file;
 	
-	private ObjectGroup<Element> objectGroup;
+	private ObjectsGroup<Element> objectsGroup;
 }

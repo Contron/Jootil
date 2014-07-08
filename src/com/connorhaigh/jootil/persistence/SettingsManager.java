@@ -8,20 +8,22 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
+import javafx.beans.property.Property;
+
 public class SettingsManager 
 {
 	/**
 	 * Create a new settings manager.
 	 * @param directory the root directory
 	 * @param name the settings file
-	 * @param settingGroup the group of initial settings
+	 * @param settingsGroup the group of initial settings
 	 */
-	public SettingsManager(File directory, String name, SettingGroup settingGroup)
+	public SettingsManager(File directory, String name, SettingsGroup settingsGroup)
 	{
 		this.directory = directory;
 		this.file = new File(this.directory, name + ".xml");
 		
-		this.settingGroup = settingGroup;
+		this.settingsGroup = settingsGroup;
 	}
 	
 	/**
@@ -39,7 +41,7 @@ public class SettingsManager
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			this.settingGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
+			this.settingsGroup.setInternalSettings((HashMap<String, Property<?>>) xmlDecoder.readObject());
 		}
 	}
 	
@@ -56,30 +58,30 @@ public class SettingsManager
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.writeObject(this.settingGroup.getInternalSettings());
+			xmlEncoder.writeObject(this.settingsGroup.getInternalSettings());
 		}
 	}
 	
 	/**
-	 * Sets the setting group for this manager.
-	 * @param settingGroup the setting group
+	 * Sets the settings group for this manager.
+	 * @param settingsGroup the settings group
 	 */
-	public void setSettingGroup(SettingGroup settingGroup)
+	public void setSettingsGroup(SettingsGroup settingsGroup)
 	{
-		this.settingGroup = settingGroup;
+		this.settingsGroup = settingsGroup;
 	}
 	
 	/**
-	 * Returns the setting group for this manager.
-	 * @return the setting group
+	 * Returns the settings group for this manager.
+	 * @return the settings group
 	 */
-	public SettingGroup getSettingGroup()
+	public SettingsGroup getSettingsGroup()
 	{
-		return this.settingGroup;
+		return this.settingsGroup;
 	}
 	
 	private File directory;
 	private File file;
 	
-	private SettingGroup settingGroup;
+	private SettingsGroup settingsGroup;
 }

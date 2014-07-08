@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ObjectGroup<Element>
+public class ObjectsGroup<Element>
 {
 	/**
-	 * Create a new object group.
+	 * Create a new objects group.
 	 */
-	public ObjectGroup()
+	public ObjectsGroup()
 	{
 		this.objects = FXCollections.observableArrayList();
 	}

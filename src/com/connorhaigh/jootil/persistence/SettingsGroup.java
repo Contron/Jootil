@@ -26,26 +26,6 @@ public class SettingsGroup
 	}
 	
 	/**
-	 * Sets a setting in this group.
-	 * @param name the name of the setting
-	 * @param value the value
-	 */
-	public void set(String name, Property<?> value)
-	{
-		this.settings.put(name, value);
-	}
-	
-	/**
-	 * Returns a setting in this group.
-	 * @param name the name of the setting
-	 * @return the value
-	 */
-	public Property<?> get(String name)
-	{
-		return this.settings.get(name);
-	}
-	
-	/**
 	 * Updates a boolean property in this group.
 	 * @param name the name of the setting
 	 * @param value the new value
@@ -62,7 +42,7 @@ public class SettingsGroup
 	 */
 	public void setBoolean(String name, boolean value)
 	{
-		this.set(name, new SimpleBooleanProperty(value));
+		this.settings.put(name, new SimpleBooleanProperty(value));
 	}
 	
 	/**
@@ -102,7 +82,7 @@ public class SettingsGroup
 	 */
 	public void setDouble(String name, double value)
 	{
-		this.set(name, new SimpleDoubleProperty(value));
+		this.settings.put(name, new SimpleDoubleProperty(value));
 	}
 	
 	/**
@@ -142,7 +122,7 @@ public class SettingsGroup
 	 */
 	public void setFloat(String name, float value)
 	{
-		this.set(name, new SimpleFloatProperty(value));
+		this.settings.put(name, new SimpleFloatProperty(value));
 	}
 	
 	/**
@@ -182,7 +162,7 @@ public class SettingsGroup
 	 */
 	public void setInteger(String name, int value)
 	{
-		this.set(name, new SimpleIntegerProperty(value));
+		this.settings.put(name, new SimpleIntegerProperty(value));
 	}
 	
 	/**
@@ -222,7 +202,7 @@ public class SettingsGroup
 	 */
 	public void setLong(String name, long value)
 	{
-		this.set(name, new SimpleLongProperty(value));
+		this.settings.put(name, new SimpleLongProperty(value));
 	}
 	
 	/**
@@ -262,7 +242,7 @@ public class SettingsGroup
 	 */
 	public void setString(String name, String value)
 	{
-		this.set(name, new SimpleStringProperty(value));
+		this.settings.put(name, new SimpleStringProperty(value));
 	}
 	
 	/**
@@ -292,7 +272,7 @@ public class SettingsGroup
 	 */
 	public <Element> void setObject(String name, Element value)
 	{
-		this.set(name, new SimpleObjectProperty<Element>(value));
+		this.settings.put(name, new SimpleObjectProperty<Element>(value));
 	}
 	
 	/**

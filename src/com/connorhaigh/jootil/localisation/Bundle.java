@@ -17,13 +17,16 @@ public class Bundle
 		this.properties = properties;
 	}
 	
+	/**
+	 * Returns if this bundle equals another object
+	 */
 	public boolean equals(Object object)
 	{
 		if (object instanceof Bundle)
 		{
 			Bundle bundle = (Bundle) object;
 			
-			return (bundle.locale.equals(bundle.locale) && bundle.properties.equals(bundle.properties));
+			return (this.locale.equals(bundle.locale) && this.properties.equals(bundle.properties));
 		}
 		else
 		{

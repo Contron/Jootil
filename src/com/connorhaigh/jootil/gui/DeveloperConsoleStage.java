@@ -14,11 +14,11 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import com.connorhaigh.jootil.utilities.Files;
+import com.connorhaigh.jootil.utilities.Resources;
 
 public class DeveloperConsoleStage extends Stage
 {
@@ -61,14 +61,14 @@ public class DeveloperConsoleStage extends Stage
 		this.logTextArea.setPrefRowCount(15);
 		this.logTextArea.setPrefColumnCount(50);
 		this.logTextArea.setEditable(false);
-		this.logTextArea.setFont(Font.font("Monospaced"));
+		this.logTextArea.setFont(Resources.MONOSPACED_FONT);
 		vbox.getChildren().add(this.logTextArea);
 		VBox.setVgrow(this.logTextArea, Priority.ALWAYS);
 		
 		//input text field
 		this.inputTextField = new TextField();
 		this.inputTextField.setPrefColumnCount(50);
-		this.inputTextField.setFont(Font.font("Monospaced"));
+		this.inputTextField.setFont(Resources.MONOSPACED_FONT);
 		this.inputTextField.setOnAction(event -> this.executeCommand());
 		this.inputTextField.setOnKeyPressed(event ->
 		{

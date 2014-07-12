@@ -9,13 +9,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
+import com.connorhaigh.jootil.utilities.Resources;
 import com.connorhaigh.jootil.utilities.Tasks;
 
 public class TaskStage extends Stage
@@ -74,7 +74,7 @@ public class TaskStage extends Stage
 		
 		//header label
 		Label headerLabel = new Label(title);
-		headerLabel.setFont(Font.font(18));
+		headerLabel.setFont(Resources.LARGE_FONT);
 		contentPane.getChildren().add(headerLabel);
 		
 		//description label

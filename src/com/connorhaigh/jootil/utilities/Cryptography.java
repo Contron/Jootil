@@ -21,7 +21,7 @@ public class Cryptography
 		//digest and return
 		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 		messageDigest.update(key.getBytes());
-		SecretKeySpec secretKeySpec = new SecretKeySpec(messageDigest.digest(), 0, messageDigest.getDigestLength(), "AES");
+		SecretKeySpec secretKeySpec = new SecretKeySpec(messageDigest.digest(), 0, 16, "AES");
 		
 		return secretKeySpec;
 	}

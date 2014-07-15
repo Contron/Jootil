@@ -8,8 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
-import javafx.beans.property.Property;
-
 public class SettingsManager 
 {
 	/**
@@ -41,7 +39,7 @@ public class SettingsManager
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			this.settingsGroup.setInternalSettings((HashMap<String, Property<?>>) xmlDecoder.readObject());
+			this.settingsGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
 		}
 	}
 	

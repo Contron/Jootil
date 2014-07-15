@@ -4,14 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 
@@ -26,274 +18,192 @@ public class SettingsGroup
 	}
 	
 	/**
-	 * Updates a boolean property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
+	 * Sets a character setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public void updateBooleanProperty(String name, boolean value)
+	public void setCharacter(String key, char value)
 	{
-		this.getBooleanProperty(name).set(value);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Sets a boolean setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
+	 * Returns a character setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public void setBoolean(String name, boolean value)
+	public char getCharacter(String key)
 	{
-		this.settings.put(name, new SimpleBooleanProperty(value));
+		return (char) this.settings.get(key);
 	}
 	
 	/**
-	 * Returns a boolean property in this group.
-	 * @param name the name of the setting
-	 * @return the property
+	 * Sets a byte setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public SimpleBooleanProperty getBooleanProperty(String name)
+	public void setByte(String key, byte value)
 	{
-		return (SimpleBooleanProperty) this.settings.get(name);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Returns the boolean value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
+	 * Returns a byte setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public boolean getBoolean(String name)
+	public byte getByte(String key)
 	{
-		return this.getBooleanProperty(name).get();
+		return (byte) this.settings.get(key);
 	}
 	
 	/**
-	 * Updates a double property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
+	 * Sets a boolean setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public void updateDoubleProperty(String name, double value)
+	public void setBoolean(String key, boolean value)
 	{
-		this.getDoubleProperty(name).set(value);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Sets a double setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
+	 * Returns a boolean setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public void setDouble(String name, double value)
+	public boolean getBoolean(String key)
 	{
-		this.settings.put(name, new SimpleDoubleProperty(value));
+		return (boolean) this.settings.get(key);
 	}
 	
 	/**
-	 * Returns a double property in this group.
-	 * @param name the name of the setting
-	 * @return the property
+	 * Sets an integer setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public SimpleDoubleProperty getDoubleProperty(String name)
+	public void setInteger(String key, int value)
 	{
-		return (SimpleDoubleProperty) this.settings.get(name);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Returns the double value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
+	 * Returns an integer setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public double getDouble(String name)
+	public int getInteger(String key)
 	{
-		return this.getDoubleProperty(name).get();
+		return (int) this.settings.get(key);
 	}
 	
 	/**
-	 * Updates a float property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
+	 * Sets a long setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public void updateFloatProperty(String name, float value)
+	public void setLong(String key, long value)
 	{
-		this.getFloatProperty(name).set(value);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Sets a float setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
+	 * Returns a long setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public void setFloat(String name, float value)
+	public long getLong(String key)
 	{
-		this.settings.put(name, new SimpleFloatProperty(value));
+		return (long) this.settings.get(key);
 	}
 	
 	/**
-	 * Returns a float property in this group.
-	 * @param name the name of the setting
-	 * @return the property
+	 * Sets a double setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public SimpleFloatProperty getFloatProperty(String name)
+	public void setDouble(String key, double value)
 	{
-		return (SimpleFloatProperty) this.settings.get(name);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Returns the float value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
+	 * Returns a double setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public float getFloat(String name)
+	public double getDouble(String key)
 	{
-		return this.getFloatProperty(name).get();
+		return (double) this.settings.get(key);
 	}
 	
 	/**
-	 * Updates an integer property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
+	 * Sets a float setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public void updateIntegerProperty(String name, int value)
+	public void setFloat(String key, float value)
 	{
-		this.getIntegerProperty(name).set(value);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Sets an integer setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
+	 * Returns a float setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public void setInteger(String name, int value)
+	public float getFloat(String key)
 	{
-		this.settings.put(name, new SimpleIntegerProperty(value));
+		return (float) this.settings.get(key);
 	}
 	
 	/**
-	 * Returns an integer property in this group.
-	 * @param name the name of the setting
-	 * @return the property
+	 * Sets a string setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public SimpleIntegerProperty getIntegerProperty(String name)
+	public void setString(String key, String value)
 	{
-		return (SimpleIntegerProperty) this.settings.get(name);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Returns the integer value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
+	 * Returns a string setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public int getInteger(String name)
+	public String getString(String key)
 	{
-		return this.getIntegerProperty(name).get();
+		return (String) this.settings.get(key);
 	}
 	
 	/**
-	 * Updates a long property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
+	 * Sets an object setting in this settings group.
+	 * @param key the key of the setting
+	 * @param value the value of the setting
 	 */
-	public void updateLongProperty(String name, long value)
+	public void setObject(String key, Object value)
 	{
-		this.getLongProperty(name).set(value);
+		this.settings.put(key, value);
 	}
 	
 	/**
-	 * Sets a long setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
+	 * Returns an object setting from this settings group.
+	 * @param key the key of the setting
+	 * @return the value of the setting, or null if it does not exist
 	 */
-	public void setLong(String name, long value)
+	public Object getObject(String key)
 	{
-		this.settings.put(name, new SimpleLongProperty(value));
+		return (Object) this.settings.get(key);
 	}
 	
 	/**
-	 * Returns a long property in this group.
-	 * @param name the name of the setting
-	 * @return the property
+	 * Removes a setting from this settings group.
+	 * @param key the key of the setting
 	 */
-	public SimpleLongProperty getLongProperty(String name)
+	public void remove(String key)
 	{
-		return (SimpleLongProperty) this.settings.get(name);
-	}
-	
-	/**
-	 * Returns the long value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
-	 */
-	public long getLong(String name)
-	{
-		return this.getLongProperty(name).get();
-	}
-	
-	/**
-	 * Updates a string property in this group.
-	 * @param name the name of the setting
-	 * @param value the new value
-	 */
-	public void updateStringProperty(String name, String value)
-	{
-		this.getStringProperty(name).set(value);
-	}
-	
-	/**
-	 * Sets a string setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
-	 */
-	public void setString(String name, String value)
-	{
-		this.settings.put(name, new SimpleStringProperty(value));
-	}
-	
-	/**
-	 * Returns a string property in this group.
-	 * @param name the name of the setting
-	 * @return the property
-	 */
-	public SimpleStringProperty getStringProperty(String name)
-	{
-		return (SimpleStringProperty) this.settings.get(name);
-	}
-	
-	/**
-	 * Returns the string value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
-	 */
-	public String getString(String name)
-	{
-		return this.getStringProperty(name).get();
-	}
-	
-	/**
-	 * Sets an object setting in this group, wrapping it in a property.
-	 * @param name the name of the setting
-	 * @param value the initial value
-	 */
-	public <Element> void setObject(String name, Element value)
-	{
-		this.settings.put(name, new SimpleObjectProperty<Element>(value));
-	}
-	
-	/**
-	 * Returns an object property in this group.
-	 * @param name the name of the setting
-	 * @return the property
-	 */
-	@SuppressWarnings("unchecked")
-	public <Element> SimpleObjectProperty<Element> getObjectProperty(String name)
-	{
-		return (SimpleObjectProperty<Element>) this.settings.get(name);
-	}
-	
-	/**
-	 * Returns the object value of a property in this group.
-	 * @param name the name of the setting
-	 * @return the value
-	 */
-	public <Element> Element getObject(String name)
-	{
-		return this.<Element>getObjectProperty(name).get();
+		this.settings.remove(key);
 	}
 	
 	/**
@@ -326,7 +236,7 @@ public class SettingsGroup
 	 * Returns the collection of values in this group.
 	 * @return the collection of values
 	 */
-	public Collection<Property<?>> getValues()
+	public Collection<Object> getValues()
 	{
 		return this.settings.values();
 	}
@@ -335,7 +245,7 @@ public class SettingsGroup
 	 * Sets the settings map of this group.
 	 * @param settings the settings map
 	 */
-	public void setSettings(ObservableMap<String, Property<?>> settings)
+	public void setSettings(ObservableMap<String, Object> settings)
 	{
 		this.settings = settings;
 	}
@@ -344,7 +254,7 @@ public class SettingsGroup
 	 * Returns the settings map of this group.
 	 * @return the settings map
 	 */
-	public ObservableMap<String, Property<?>> getSettings()
+	public ObservableMap<String, Object> getSettings()
 	{
 		return this.settings;
 	}
@@ -353,7 +263,7 @@ public class SettingsGroup
 	 * Sets the internal settings of this group.
 	 * @param the settings map
 	 */
-	protected void setInternalSettings(HashMap<String, Property<?>> settings)
+	protected void setInternalSettings(HashMap<String, Object> settings)
 	{
 		this.settings = FXCollections.observableMap(settings);
 	}
@@ -367,5 +277,5 @@ public class SettingsGroup
 		return new HashMap<String, Object>(this.settings);
 	}
 	
-	private ObservableMap<String, Property<?>> settings;
+	private ObservableMap<String, Object> settings;
 }

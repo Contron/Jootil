@@ -39,7 +39,7 @@ public class SettingsManager
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			this.settingsGroup.setInternalSettings((HashMap<String, Object>) xmlDecoder.readObject());
+			this.settingsGroup.setSettings((HashMap<String, Object>) xmlDecoder.readObject());
 		}
 	}
 	
@@ -56,7 +56,7 @@ public class SettingsManager
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.writeObject(this.settingsGroup.getInternalSettings());
+			xmlEncoder.writeObject(this.settingsGroup.getSettings());
 		}
 	}
 	

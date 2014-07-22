@@ -2,9 +2,6 @@ package com.connorhaigh.jootil.persistence;
 
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 public class ObjectsGroup<Element>
 {
 	/**
@@ -12,7 +9,7 @@ public class ObjectsGroup<Element>
 	 */
 	public ObjectsGroup()
 	{
-		this.objects = FXCollections.observableArrayList();
+		this.objects = new ArrayList<Element>();
 	}
 	
 	/**
@@ -94,7 +91,7 @@ public class ObjectsGroup<Element>
 	 * Sets the list of objects in this group.
 	 * @param objects the list of objects
 	 */
-	public void setObjects(ObservableList<Element> objects)
+	public void setObjects(ArrayList<Element> objects)
 	{
 		this.objects = objects;
 	}
@@ -103,28 +100,10 @@ public class ObjectsGroup<Element>
 	 * Returns the list of objects in this group.
 	 * @return the list of objects
 	 */
-	public ObservableList<Element> getObjects()
+	public ArrayList<Element> getObjects()
 	{
 		return this.objects;
 	}
 	
-	/**
-	 * Sets the internal list of objects for this group.
-	 * @param objects the list of objects
-	 */
-	protected void setInternalObjects(ArrayList<Element> objects)
-	{
-		this.objects = FXCollections.observableArrayList(objects);
-	}
-	
-	/**
-	 * Returns the internal list of objects for this group.
-	 * @return the internal list of objects
-	 */
-	protected ArrayList<Element> getInternalObjects()
-	{
-		return new ArrayList<Element>(this.objects);
-	}
-	
-	private ObservableList<Element> objects;
+	private ArrayList<Element> objects;
 }

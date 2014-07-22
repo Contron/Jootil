@@ -38,7 +38,7 @@ public class ObjectsManager<Element>
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
 			//read
-			this.objectsGroup.setInternalObjects((ArrayList<Element>) xmlDecoder.readObject());
+			this.objectsGroup.setObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
 	}
 	
@@ -55,7 +55,7 @@ public class ObjectsManager<Element>
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
 			//write
-			xmlEncoder.writeObject(this.objectsGroup.getInternalObjects());
+			xmlEncoder.writeObject(this.objectsGroup.getObjects());
 		}
 	}
 	

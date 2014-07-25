@@ -46,7 +46,7 @@ public class LocalisationManager
 			
 			//get bundle name and location
 			String bundleName = String.format("%s.properties", lowercaseLanguage);
-			String bundleLocation = String.format("/%s/%s", this.directory, bundleName);
+			String bundleLocation = String.format("%s/%s", this.directory, bundleName);
 			
 			//get URL
 			URL bundleURL = this.clazz.getResource(bundleLocation);

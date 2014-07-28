@@ -116,9 +116,9 @@ public class Files
 		{
 			//result
 			StringBuilder result = new StringBuilder();
-			String line = null;
 			
 			//read
+			String line = null;
 			while ((line = bufferedReader.readLine()) != null)
 				result.append(line + System.lineSeparator());
 			
@@ -137,8 +137,8 @@ public class Files
 		try (FileInputStream fileInputStream = new FileInputStream(file); ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream())
 		{
 			//read
-			byte[] buffer = new byte[4096];
 			int bytes = 0;
+			byte[] buffer = new byte[4096];
 			while ((bytes = fileInputStream.read(buffer)) != -1)
 				byteArrayOutputStream.write(buffer, 0, bytes);
 			

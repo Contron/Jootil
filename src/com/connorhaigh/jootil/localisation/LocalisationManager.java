@@ -1,5 +1,6 @@
 package com.connorhaigh.jootil.localisation;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class LocalisationManager
 				//load
 				properties.load(inputStream);
 			}
-			catch (Exception exception)
+			catch (IOException exception)
 			{
 				continue;
 			}

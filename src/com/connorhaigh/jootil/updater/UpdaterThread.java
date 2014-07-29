@@ -1,6 +1,7 @@
 package com.connorhaigh.jootil.updater;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -78,7 +79,7 @@ public class UpdaterThread extends Thread
 				if (remoteLastModified > localLastModified)
 					this.displayNotificationWindow();
 		}
-		catch (Exception exception)
+		catch (IOException exception)
 		{
 			
 		}

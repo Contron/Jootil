@@ -70,7 +70,7 @@ public class AboutStage extends Stage
 		contentPane.add(headerLabel, 1, 0);
 		
 		//description label
-		Label descriptionLabel = new Label(String.format("(C) %s %s\n%s", developer, year, website));
+		Label descriptionLabel = new Label(String.format("(C) %s %s%n%s", developer, year, website));
 		contentPane.add(descriptionLabel, 1, 1);
 		
 		//buttons box

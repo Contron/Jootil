@@ -8,70 +8,77 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class ObjectsManager<Element> extends Manager
+public class ObjectsManager<Element>
 {
 	/**
-	 * Create a new settings manager.
-	 * @param directory the directory of the file
-	 * @param file the name of the file
+	 * Create a new object manager.
+	 * @param directory the root directory
+	 * @param name the object file
 	 */
 	public ObjectsManager(File directory, String name)
 	{
-		super(directory, name);
+		this.directory = directory;
+		this.file = new File(this.directory, name + ".xml");
 		
-		this.objects = new ArrayList<Element>();
+		this.objectsGroup = new ObjectsGroup<Element>();
 	}
 	
 	/**
-	 * Load this manager's properties from a file.
+	 * Loads the objects from file.
 	 * @throws FileNotFoundException if the file could not be found
+	 * @throws ClassCastException if the saved data could not be cast to a list
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
-	public void load() throws FileNotFoundException
+	public void load() throws FileNotFoundException, ClassCastException
 	{
-		if (!this.getDirectory().exists() || !this.getFile().exists())
+		//check directories
+		if (!this.directory.exists() || !this.file.exists())
 			return;
-
-		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
+		
+		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
 		{
-			this.objects = (ArrayList<Element>) xmlDecoder.readObject();
+			//read
+			this.objectsGroup.setObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
 	}
 	
 	/**
-	 * Save this manager's properties to a file.
+	 * Saves the objects to file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
-	@Override
 	public void save() throws FileNotFoundException
 	{
-		if (!this.getDirectory().exists())
-			this.getDirectory().mkdirs();
+		//create directories
+		if (!this.directory.exists())
+			this.directory.mkdirs();
 		
-		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
+		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
 		{
-			xmlEncoder.writeObject(this.objects);
+			//write
+			xmlEncoder.writeObject(this.objectsGroup.getObjects());
 		}
 	}
 	
 	/**
-	 * Sets the list of objects in this manager.
-	 * @param objects the list of objects
+	 * Sets the objects group for this manager.
+	 * @param objectsGroup the objects group
 	 */
-	public void setObjects(ArrayList<Element> objects)
+	public void setObjectsGroup(ObjectsGroup<Element> objectGroup)
 	{
-		this.objects = objects;
+		this.objectsGroup = objectGroup;
 	}
 	
 	/**
-	 * Returns the list of objects in this manager.
-	 * @return the list of objects
+	 * Returns the objects group for this manager.
+	 * @return the objects group
 	 */
-	public ArrayList<Element> getObjects()
+	public ObjectsGroup<Element> getObjectsGroup()
 	{
-		return this.objects;
+		return this.objectsGroup;
 	}
 	
-	private ArrayList<Element> objects;
+	private File directory;
+	private File file;
+	
+	private ObjectsGroup<Element> objectsGroup;
 }

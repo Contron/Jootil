@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class ObjectsManager<Element>
+public class ObjectsManager<Element> extends Manager
 {
 	/**
 	 * Create a new object manager.
@@ -17,8 +17,7 @@ public class ObjectsManager<Element>
 	 */
 	public ObjectsManager(File directory, String name)
 	{
-		this.directory = directory;
-		this.file = new File(this.directory, name + ".xml");
+		super(directory, name);
 		
 		this.objectsGroup = new ObjectsGroup<Element>();
 	}
@@ -31,13 +30,11 @@ public class ObjectsManager<Element>
 	@SuppressWarnings("unchecked")
 	public void load() throws FileNotFoundException, ClassCastException
 	{
-		//check directories
-		if (!this.directory.exists() || !this.file.exists())
+		if (!this.getDirectory().exists() || !this.getDirectory().exists())
 			return;
 		
-		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
+		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			//read
 			this.objectsGroup.setObjects((ArrayList<Element>) xmlDecoder.readObject());
 		}
 	}
@@ -48,13 +45,11 @@ public class ObjectsManager<Element>
 	 */
 	public void save() throws FileNotFoundException
 	{
-		//create directories
-		if (!this.directory.exists())
-			this.directory.mkdirs();
+		if (!this.getDirectory().exists())
+			this.getDirectory().mkdirs();
 		
-		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
+		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
 		{
-			//write
 			xmlEncoder.writeObject(this.objectsGroup.getObjects());
 		}
 	}
@@ -76,9 +71,6 @@ public class ObjectsManager<Element>
 	{
 		return this.objectsGroup;
 	}
-	
-	private File directory;
-	private File file;
 	
 	private ObjectsGroup<Element> objectsGroup;
 }

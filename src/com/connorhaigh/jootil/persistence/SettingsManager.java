@@ -8,18 +8,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
-public class SettingsManager 
+public class SettingsManager extends Manager
 {
 	/**
-	 * Create a new settings manager.
-	 * @param directory the root directory
-	 * @param name the settings file
-	 * @param settingsGroup the group of initial settings
+	 * Create a new manager.
+	 * @param directory the directory of the file
+	 * @param file the name of the file
+	 * @param settingsGroup the initial group of settings
 	 */
 	public SettingsManager(File directory, String name, SettingsGroup settingsGroup)
 	{
-		this.directory = directory;
-		this.file = new File(this.directory, name + ".xml");
+		super(directory, name);
 		
 		this.settingsGroup = settingsGroup;
 	}
@@ -32,13 +31,11 @@ public class SettingsManager
 	@SuppressWarnings("unchecked")
 	public void load() throws FileNotFoundException, ClassCastException
 	{
-		//check directories
-		if (!this.directory.exists() || !this.file.exists())
+		if (!this.getDirectory().exists() || !this.getDirectory().exists())
 			return;
 		
-		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
+		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			//read
 			this.settingsGroup.setSettings((HashMap<String, Object>) xmlDecoder.readObject());
 		}
 	}
@@ -49,13 +46,11 @@ public class SettingsManager
 	 */
 	public void save() throws FileNotFoundException
 	{
-		//create directories
-		if (!this.directory.exists())
-			this.directory.mkdirs();
+		if (!this.getDirectory().exists())
+			this.getDirectory().mkdirs();
 		
-		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
+		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
 		{
-			//write
 			xmlEncoder.writeObject(this.settingsGroup.getSettings());
 		}
 	}
@@ -77,9 +72,6 @@ public class SettingsManager
 	{
 		return this.settingsGroup;
 	}
-	
-	private File directory;
-	private File file;
 	
 	private SettingsGroup settingsGroup;
 }

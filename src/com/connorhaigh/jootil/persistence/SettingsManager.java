@@ -8,78 +8,71 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 
-public class SettingsManager 
+public class SettingsManager extends Manager
 {
 	/**
 	 * Create a new settings manager.
-	 * @param directory the root directory
-	 * @param name the settings file
-	 * @param settingsGroup the group of initial settings
+	 * @param directory the directory of the file
+	 * @param file the name of the file
+	 * @param template the initial settings to use
 	 */
-	public SettingsManager(File directory, String name, SettingsGroup settingsGroup)
+	public SettingsManager(File directory, String name, HashMap<String, Object> template)
 	{
-		this.directory = directory;
-		this.file = new File(this.directory, name + ".xml");
+		super(directory, name);
 		
-		this.settingsGroup = settingsGroup;
+		this.settings = template;
 	}
 	
 	/**
-	 * Loads the settings from file.
+	 * Load this manager's properties from a file.
 	 * @throws FileNotFoundException if the file could not be found
-	 * @throws ClassCastException if the saved data could not be cast to a hash map
 	 */
 	@SuppressWarnings("unchecked")
-	public void load() throws FileNotFoundException, ClassCastException
+	@Override
+	public void load() throws FileNotFoundException
 	{
-		//check directories
-		if (!this.directory.exists() || !this.file.exists())
+		if (!this.getDirectory().exists() || !this.getFile().exists())
 			return;
-		
-		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.file)))
+
+		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			//read
-			this.settingsGroup.setSettings((HashMap<String, Object>) xmlDecoder.readObject());
+			this.settings = (HashMap<String, Object>) xmlDecoder.readObject();
 		}
 	}
 	
 	/**
-	 * Saves the settings to file.
+	 * Save this manager's properties to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
+	@Override
 	public void save() throws FileNotFoundException
 	{
-		//create directories
-		if (!this.directory.exists())
-			this.directory.mkdirs();
+		if (!this.getDirectory().exists())
+			this.getDirectory().mkdirs();
 		
-		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.file)))
+		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
 		{
-			//write
-			xmlEncoder.writeObject(this.settingsGroup.getSettings());
+			xmlEncoder.writeObject(this.settings);
 		}
 	}
 	
 	/**
-	 * Sets the settings group for this manager.
-	 * @param settingsGroup the settings group
+	 * Sets the map of settings in this manager.
+	 * @param settings the map of settings
 	 */
-	public void setSettingsGroup(SettingsGroup settingsGroup)
+	public void setSettings(HashMap<String, Object> settings)
 	{
-		this.settingsGroup = settingsGroup;
+		this.settings = settings;
 	}
 	
 	/**
-	 * Returns the settings group for this manager.
-	 * @return the settings group
+	 * Returns the map of settings in this manager.
+	 * @return the map of settings
 	 */
-	public SettingsGroup getSettingsGroup()
+	public HashMap<String, Object> getSettings()
 	{
-		return this.settingsGroup;
+		return this.settings;
 	}
 	
-	private File directory;
-	private File file;
-	
-	private SettingsGroup settingsGroup;
+	private HashMap<String, Object> settings;
 }

@@ -13,7 +13,7 @@ public abstract class Manager
 	public Manager(File directory, String file)
 	{
 		this.directory = directory;
-		this.file = new File(file + ".xml");
+		this.file = new File(this.directory, file + ".xml");
 	}
 	
 	/**

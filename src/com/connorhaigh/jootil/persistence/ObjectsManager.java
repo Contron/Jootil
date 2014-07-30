@@ -30,7 +30,7 @@ public class ObjectsManager<Element> extends Manager
 	@SuppressWarnings("unchecked")
 	public void load() throws FileNotFoundException, ClassCastException
 	{
-		if (!this.getDirectory().exists() || !this.getDirectory().exists())
+		if (!this.getDirectory().exists() || !this.getFile().exists())
 			return;
 		
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))

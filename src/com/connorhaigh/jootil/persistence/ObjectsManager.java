@@ -11,38 +11,39 @@ import java.util.ArrayList;
 public class ObjectsManager<Element> extends Manager
 {
 	/**
-	 * Create a new object manager.
-	 * @param directory the root directory
-	 * @param name the object file
+	 * Create a new settings manager.
+	 * @param directory the directory of the file
+	 * @param file the name of the file
 	 */
 	public ObjectsManager(File directory, String name)
 	{
 		super(directory, name);
 		
-		this.objectsGroup = new ObjectsGroup<Element>();
+		this.objects = new ArrayList<Element>();
 	}
 	
 	/**
-	 * Loads the objects from file.
+	 * Load this manager's properties from a file.
 	 * @throws FileNotFoundException if the file could not be found
-	 * @throws ClassCastException if the saved data could not be cast to a list
 	 */
 	@SuppressWarnings("unchecked")
-	public void load() throws FileNotFoundException, ClassCastException
+	@Override
+	public void load() throws FileNotFoundException
 	{
 		if (!this.getDirectory().exists() || !this.getFile().exists())
 			return;
-		
+
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			this.objectsGroup.setObjects((ArrayList<Element>) xmlDecoder.readObject());
+			this.objects = (ArrayList<Element>) xmlDecoder.readObject();
 		}
 	}
 	
 	/**
-	 * Saves the objects to file.
+	 * Save this manager's properties to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
+	@Override
 	public void save() throws FileNotFoundException
 	{
 		if (!this.getDirectory().exists())
@@ -50,27 +51,27 @@ public class ObjectsManager<Element> extends Manager
 		
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
 		{
-			xmlEncoder.writeObject(this.objectsGroup.getObjects());
+			xmlEncoder.writeObject(this.objects);
 		}
 	}
 	
 	/**
-	 * Sets the objects group for this manager.
-	 * @param objectsGroup the objects group
+	 * Sets the list of objects in this manager.
+	 * @param objects the list of objects
 	 */
-	public void setObjectsGroup(ObjectsGroup<Element> objectGroup)
+	public void setObjects(ArrayList<Element> objects)
 	{
-		this.objectsGroup = objectGroup;
+		this.objects = objects;
 	}
 	
 	/**
-	 * Returns the objects group for this manager.
-	 * @return the objects group
+	 * Returns the list of objects in this manager.
+	 * @return the list of objects
 	 */
-	public ObjectsGroup<Element> getObjectsGroup()
+	public ArrayList<Element> getObjects()
 	{
-		return this.objectsGroup;
+		return this.objects;
 	}
 	
-	private ObjectsGroup<Element> objectsGroup;
+	private ArrayList<Element> objects;
 }

@@ -1,11 +1,11 @@
 Jootil
-=======
-
+=====
 A comprehensive Java library to provide additional useful plumbing for a JavaFX application, allowing you to focus on actually developing it.
 
 Jootil requires no messy XML or pre-set configuration. It's designed to simply provide the abilities that any application would want alongside it.
 
-Common and useful features include:
+Features
+-----
 - Settings manager to load and save application settings in XML files
 - Objects manager to load and save persistent objects between sessions, also in XML files
 - A range of pre-built dialog boxes to use and extend (such as message and input dialogs)
@@ -15,9 +15,8 @@ Common and useful features include:
 - Style classes to facilitate with building styles for nodes
 
 Installation
-------
-
-To install Jootil, you can build from the repo, or alternatively download the pre-built JAR.
+-----
+To install Jootil, you can build from the repository, or alternatively download the pre-built JAR.
 
 Documentation
 -----

@@ -1,6 +1,7 @@
 package com.connorhaigh.jootil.gui.base;
 
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
@@ -35,8 +36,8 @@ public class BaseSettingsStage extends Stage
 		this.borderPane = new BorderPane();
 		
 		//header box
-		HeaderBox headerBox = new HeaderBox("Settings", "Configure application-specific settings.");
-		this.borderPane.setTop(headerBox);
+		this.headerBox = new HeaderBox("Settings", "Configure application-specific settings.");
+		this.borderPane.setTop(this.headerBox);
 		
 		//tab pane
 		this.tabPane = new TabPane();
@@ -45,7 +46,13 @@ public class BaseSettingsStage extends Stage
 		
 		//buttons box
 		this.buttonsBox = new ButtonsBox(true, true);
+		this.buttonsBox.setOnOk(event -> this.ok());
+		this.buttonsBox.setOnCancel(event -> this.cancel());
 		this.borderPane.setBottom(this.buttonsBox);
+		
+		//show
+		this.setScene(new Scene(this.borderPane));
+		this.sizeToScene();
 	}
 	
 	/**
@@ -67,6 +74,24 @@ public class BaseSettingsStage extends Stage
 		tab.setContent(gridPane);
 		
 		return gridPane;
+	}
+	
+	/**
+	 * Confirm and close the stage.
+	 */
+	public void ok()
+	{
+		//close
+		this.close();
+	}
+	
+	/**
+	 * Cancel and close the stage.
+	 */
+	public void cancel()
+	{
+		//close
+		this.close();
 	}
 	
 	/**
@@ -96,6 +121,7 @@ public class BaseSettingsStage extends Stage
 		return this.buttonsBox;
 	}
 	
+	private HeaderBox headerBox;
 	private BorderPane borderPane;
 	private TabPane tabPane;
 	private ButtonsBox buttonsBox;

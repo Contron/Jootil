@@ -215,7 +215,6 @@ public class DeveloperConsoleStage extends Stage
 	 */
 	private String clearConsole()
 	{
-		//clear
 		this.logTextArea.setText("");
 		
 		return "Cleared the console\n";

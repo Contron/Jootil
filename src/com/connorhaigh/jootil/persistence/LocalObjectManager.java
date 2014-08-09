@@ -21,7 +21,6 @@ public class LocalObjectManager<Element>
 	{
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(file)))
 		{
-			//read
 			return (Element) xmlDecoder.readObject();
 		}
 	}
@@ -36,7 +35,6 @@ public class LocalObjectManager<Element>
 	{
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(file)))
 		{
-			//write
 			xmlEncoder.writeObject(element);
 		}
 	}

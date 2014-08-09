@@ -24,7 +24,7 @@ public class SettingsManager extends Manager
 	}
 	
 	/**
-	 * Load this manager's properties from a file.
+	 * Load this manager's settings from a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class SettingsManager extends Manager
 	}
 	
 	/**
-	 * Save this manager's properties to a file.
+	 * Save this manager's settings to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@Override

@@ -6,24 +6,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 
 public class ObjectsManager<Element> extends Manager
 {
 	/**
-	 * Create a new settings manager.
+	 * Create a new objects manager.
 	 * @param directory the directory of the file
 	 * @param file the name of the file
+	 * @param template the original template to use
 	 */
-	public ObjectsManager(File directory, String name)
+	public ObjectsManager(File directory, String name, Element template)
 	{
 		super(directory, name);
 		
-		this.objects = new ArrayList<Element>();
+		this.object = template;
 	}
 	
 	/**
-	 * Load this manager's properties from a file.
+	 * Load this manager's object from a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
@@ -35,12 +35,12 @@ public class ObjectsManager<Element> extends Manager
 
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			this.objects = (ArrayList<Element>) xmlDecoder.readObject();
+			this.object = (Element) xmlDecoder.readObject();
 		}
 	}
 	
 	/**
-	 * Save this manager's properties to a file.
+	 * Save this manager's object to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@Override
@@ -51,27 +51,27 @@ public class ObjectsManager<Element> extends Manager
 		
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(this.getFile())))
 		{
-			xmlEncoder.writeObject(this.objects);
+			xmlEncoder.writeObject(this.object);
 		}
 	}
 	
 	/**
-	 * Sets the list of objects in this manager.
-	 * @param objects the list of objects
+	 * Sets the object in this manager.
+	 * @param object the object
 	 */
-	public void setObjects(ArrayList<Element> objects)
+	public void set(Element object)
 	{
-		this.objects = objects;
+		this.object = object;
 	}
 	
 	/**
-	 * Returns the list of objects in this manager.
-	 * @return the list of objects
+	 * Returns the object in this manager.
+	 * @return the object
 	 */
-	public ArrayList<Element> getObjects()
+	public Element get()
 	{
-		return this.objects;
+		return this.object;
 	}
 	
-	private ArrayList<Element> objects;
+	private Element object;
 }

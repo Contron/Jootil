@@ -15,7 +15,7 @@ import javafx.stage.Window;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 
-public class BaseSettingsStage extends Stage
+public abstract class BaseSettingsStage extends Stage
 {
 	/**
 	 * Create a new base settings stage.

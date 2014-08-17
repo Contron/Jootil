@@ -84,7 +84,7 @@ public class AboutStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close the stage.
+	 * Confirm and close this stage.
 	 */
 	private void ok()
 	{

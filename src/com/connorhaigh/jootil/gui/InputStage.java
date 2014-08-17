@@ -86,7 +86,7 @@ public class InputStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close the stage.
+	 * Confirm and close this stage.
 	 */
 	private void ok()
 	{
@@ -95,7 +95,7 @@ public class InputStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close the stage.
+	 * Cancel and close this stage.
 	 */
 	private void cancel()
 	{

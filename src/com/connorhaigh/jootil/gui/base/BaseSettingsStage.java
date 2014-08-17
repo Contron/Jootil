@@ -77,7 +77,7 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close the stage.
+	 * Confirm and close this stage.
 	 */
 	public void ok()
 	{
@@ -86,7 +86,7 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close the stage.
+	 * Cancel and close this stage.
 	 */
 	public void cancel()
 	{

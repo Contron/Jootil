@@ -12,7 +12,7 @@ public class Styles
 		return (String.join(Styles.DELIMITER + " ", rules) + Styles.DELIMITER);
 	}
 	
-	public static final String DELIMITER = ";";
+	private static final String DELIMITER = ";";
 	
 	public static final String CONTROL_BACKGROUND_COLOUR = "-fx-background-color: white";
 	public static final String CONTROL_TRANSPARENT_BACKGROUND_COLOUR = "-fx-background-color: transparent";

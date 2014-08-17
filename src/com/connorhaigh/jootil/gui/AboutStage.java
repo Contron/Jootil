@@ -48,7 +48,7 @@ public class AboutStage extends Stage
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle("About");
 		this.setResizable(false);
-		this.getIcons().add(image);
+		this.getIcons().add(new Image("/images/icons/information.png"));
 		
 		//root pane
 		BorderPane borderPane = new BorderPane();

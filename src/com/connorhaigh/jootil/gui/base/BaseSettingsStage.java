@@ -22,7 +22,7 @@ public abstract class BaseSettingsStage extends Stage
 	 * @param owner the owner of the stage
 	 * @param image the image of the stage
 	 */
-	public BaseSettingsStage(Window owner, Image image)
+	public BaseSettingsStage(Window owner)
 	{
 		//setup stage
 		this.initOwner(owner);
@@ -30,7 +30,7 @@ public abstract class BaseSettingsStage extends Stage
 		this.setTitle("Settings");
 		this.setResizable(false);
 		this.setMinWidth(350);
-		this.getIcons().add(image);
+		this.getIcons().add(new Image("/images/icons/console.png"));
 		
 		//root pane
 		this.borderPane = new BorderPane();

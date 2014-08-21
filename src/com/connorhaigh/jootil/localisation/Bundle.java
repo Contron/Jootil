@@ -6,7 +6,7 @@ import java.util.Properties;
 public class Bundle 
 {
 	/**
-	 * Create a bundle of language localisation keys.
+	 * Creates a bundle of language localisation keys.
 	 * @param locale the owning locale
 	 * @param properties the properties
 	 */

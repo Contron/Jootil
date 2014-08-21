@@ -19,7 +19,7 @@ import com.connorhaigh.jootil.gui.components.ButtonsBox;
 public class UpdateAvailableStage extends Stage
 {
 	/**
-	 * Create a new update available stage.
+	 * Creates a new update available stage.
 	 * @param downloadPage the remote page to download the update
 	 */
 	public UpdateAvailableStage(String downloadPage)
@@ -63,7 +63,7 @@ public class UpdateAvailableStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	private void ok()
 	{
@@ -84,7 +84,7 @@ public class UpdateAvailableStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close this stage.
+	 * Cancels and closes this stage.
 	 */
 	private void cancel()
 	{

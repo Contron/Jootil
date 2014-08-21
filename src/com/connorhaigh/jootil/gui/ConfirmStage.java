@@ -16,7 +16,7 @@ import com.connorhaigh.jootil.utilities.Resources;
 public class ConfirmStage extends Stage
 {
 	/**
-	 * Create a new confirm stage, and then wait for it.
+	 * Creates a new confirm stage, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
@@ -32,7 +32,7 @@ public class ConfirmStage extends Stage
 	}
 	
 	/**
-	 * Create a new confirm dialog stage.
+	 * Creates a new confirm dialog stage.
 	 * @param owner the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
@@ -79,7 +79,7 @@ public class ConfirmStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	private void ok()
 	{
@@ -89,7 +89,7 @@ public class ConfirmStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close this stage.
+	 * Cancels and closes this stage.
 	 */
 	private void cancel()
 	{

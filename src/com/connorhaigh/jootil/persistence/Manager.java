@@ -6,7 +6,7 @@ import java.io.IOException;
 public abstract class Manager 
 {
 	/**
-	 * Create a new manager.
+	 * Creates a new manager.
 	 * @param directory the directory of the file
 	 * @param file the name of the file
 	 */
@@ -17,13 +17,13 @@ public abstract class Manager
 	}
 	
 	/**
-	 * Load this manager's properties from a file.
+	 * Loads this manager's properties from a file.
 	 * @throws IOException if the file could not be loaded
 	 */
 	public abstract void load() throws IOException;
 	
 	/**
-	 * Save this manager's properties to a file.
+	 * Saves this manager's properties to a file.
 	 * @throws IOException if the file could not be saved
 	 */
 	public abstract void save() throws IOException;

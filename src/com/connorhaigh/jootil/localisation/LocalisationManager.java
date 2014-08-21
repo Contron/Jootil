@@ -10,7 +10,7 @@ import java.util.Properties;
 public class LocalisationManager 
 {
 	/**
-	 * Create a new localisation manager.
+	 * Creates a new localisation manager.
 	 * The class should ideally be the application's main class.
 	 * @param clazz the class
 	 * @param directory the sub-directory to search in
@@ -35,7 +35,7 @@ public class LocalisationManager
 	}
 	
 	/**
-	 * Find and load all localisation files.
+	 * Finds and load all localisation files.
 	 */
 	public void loadBundles()
 	{
@@ -74,7 +74,7 @@ public class LocalisationManager
 	}
 	
 	/**
-	 * Find and assign the bundle for the matching locale.
+	 * Finds and assign the bundle for the matching locale.
 	 */
 	public void assignDefaultBundle()
 	{

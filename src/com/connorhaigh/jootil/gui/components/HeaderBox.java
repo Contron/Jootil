@@ -11,7 +11,7 @@ import com.connorhaigh.jootil.utilities.Styles;
 public class HeaderBox extends VBox
 {
 	/**
-	 * Create a new generic header and description box.
+	 * Creates a new generic header and description box.
 	 * @param header the header
 	 * @param description the description
 	 */
@@ -38,7 +38,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Create a new blank header box.
+	 * Creates a new blank header box.
 	 */
 	public HeaderBox()
 	{

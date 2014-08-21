@@ -12,7 +12,7 @@ import com.connorhaigh.jootil.utilities.Styles;
 public class ButtonsBox extends HBox
 {
 	/**
-	 * Create a new generic buttons box.
+	 * Creates a new generic buttons box.
 	 * @param okButton if an 'OK' button should be added
 	 * @param cancelButton if a 'Cancel' button should be added
 	 */
@@ -42,7 +42,7 @@ public class ButtonsBox extends HBox
 	}
 	
 	/**
-	 * Create a new blank buttons box.
+	 * Creates a new blank buttons box.
 	 */
 	public ButtonsBox()
 	{

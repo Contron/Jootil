@@ -21,7 +21,7 @@ import com.connorhaigh.jootil.utilities.Tasks;
 public class TaskStage extends Stage
 {
 	/**
-	 * Create a new task stage to monitor a task's progress, and then wait for it.
+	 * Creates a new task stage to monitor a task's progress, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param task the task to monitor
 	 * @param title the title of the task
@@ -39,7 +39,7 @@ public class TaskStage extends Stage
 	}
 	
 	/**
-	 * Create a new progress stage to monitor a task's progress.
+	 * Creates a new progress stage to monitor a task's progress.
 	 * @param owner the owner of the stage
 	 * @param task the task to monitor
 	 * @param title the title of the task
@@ -101,24 +101,18 @@ public class TaskStage extends Stage
 	}
 	
 	/**
-	 * Attempt to close this window.
+	 * Attempts to close this window.
 	 * @param event the event
 	 */
 	private void tryClose(WindowEvent event)
 	{
+		//cancel task
 		if (this.cancellable)
-		{
 			this.cancel();
-		}
-		else
-		{
-			if (this.task.isRunning()) 
-				event.consume();
-		}
 	}
 	
 	/**
-	 * Cancel the current task.
+	 * Cancels the current task.
 	 */
 	private void cancel()
 	{

@@ -3,7 +3,7 @@ package com.connorhaigh.jootil.utilities;
 public class Styles 
 {
 	/**
-	 * Create a single string from different style rules.
+	 * Creates a single string from different style rules.
 	 * @param rules the style rules
 	 * @return the single string
 	 */

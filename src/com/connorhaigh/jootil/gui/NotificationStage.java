@@ -18,11 +18,10 @@ import javafx.stage.Window;
 import com.connorhaigh.jootil.utilities.Resources;
 import com.connorhaigh.jootil.utilities.Styles;
 
-
 public class NotificationStage extends Stage
 {
 	/**
-	 * Create a new notification stage.
+	 * Creates a new notification stage.
 	 * @param owner the owner of the stage
 	 * @param title the brief title of the notification
 	 * @param description the detailed description of the notification
@@ -42,7 +41,7 @@ public class NotificationStage extends Stage
 	}
 	
 	/**
-	 * Create a new notification stage.
+	 * Creates a new notification stage.
 	 * @param owner the owner of the stage
 	 * @param title the brief title of the notification
 	 * @param description the detailed description of the notification
@@ -96,7 +95,7 @@ public class NotificationStage extends Stage
 	}
 	
 	/**
-	 * Move this stage to the bottom right of the screen.
+	 * Moves this stage to the bottom right of the screen.
 	 */
 	private void moveToPosition()
 	{
@@ -110,7 +109,7 @@ public class NotificationStage extends Stage
 	}
 	
 	/**
-	 * Animate the window in the specified direction.
+	 * Animates this notification stage in the specified direction.
 	 * @param direction the direction
 	 * @param exit if the stage should exit once completed
 	 */
@@ -156,7 +155,7 @@ public class NotificationStage extends Stage
 	}
 	
 	/**
-	 * Confirm and accept the notification.
+	 * Confirms and accept the notification.
 	 */
 	private void confirm()
 	{

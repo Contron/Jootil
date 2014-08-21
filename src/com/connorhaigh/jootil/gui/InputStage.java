@@ -17,7 +17,7 @@ import com.connorhaigh.jootil.utilities.Resources;
 public class InputStage extends Stage
 {
 	/**
-	 * Create a new input stage, and then wait for it.
+	 * Creates a new input stage, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
@@ -36,7 +36,7 @@ public class InputStage extends Stage
 	}
 	
 	/**
-	 * Create a new prompt dialog stage.
+	 * Creates a new prompt dialog stage.
 	 * @param owner the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
@@ -86,7 +86,7 @@ public class InputStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	private void ok()
 	{
@@ -95,7 +95,7 @@ public class InputStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close this stage.
+	 * Cancels and closes this stage.
 	 */
 	private void cancel()
 	{

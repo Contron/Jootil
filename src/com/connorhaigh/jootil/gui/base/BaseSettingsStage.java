@@ -18,7 +18,7 @@ import com.connorhaigh.jootil.gui.components.HeaderBox;
 public abstract class BaseSettingsStage extends Stage
 {
 	/**
-	 * Create a new base settings stage.
+	 * Creates a new base settings stage.
 	 * @param owner the owner of the stage
 	 * @param image the image of the stage
 	 */
@@ -56,7 +56,7 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Create a new tab that can have controls added to it.
+	 * Creates a new tab that can have controls added to it.
 	 * @param name the name of the tab
 	 * @return the tab's grid pane
 	 */
@@ -77,7 +77,7 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	public void ok()
 	{
@@ -86,7 +86,7 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Cancel and close this stage.
+	 * Cancels and closes this stage.
 	 */
 	public void cancel()
 	{

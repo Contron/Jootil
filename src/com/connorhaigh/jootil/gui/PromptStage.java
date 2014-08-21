@@ -23,7 +23,7 @@ import com.connorhaigh.jootil.utilities.Resources;
 public class PromptStage extends Stage
 {
 	/**
-	 * Create a new prompt stage, and then wait for it.
+	 * Creates a new prompt stage, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
@@ -37,7 +37,7 @@ public class PromptStage extends Stage
 	}
 	
 	/**
-	 * Create a new prompt stage, and then wait for it.
+	 * Creates a new prompt stage, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
@@ -49,7 +49,7 @@ public class PromptStage extends Stage
 	}
 	
 	/**
-	 * Create a new prompt dialog stage.
+	 * Creates a new prompt dialog stage.
 	 * @param owner the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
@@ -145,7 +145,7 @@ public class PromptStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	private void ok()
 	{

@@ -12,7 +12,7 @@ import com.connorhaigh.jootil.updater.gui.UpdateAvailableStage;
 public class UpdaterThread extends Thread
 {
 	/**
-	 * Create a new updater thread.
+	 * Creates a new updater thread.
 	 * @param clazz the application's main class
 	 * @param jarFile the location of the JAR file to check for differences
 	 * @param updatePage the page the user can navigate to for downloading the JAR file
@@ -26,7 +26,7 @@ public class UpdaterThread extends Thread
 	}
 	
 	/**
-	 * Run the updater thread.
+	 * Runs the updater thread.
 	 */
 	@Override
 	public void run() 
@@ -86,7 +86,7 @@ public class UpdaterThread extends Thread
 	}
 	
 	/**
-	 * Display the notification window to inform of an update.
+	 * Displays the notification window to inform of an update.
 	 */
 	public void displayNotificationWindow()
 	{

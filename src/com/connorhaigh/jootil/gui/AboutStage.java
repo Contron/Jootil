@@ -17,7 +17,7 @@ import com.connorhaigh.jootil.utilities.Resources;
 public class AboutStage extends Stage
 {
 	/**
-	 * Create a new about stage, and then wait for it.
+	 * Creates a new about stage, and then wait for it.
 	 * @param owner the owner of the stage
 	 * @param image the large image for the display
 	 * @param name the name of the application
@@ -33,7 +33,7 @@ public class AboutStage extends Stage
 	}
 	
 	/**
-	 * Create a new about stage.
+	 * Creates a new about stage.
 	 * @param owner the owner of the stage
 	 * @param image the large image for the display
 	 * @param name the name of the application
@@ -84,7 +84,7 @@ public class AboutStage extends Stage
 	}
 	
 	/**
-	 * Confirm and close this stage.
+	 * Confirms and closes this stage.
 	 */
 	private void ok()
 	{

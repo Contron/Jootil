@@ -23,7 +23,7 @@ import com.connorhaigh.jootil.utilities.Resources;
 public class DeveloperConsoleStage extends Stage
 {
 	/**
-	 * Create a new developer console stage.
+	 * Creates a new developer console stage.
 	 * @param owner the owner of the stage
 	 */
 	public static void showDeveloperConsoleStage(Window owner)
@@ -34,7 +34,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Create a new developer console stage.
+	 * Creates a new developer console stage.
 	 * @param owner the owner of the stage
 	 */
 	public DeveloperConsoleStage(Window owner)
@@ -103,7 +103,7 @@ public class DeveloperConsoleStage extends Stage
 		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
 		this.commands.put("dump_properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
 		this.commands.put("dump_environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
-		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Run the garbage collector"));
+		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Runs the garbage collector"));
 		
 		//header text
 		this.logTextArea.setText("");
@@ -261,7 +261,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Run the garbage collector.
+	 * Runs the garbage collector.
 	 * @return the output
 	 */
 	private String runGarbageCollector()
@@ -342,7 +342,7 @@ public class DeveloperConsoleStage extends Stage
 class Command
 {
 	/**
-	 * Create a new command.
+	 * Creates a new command.
 	 * @param action the action
 	 * @param description the description of the command
 	 */
@@ -377,7 +377,7 @@ class Command
 interface Action
 {
 	/**
-	 * Run this action.
+	 * Runs this action.
 	 * @return the output
 	 */
 	public String run();

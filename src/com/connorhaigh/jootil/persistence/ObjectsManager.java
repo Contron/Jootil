@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 public class ObjectsManager<Element> extends Manager
 {
 	/**
-	 * Create a new objects manager.
+	 * Creates a new objects manager.
 	 * @param directory the directory of the file
 	 * @param file the name of the file
 	 * @param template the original template to use
@@ -23,7 +23,7 @@ public class ObjectsManager<Element> extends Manager
 	}
 	
 	/**
-	 * Load this manager's object from a file.
+	 * Loads this manager's object from a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
@@ -40,7 +40,7 @@ public class ObjectsManager<Element> extends Manager
 	}
 	
 	/**
-	 * Save this manager's object to a file.
+	 * Saves this manager's object to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@Override

@@ -11,7 +11,7 @@ import com.connorhaigh.jootil.utilities.Styles;
 public class StatusBar extends HBox
 {
 	/**
-	 * Create a new status bar.
+	 * Creates a new status bar.
 	 */
 	public StatusBar()
 	{

@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class SettingsManager extends Manager
 {
 	/**
-	 * Create a new settings manager.
+	 * Creates a new settings manager.
 	 * @param directory the directory of the file
 	 * @param file the name of the file
 	 * @param template the initial settings to use
@@ -24,7 +24,7 @@ public class SettingsManager extends Manager
 	}
 	
 	/**
-	 * Load this manager's settings from a file.
+	 * Loads this manager's settings from a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class SettingsManager extends Manager
 	}
 	
 	/**
-	 * Save this manager's settings to a file.
+	 * Saves this manager's settings to a file.
 	 * @throws FileNotFoundException if the file could not be found
 	 */
 	@Override

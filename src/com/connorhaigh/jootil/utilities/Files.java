@@ -90,15 +90,20 @@ public class Files
 		
 		//get time
 		int time = ((total - current) / speed);
-		int hours = (time / 3600);
-		int minutes = (time / 60);
+		int days = ((time / 86400) % 7);
+		int hours = ((time / 3600) % 24);
+		int minutes = ((time / 60) % 60);
 		int seconds = (time % 60);
 		
 		//append result
+		if (days > 0)
+			result.append(days + " days, ");
 		if (hours > 0)
 			result.append(hours + " hours, ");
 		if (minutes > 0)
 			result.append(minutes + " minutes, ");
+		
+		//seconds
 		result.append(seconds + " seconds");
 		
 		return result.toString();

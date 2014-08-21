@@ -21,7 +21,7 @@ import com.connorhaigh.jootil.utilities.Styles;
 public class NotificationStage extends Stage
 {
 	/**
-	 * Creates a new notification stage.
+	 * Creates a new notification stage, and displays it.
 	 * @param owner the owner of the stage
 	 * @param title the brief title of the notification
 	 * @param description the detailed description of the notification

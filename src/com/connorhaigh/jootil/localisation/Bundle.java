@@ -18,7 +18,7 @@ public class Bundle
 	}
 	
 	/**
-	 * Returns if this bundle equals another object
+	 * Returns if this bundle equals another object.
 	 */
 	public boolean equals(Object object)
 	{

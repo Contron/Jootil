@@ -95,8 +95,8 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Returns this base's root border pane.
-	 * @return this base's root
+	 * Returns the border pane for this base.
+	 * @return the border pane
 	 */
 	public BorderPane getBorderPane()
 	{
@@ -104,8 +104,8 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Returns this base's tab pane.
-	 * @return this base's tab pane
+	 * Returns the tab pane for this base.
+	 * @return the tab pane
 	 */
 	public TabPane getTabPane()
 	{
@@ -113,8 +113,8 @@ public abstract class BaseSettingsStage extends Stage
 	}
 	
 	/**
-	 * Returns this base's buttons box.
-	 * @return this base's buttons box
+	 * Returns the buttons box for this base.
+	 * @return the buttons box
 	 */
 	public ButtonsBox getButtonsBox()
 	{

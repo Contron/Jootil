@@ -26,7 +26,7 @@ public class LocalisationManager
 	}
 	
 	/**
-	 * Load all localisation files, and then assign a default bundle;
+	 * Loads all localisation files, and then assigns a default bundle.
 	 */
 	public void loadAndAssign()
 	{
@@ -88,7 +88,7 @@ public class LocalisationManager
 	}
 	
 	/**
-	 * Retrieve a localisation for the current locale from the current bundle.
+	 * Retrieves a localisation for the current locale from the current bundle.
 	 * @param key the key
 	 * @return the localised string, "No Default Bundle" if there is no bundle, or "Missing Localisation" if it could not be found
 	 */

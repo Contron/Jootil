@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import com.connorhaigh.jootil.beans.Action;
+import com.connorhaigh.jootil.beans.Command;
 import com.connorhaigh.jootil.utilities.Files;
 import com.connorhaigh.jootil.utilities.Resources;
 
@@ -337,48 +339,4 @@ public class DeveloperConsoleStage extends Stage
 	
 	private TextArea logTextArea;
 	private TextField inputTextField;
-}
-
-class Command
-{
-	/**
-	 * Creates a new command.
-	 * @param action the action
-	 * @param description the description of the command
-	 */
-	public Command(Action action, String description)
-	{
-		this.action = action;
-		this.description = description;
-	}
-	
-	/**
-	 * Execute this command.
-	 * @return the output
-	 */
-	public String execute()
-	{
-		return this.action.run();
-	}
-	
-	/**
-	 * Returns the description of this command.
-	 * @return the description
-	 */
-	public String getDescription()
-	{
-		return this.description;
-	}
-	
-	private Action action;
-	private String description;
-}
-
-interface Action
-{
-	/**
-	 * Runs this action.
-	 * @return the output
-	 */
-	public String run();
 }

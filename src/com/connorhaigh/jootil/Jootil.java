@@ -2,6 +2,9 @@ package com.connorhaigh.jootil;
 
 import java.io.File;
 
+import com.connorhaigh.jootil.beans.Platform;
+import com.connorhaigh.jootil.utilities.OperatingSystem;
+
 public class Jootil 
 {
 	/**
@@ -12,20 +15,30 @@ public class Jootil
 	 */
 	public static File getApplicationDirectory(Class<?> clazz)
 	{
-		//get name and home
-		String osName = System.getProperty("os.name").toLowerCase();
+		//get directories and platform
 		String userHome = System.getProperty("user.home");
 		String directoryName = clazz.getSimpleName();
+		Platform platform = OperatingSystem.getPlatform();
 		
-		//check
-		if (osName.contains("windows"))
-			return new File(System.getenv("APPDATA"), directoryName);
-		else if (osName.contains("mac"))
-			return new File(userHome, String.format("Library%sApplication Support%s%s", File.separator, File.separator, directoryName));
-		else if (osName.contains("unix") || osName.contains("linux"))
-			return new File(userHome, String.format(".%s", directoryName));
-		else
-			return new File(userHome, clazz.getSimpleName());
+		switch (platform)
+		{
+			case WINDOWS:
+			{
+				return new File(System.getenv("APPDATA"), directoryName);
+			}
+			case MACINTOSH:
+			{
+				return new File(userHome, String.format("Library%sApplication Support%s%s", File.separator, File.separator, directoryName));
+			}
+			case LINUX:
+			{
+				return new File(userHome, String.format(".%s", directoryName));
+			}
+			default:
+			{
+				return new File(userHome, directoryName);
+			}
+		}
 	}
 	
 	/**

@@ -1,7 +1,6 @@
 package com.connorhaigh.jootil.gui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -41,8 +40,7 @@ public class DeveloperConsoleStage extends Stage
 	 */
 	public DeveloperConsoleStage(Window owner)
 	{
-		this.commands = new HashMap<String, Command>();
-		
+		this.commands = new ArrayList<Command>();
 		this.history = new ArrayList<String>();
 		this.historyIndex = -1;
 		
@@ -76,6 +74,7 @@ public class DeveloperConsoleStage extends Stage
 		{
 			//navigate
 			KeyCode keyCode = event.getCode();
+			
 			if (keyCode == KeyCode.UP)
 				this.navigateHistory(1);
 			else if (keyCode == KeyCode.DOWN)
@@ -97,42 +96,40 @@ public class DeveloperConsoleStage extends Stage
 	public void initialiseConsole()
 	{
 		//default commands
-		this.commands.put("help", new Command(() -> this.listHelp(), "Display the list of commands"));
-		this.commands.put("clear", new Command(() -> this.clearConsole(), "Clear the console text"));
-		this.commands.put("close", new Command(() -> this.closeConsole(), "Close the console"));
-		this.commands.put("version", new Command(() -> this.showVersion(), "Display the current runtime version"));
-		this.commands.put("exit", new Command(() -> this.exitPlatform(), "Exit the platform"));
-		this.commands.put("memory", new Command(() -> this.collectMemory(), "Collect memory statistics"));
-		this.commands.put("dump_properties", new Command(() -> this.dumpProperties(), "Dump all system properties"));
-		this.commands.put("dump_environment_variables", new Command(() -> this.dumpEnvironmentVariables(), "Dump all environment variables"));
-		this.commands.put("garbage_collector", new Command(() -> this.runGarbageCollector(), "Runs the garbage collector"));
+		this.commands.add(new Command("help", "Displays the list of commands", () -> this.listHelp()));
+		this.commands.add(new Command("clear", "Clears the console text", () -> this.clearConsole()));
+		this.commands.add(new Command("close", "Closes the console", () -> this.closeConsole()));
+		this.commands.add(new Command("version", "Displays the current runtime version", () -> this.showVersion()));
+		this.commands.add(new Command("exit", "Exits the platform", () -> this.exitPlatform()));
+		this.commands.add(new Command("memory", "Collects and displays memory statistics", () -> this.collectMemory()));
+		this.commands.add(new Command("dumpProperties", "Dumps all system properties",  () -> this.dumpProperties()));
+		this.commands.add(new Command("dumpEnvironmentVariables", "Dumps all environment variables", () -> this.dumpEnvironmentVariables()));
+		this.commands.add(new Command("runGarbageCollector", "Runs the garbage collector", () -> this.runGarbageCollector()));
 		
 		//header text
-		this.logTextArea.setText("");
+		this.logTextArea.clear();
 		this.logTextArea.appendText("Developer console initialised\n");
 		this.logTextArea.appendText("Type 'help' for available commands\n\n");
 	}
 	
 	/**
-	 * Register a command with this console.
-	 * @param name the name of the command
+	 * Registers a command with this console.
 	 * @param command the command
 	 */
-	public void registerCommand(String name, Command command)
+	public void registerCommand(Command command)
 	{
 		//add
-		this.commands.put(name, command);
+		this.commands.add(command);
 	}
 	
 	/**
-	 * Convenience method to register a command with this console with a generic runnable.
+	 * Registers a command with this console with a runnable.
 	 * @param name the name of the command
 	 * @param description the description of the command
 	 * @param runnable the runnable to execute for this command
 	 */
 	public void registerCommand(String name, String description, Runnable runnable)
 	{
-		//create default action
 		Action action = () ->
 		{
 			//run
@@ -141,25 +138,31 @@ public class DeveloperConsoleStage extends Stage
 			return "Command executed successfully";
 		};
 		
-		//add command
-		this.commands.put(name, new Command(action, description));
+		//register
+		this.registerCommand(new Command(name, description, action));
 	}
 	
 	/**
-	 * Execute the current command.
+	 * Executes the current command.
 	 */
 	private void executeCommand()
 	{
 		//get text
 		String name = this.inputTextField.getText().trim();
 		this.logTextArea.appendText("> " + name + "\n");
-		this.inputTextField.setText("");
+		this.inputTextField.clear();
 		
 		//add to history
 		this.history.add(0, name);
 		this.historyIndex = -1;
 		
-		if (!this.commands.containsKey(name))
+		//get command
+		Command command = this.commands.stream()
+			.filter(c -> c.getName().equals(name))
+			.findFirst()
+			.orElse(null);
+		
+		if (command == null)
 		{
 			//unknown
 			this.logTextArea.appendText("Unknown command\n");
@@ -167,17 +170,13 @@ public class DeveloperConsoleStage extends Stage
 			return;
 		}
 		
-		//get command
-		Command command = this.commands.get(name);
-		String result = command.execute();
-
-		//append
-		this.logTextArea.appendText(result + "\n");
+		//execute
+		this.logTextArea.appendText(command.execute() + "\n");
 	}
 	
 	/**
 	 * Navigate through the command history.
-	 * @param increment the incrementation
+	 * @param increment the increment
 	 */
 	private void navigateHistory(int increment)
 	{
@@ -189,6 +188,7 @@ public class DeveloperConsoleStage extends Stage
 		//set
 		this.historyIndex = newIndex;
 		this.inputTextField.setText(this.history.get(this.historyIndex));
+		this.inputTextField.selectEnd();
 	}
 	
 	/**
@@ -201,12 +201,11 @@ public class DeveloperConsoleStage extends Stage
 		StringBuilder result = new StringBuilder();
 		
 		//loop
-		Set<Entry<String, Command>> entrySet = this.commands.entrySet();
-		for (Entry<String, Command> entry : entrySet)
-			result.append(entry.getKey() + ": " + entry.getValue().getDescription() + "\n");
+		for (Command command : this.commands)
+			result.append(command.getName() + ": " + command.getDescription() + "\n");
 		
 		//total
-		result.append("\n" + entrySet.size() + " total commands");
+		result.append("\n" + this.commands.size() + " total commands");
 		
 		return result.toString();
 	}
@@ -217,7 +216,7 @@ public class DeveloperConsoleStage extends Stage
 	 */
 	private String clearConsole()
 	{
-		this.logTextArea.setText("");
+		this.logTextArea.clear();
 		
 		return "Cleared the console\n";
 	}
@@ -332,8 +331,7 @@ public class DeveloperConsoleStage extends Stage
 		return result.toString();
 	}
 	
-	private HashMap<String, Command> commands;
-	
+	private ArrayList<Command> commands;
 	private ArrayList<String> history;
 	private int historyIndex;
 	

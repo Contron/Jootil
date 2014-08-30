@@ -2,7 +2,7 @@ package com.connorhaigh.jootil.beans;
 
 public enum Platform
 {
-	WINDOWS("Windows"), MACINTOSH("Mac OS X"), LINUX("Linux"), UNKNOWN("Unknown");
+	WINDOWS("Windows"), MACINTOSH("Macintosh OS X"), LINUX("Linux"), UNKNOWN("Unknown");
 	
 	/**
 	 * Creates a new platform definition.

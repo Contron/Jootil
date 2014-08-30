@@ -100,7 +100,7 @@ public class InputStage extends Stage
 	private void cancel()
 	{
 		//close
-		this.textField.setText("");
+		this.textField.clear();
 		this.close();
 	}
 	

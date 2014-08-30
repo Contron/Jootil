@@ -7,10 +7,12 @@ public class Command
 	 * @param action the action
 	 * @param description the description of the command
 	 */
-	public Command(Action action, String description)
+	public Command(String name, String description, Action action)
 	{
-		this.action = action;
+		this.name = name;
 		this.description = description;
+		
+		this.action = action;
 	}
 	
 	/**
@@ -23,6 +25,15 @@ public class Command
 	}
 	
 	/**
+	 * Returns the name of this command.
+	 * @return the name
+	 */
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	/**
 	 * Returns the description of this command.
 	 * @return the description
 	 */
@@ -31,6 +42,8 @@ public class Command
 		return this.description;
 	}
 	
-	private Action action;
+	private String name;
 	private String description;
+	
+	private Action action;
 }

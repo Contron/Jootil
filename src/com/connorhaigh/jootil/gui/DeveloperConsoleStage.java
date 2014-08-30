@@ -188,7 +188,7 @@ public class DeveloperConsoleStage extends Stage
 		//set
 		this.historyIndex = newIndex;
 		this.inputTextField.setText(this.history.get(this.historyIndex));
-		this.inputTextField.selectEnd();
+		this.inputTextField.selectAll();
 	}
 	
 	/**

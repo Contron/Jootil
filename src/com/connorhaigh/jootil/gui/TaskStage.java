@@ -106,9 +106,11 @@ public class TaskStage extends Stage
 	 */
 	private void tryClose(WindowEvent event)
 	{
-		//cancel task
+		//cancel or consume
 		if (this.cancellable)
 			this.cancel();
+		else
+			event.consume();
 	}
 	
 	/**

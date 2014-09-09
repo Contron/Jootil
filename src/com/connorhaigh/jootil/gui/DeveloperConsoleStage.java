@@ -19,7 +19,7 @@ import javafx.stage.Window;
 import com.connorhaigh.jootil.beans.Action;
 import com.connorhaigh.jootil.beans.Command;
 import com.connorhaigh.jootil.utilities.Files;
-import com.connorhaigh.jootil.utilities.Resources;
+import com.connorhaigh.jootil.utilities.Fonts;
 
 public class DeveloperConsoleStage extends Stage
 {
@@ -61,14 +61,14 @@ public class DeveloperConsoleStage extends Stage
 		this.logTextArea.setPrefRowCount(15);
 		this.logTextArea.setPrefColumnCount(50);
 		this.logTextArea.setEditable(false);
-		this.logTextArea.setFont(Resources.MONOSPACED_FONT);
+		this.logTextArea.setFont(Fonts.MONOSPACED_FONT);
 		vbox.getChildren().add(this.logTextArea);
 		VBox.setVgrow(this.logTextArea, Priority.ALWAYS);
 		
 		//input text field
 		this.inputTextField = new TextField();
 		this.inputTextField.setPrefColumnCount(50);
-		this.inputTextField.setFont(Resources.MONOSPACED_FONT);
+		this.inputTextField.setFont(Fonts.MONOSPACED_FONT);
 		this.inputTextField.setOnAction(event -> this.executeCommand());
 		this.inputTextField.setOnKeyPressed(event ->
 		{
@@ -175,7 +175,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Navigate through the command history.
+	 * Navigates through the command history.
 	 * @param increment the increment
 	 */
 	private void navigateHistory(int increment)
@@ -192,7 +192,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * List all the commands.
+	 * Lists all the commands.
 	 * @return the commands
 	 */
 	private String listHelp()
@@ -211,7 +211,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Clear the console.
+	 * Clears the console.
 	 * @return the output
 	 */
 	private String clearConsole()
@@ -222,7 +222,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Close the console.
+	 * Closes the console.
 	 * @return the output
 	 */
 	private String closeConsole()
@@ -234,7 +234,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Display the version of the Java runtime.
+	 * Displays the version of the Java runtime.
 	 * @return the version
 	 */
 	private String showVersion()
@@ -250,7 +250,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Exit the platform.
+	 * Exits the platform.
 	 * @return the output
 	 */
 	private String exitPlatform()
@@ -274,7 +274,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Collect memory statistics.
+	 * Collects the memory statistics.
 	 * @return the memory statistics
 	 */
 	private String collectMemory()
@@ -292,7 +292,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Dump all the current system properties.
+	 * Dumps all the current system properties.
 	 * @return the output
 	 */
 	private String dumpProperties()
@@ -312,7 +312,7 @@ public class DeveloperConsoleStage extends Stage
 	}
 	
 	/**
-	 * Dump all the current environment variables.
+	 * Dumps all the current environment variables.
 	 * @return the output
 	 */
 	private String dumpEnvironmentVariables()

@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
-import com.connorhaigh.jootil.utilities.Resources;
+import com.connorhaigh.jootil.utilities.Fonts;
 import com.connorhaigh.jootil.utilities.Styles;
 
 public class NotificationStage extends Stage
@@ -81,7 +81,7 @@ public class NotificationStage extends Stage
 		
 		//title label
 		Label titleLabel = new Label(title);
-		titleLabel.setFont(Resources.LARGE_FONT);
+		titleLabel.setFont(Fonts.LARGE_FONT);
 		vbox.getChildren().add(titleLabel);
 		
 		//description label

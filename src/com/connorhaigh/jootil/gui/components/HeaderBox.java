@@ -5,7 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import com.connorhaigh.jootil.utilities.Resources;
+import com.connorhaigh.jootil.utilities.Fonts;
 import com.connorhaigh.jootil.utilities.Styles;
 
 public class HeaderBox extends VBox
@@ -27,7 +27,7 @@ public class HeaderBox extends VBox
 		
 		//header label
 		Label headerLabel = new Label();
-		headerLabel.setFont(Resources.LARGE_FONT);
+		headerLabel.setFont(Fonts.LARGE_FONT);
 		headerLabel.textProperty().bind(this.headerProperty);
 		this.getChildren().add(headerLabel);
 		

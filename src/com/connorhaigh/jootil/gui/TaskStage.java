@@ -15,7 +15,7 @@ import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
-import com.connorhaigh.jootil.utilities.Resources;
+import com.connorhaigh.jootil.utilities.Fonts;
 import com.connorhaigh.jootil.utilities.Tasks;
 
 public class TaskStage extends Stage
@@ -74,7 +74,7 @@ public class TaskStage extends Stage
 		
 		//header label
 		Label headerLabel = new Label(title);
-		headerLabel.setFont(Resources.LARGE_FONT);
+		headerLabel.setFont(Fonts.LARGE_FONT);
 		contentPane.getChildren().add(headerLabel);
 		
 		//description label

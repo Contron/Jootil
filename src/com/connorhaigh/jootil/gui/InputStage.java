@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
-import com.connorhaigh.jootil.utilities.Resources;
+import com.connorhaigh.jootil.utilities.Fonts;
 
 public class InputStage extends Stage
 {
@@ -62,7 +62,7 @@ public class InputStage extends Stage
 		
 		//header label
 		Label headerLabel = new Label(title);
-		headerLabel.setFont(Resources.LARGE_FONT);
+		headerLabel.setFont(Fonts.LARGE_FONT);
 		contentPane.getChildren().add(headerLabel);
 		
 		//description label

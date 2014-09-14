@@ -9,7 +9,7 @@ public class Styles
 	 */
 	public static String build(String... rules)
 	{
-		return (String.join(Styles.DELIMITER + " ", rules) + Styles.DELIMITER);
+		return String.join(Styles.DELIMITER + " ", rules);
 	}
 	
 	private static final String DELIMITER = ";";

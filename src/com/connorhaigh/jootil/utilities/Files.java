@@ -17,19 +17,30 @@ public class Files
 	 */
 	public static String getSize(long size)
 	{
-		//check
-		if (size < 1024)
+		if (size < Files.KILOBYTE)
+		{
 			return (size + " bytes");
-		else if (size < (1024 * 1024))
-			return ((size / 1024) + " KB");
-		else if (size < (1024 * 1024 * 1024))
-			return (Files.SMALL_DECIMAL_FORMAT.format((double) size / (1024 * 1024)) + " MB");
+		}
+		else if (size < Files.MEGABYTE)
+		{
+			return ((size / Files.KILOBYTE) + " KB");
+		}
+		else if (size < Files.GIGABYTE)
+		{
+			return (Files.SMALL_DECIMAL_FORMAT.format((double) size / Files.MEGABYTE) + " MB");
+		}
+		else if (size < Files.TERABYTE)
+		{
+			return (Files.LARGE_DECIMAL_FORMAT.format((double) size / Files.GIGABYTE) + " GB");
+		}
 		else
-			return (Files.LARGE_DECIMAL_FORMAT.format((double) size / (1024 * 1024 * 1024)) + " GB");
+		{
+			return (Files.LARGE_DECIMAL_FORMAT.format((double) size / Files.TERABYTE) + " TB");
+		}
 	}
 	
 	/**
-	 * Returns the name of a full-path file.
+	 * Returns the name of file in a path.
 	 * @param path the path
 	 * @return the name of the file
 	 */
@@ -77,13 +88,13 @@ public class Files
 	}
 	
 	/**
-	 * Returns the remaining time for a file transfer.
+	 * Calculates the remaining time for a file transfer.
 	 * @param current the current bytes transferred
 	 * @param total the total bytes to transfer
 	 * @param speed the speed of the transfer
 	 * @return the remaining time
 	 */
-	public static String getRemainingTime(int current, int total, int speed)
+	public static String calculateRemainingTime(int current, int total, int speed)
 	{
 		//result
 		StringBuilder result = new StringBuilder();
@@ -153,4 +164,9 @@ public class Files
 	
 	public static final DecimalFormat SMALL_DECIMAL_FORMAT = new DecimalFormat("##.00");
 	public static final DecimalFormat LARGE_DECIMAL_FORMAT = new DecimalFormat("##.0");
+	
+	public static final int KILOBYTE = 1024;
+	public static final int MEGABYTE = (1024 * 1024);
+	public static final int GIGABYTE = (1024 * 1024 * 1024);
+	public static final int TERABYTE = (1024 * 1024 * 1024 * 1024);
 }

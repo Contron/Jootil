@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class ObjectsManager<Element> extends Manager
+public class ObjectsManager<E> extends Manager
 {
 	/**
 	 * Creates a new objects manager.
@@ -15,7 +15,7 @@ public class ObjectsManager<Element> extends Manager
 	 * @param file the name of the file
 	 * @param template the original template to use
 	 */
-	public ObjectsManager(File directory, String name, Element template)
+	public ObjectsManager(File directory, String name, E template)
 	{
 		super(directory, name);
 		
@@ -35,7 +35,7 @@ public class ObjectsManager<Element> extends Manager
 
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(this.getFile())))
 		{
-			this.object = (Element) xmlDecoder.readObject();
+			this.object = (E) xmlDecoder.readObject();
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class ObjectsManager<Element> extends Manager
 	 * Sets the object in this manager.
 	 * @param object the object
 	 */
-	public void set(Element object)
+	public void set(E object)
 	{
 		this.object = object;
 	}
@@ -68,10 +68,10 @@ public class ObjectsManager<Element> extends Manager
 	 * Returns the object in this manager.
 	 * @return the object
 	 */
-	public Element get()
+	public E get()
 	{
 		return this.object;
 	}
 	
-	private Element object;
+	private E object;
 }

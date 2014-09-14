@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class LocalObjectManager<Element>
+public class LocalObjectManager<E>
 {
 	/**
 	 * Loads a local object from file.
@@ -17,11 +17,11 @@ public class LocalObjectManager<Element>
 	 * @throws ClassCastException if the object is not an instance of this manager's class
 	 */
 	@SuppressWarnings("unchecked")
-	public Element load(File file) throws FileNotFoundException, ClassCastException
+	public E load(File file) throws FileNotFoundException, ClassCastException
 	{
 		try (XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(file)))
 		{
-			return (Element) xmlDecoder.readObject();
+			return (E) xmlDecoder.readObject();
 		}
 	}
 	
@@ -31,7 +31,7 @@ public class LocalObjectManager<Element>
 	 * @param element the object to save
 	 * @throws FileNotFoundException if the file could not be found
 	 */
-	public void save(File file, Element element) throws FileNotFoundException
+	public void save(File file, E element) throws FileNotFoundException
 	{
 		try (XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(file)))
 		{

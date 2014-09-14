@@ -1,9 +1,9 @@
 package com.connorhaigh.jootil.beans;
 
-public enum Platform
+public enum Platform 
 {
 	WINDOWS("Windows"), MACINTOSH("Macintosh OS X"), LINUX("Linux"), UNKNOWN("Unknown");
-	
+
 	/**
 	 * Creates a new platform definition.
 	 * @param name the friendly name of the platform
@@ -12,7 +12,7 @@ public enum Platform
 	{
 		this.name = name;
 	}
-	
+
 	/**
 	 * Returns a string representation of this object.
 	 */
@@ -21,7 +21,7 @@ public enum Platform
 	{
 		return this.name;
 	}
-	
+
 	/**
 	 * Returns the friendly name of this platform.
 	 * @return the friendly name
@@ -30,6 +30,6 @@ public enum Platform
 	{
 		return this.name;
 	}
-	
+
 	private String name;
 }

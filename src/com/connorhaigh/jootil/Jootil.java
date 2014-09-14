@@ -24,7 +24,7 @@ public class Jootil
 		{
 			case WINDOWS:
 			{
-				return new File(System.getenv("APPDATA"), directoryName);
+				return new File(System.getenv("AppData"), directoryName);
 			}
 			case MACINTOSH:
 			{
@@ -32,7 +32,7 @@ public class Jootil
 			}
 			case LINUX:
 			{
-				return new File(userHome, String.format(".%s", directoryName));
+				return new File(userHome, String.format(".%s", directoryName.toLowerCase()));
 			}
 			default:
 			{

@@ -22,4 +22,31 @@ public class OperatingSystem
 		else
 			return Platform.UNKNOWN;
 	}
+	
+	/**
+	 * Returns if the current operating system is Windows.
+	 * @return if the current operating system is Windows
+	 */
+	public static boolean isWindows()
+	{
+		return (OperatingSystem.getPlatform() == Platform.WINDOWS);
+	}
+	
+	/**
+	 * Returns if the current operating system is Mac OS X.
+	 * @return if the current operating system is Mac OS X
+	 */
+	public static boolean isMacintosh()
+	{
+		return (OperatingSystem.getPlatform() == Platform.MACINTOSH);
+	}
+	
+	/**
+	 * Returns if the current operating system is based on a Linux distribution.
+	 * @return if the current operating system is based on a Linux distribution
+	 */
+	public static boolean isLinux()
+	{
+		return (OperatingSystem.getPlatform() == Platform.LINUX);
+	}
 }

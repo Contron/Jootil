@@ -7,15 +7,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class ObjectsManager<E> extends Manager
+public class ObjectManager<E> extends Manager
 {
 	/**
-	 * Creates a new objects manager.
+	 * Creates a new object manager.
 	 * @param directory the directory of the file
 	 * @param file the name of the file
 	 * @param template the original template to use
 	 */
-	public ObjectsManager(File directory, String name, E template)
+	public ObjectManager(File directory, String name, E template)
 	{
 		super(directory, name);
 		

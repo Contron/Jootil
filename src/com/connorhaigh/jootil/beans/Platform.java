@@ -14,7 +14,7 @@ public enum Platform
 	}
 
 	/**
-	 * Returns a string representation of this object.
+	 * Returns a string representation of this platform.
 	 */
 	@Override
 	public String toString()

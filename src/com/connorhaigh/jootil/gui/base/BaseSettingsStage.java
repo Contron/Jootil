@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
@@ -19,13 +18,13 @@ public abstract class BaseSettingsStage extends Stage
 {
 	/**
 	 * Creates a new base settings stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param image the image of the stage
 	 */
-	public BaseSettingsStage(Window owner)
+	public BaseSettingsStage(Stage stage)
 	{
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle("Settings");
 		this.setResizable(false);

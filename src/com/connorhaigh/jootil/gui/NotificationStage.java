@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.utilities.Fonts;
 import com.connorhaigh.jootil.utilities.Styles;
@@ -22,17 +21,17 @@ public class NotificationStage extends Stage
 {
 	/**
 	 * Creates a new notification stage, and displays it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the brief title of the notification
 	 * @param description the detailed description of the notification
 	 */
-	public static void showNotificationStage(Window owner, String title, String description)
+	public static void showNotificationStage(Stage stage, String title, String description)
 	{
 		//increment
 		NotificationStage.active++;
 		
 		//show
-		NotificationStage notificationStage = new NotificationStage(owner, title, description);
+		NotificationStage notificationStage = new NotificationStage(stage, title, description);
 		notificationStage.show();
 		
 		//initialise
@@ -42,14 +41,14 @@ public class NotificationStage extends Stage
 	
 	/**
 	 * Creates a new notification stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the brief title of the notification
 	 * @param description the detailed description of the notification
 	 */
-	private NotificationStage(Window owner, String title, String description)
+	private NotificationStage(Stage stage, String title, String description)
 	{
 		this.index = NotificationStage.active;
-		this.owner = owner;
+		this.owner = stage;
 		
 		this.thread = null;
 		this.screenBounds = Screen.getPrimary().getVisualBounds();
@@ -70,7 +69,7 @@ public class NotificationStage extends Stage
 		vbox.setOnMouseClicked(event -> this.animate(1, true));
 		
 		//header label
-		Label headerLabel = new Label((this.owner instanceof Stage) ? ((Stage) this.owner).getTitle().toUpperCase() : "NOTIFICATION");
+		Label headerLabel = new Label(stage.getTitle());
 		headerLabel.setTextFill(Color.GRAY);
 		vbox.getChildren().add(headerLabel);
 		
@@ -170,7 +169,7 @@ public class NotificationStage extends Stage
 	private static int active = 0;
 	
 	private int index;
-	private Window owner;
+	private Stage owner;
 	
 	private Thread thread;
 	private Rectangle2D screenBounds;

@@ -14,7 +14,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.beans.Action;
 import com.connorhaigh.jootil.beans.Command;
@@ -25,27 +24,27 @@ public class DeveloperConsoleStage extends Stage
 {
 	/**
 	 * Creates a new developer console stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 */
-	public static void showDeveloperConsoleStage(Window owner)
+	public static void showDeveloperConsoleStage(Stage stage)
 	{
 		//show
-		DeveloperConsoleStage developerConsoleStage = new DeveloperConsoleStage(owner);
+		DeveloperConsoleStage developerConsoleStage = new DeveloperConsoleStage(stage);
 		developerConsoleStage.show();
 	}
 	
 	/**
 	 * Creates a new developer console stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 */
-	public DeveloperConsoleStage(Window owner)
+	public DeveloperConsoleStage(Stage stage)
 	{
 		this.commands = new ArrayList<Command>();
 		this.history = new ArrayList<String>();
 		this.historyIndex = -1;
 		
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.setTitle("Developer Console");
 		this.setMinWidth(200);
 		this.setMinHeight(200);

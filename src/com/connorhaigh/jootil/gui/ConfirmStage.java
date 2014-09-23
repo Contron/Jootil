@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.utilities.Fonts;
@@ -17,15 +16,15 @@ public class ConfirmStage extends Stage
 {
 	/**
 	 * Creates a new confirm stage, and then wait for it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
 	 * @returns if the dialog was confirmed
 	 */
-	public static boolean showConfirmStage(Window owner, String title, String message)
+	public static boolean showConfirmStage(Stage stage, String title, String message)
 	{
 		//show
-		ConfirmStage confirmStage = new ConfirmStage(owner, title, message);
+		ConfirmStage confirmStage = new ConfirmStage(stage, title, message);
 		confirmStage.showAndWait();
 		
 		return confirmStage.confirmed;
@@ -33,16 +32,16 @@ public class ConfirmStage extends Stage
 	
 	/**
 	 * Creates a new confirm dialog stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
 	 */
-	public ConfirmStage(Window owner, String title, String message)
+	public ConfirmStage(Stage stage, String title, String message)
 	{
 		this.confirmed = false;
 		
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle(title);
 		this.setResizable(false);

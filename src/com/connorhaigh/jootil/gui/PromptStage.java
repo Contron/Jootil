@@ -15,7 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.utilities.Fonts;
@@ -24,41 +23,41 @@ public class PromptStage extends Stage
 {
 	/**
 	 * Creates a new prompt stage, and then wait for it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
 	 * @param exception the exception to show, or null
 	 */
-	public static void showPromptStage(Window owner, String title, String message, Exception exception)
+	public static void showPromptStage(Stage stage, String title, String message, Exception exception)
 	{
 		//show
-		PromptStage promptStage = new PromptStage(owner, title, message, exception);
+		PromptStage promptStage = new PromptStage(stage, title, message, exception);
 		promptStage.showAndWait();
 	}
 	
 	/**
 	 * Creates a new prompt stage, and then wait for it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
 	 */
-	public static void showPromptStage(Window owner, String title, String message)
+	public static void showPromptStage(Stage stage, String title, String message)
 	{
 		//show
-		PromptStage.showPromptStage(owner, title, message, null);
+		PromptStage.showPromptStage(stage, title, message, null);
 	}
 	
 	/**
 	 * Creates a new prompt dialog stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the title of the prompt
 	 * @param message the message of the prompt
 	 * @param exception the exception to show, or null
 	 */
-	public PromptStage(Window owner, String title, String message, Exception exception)
+	public PromptStage(Stage stage, String title, String message, Exception exception)
 	{
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle(title);
 		this.setResizable(false);

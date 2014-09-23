@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
@@ -22,31 +21,31 @@ public class TaskStage extends Stage
 {
 	/**
 	 * Creates a new task stage to monitor a task's progress, and then wait for it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param task the task to monitor
 	 * @param title the title of the task
 	 * @param if the task is cancellable
 	 * @param modal if the task should be modal
 	 */
-	public static void showTaskStage(Window owner, Task<?> task, String title, boolean cancellable, boolean modal)
+	public static void showTaskStage(Stage stage, Task<?> task, String title, boolean cancellable, boolean modal)
 	{
 		//start
 		Tasks.start(task);
 		
 		//show
-		TaskStage taskStage = new TaskStage(owner, task, title, cancellable, modal);
+		TaskStage taskStage = new TaskStage(stage, task, title, cancellable, modal);
 		taskStage.showAndWait();
 	}
 	
 	/**
 	 * Creates a new progress stage to monitor a task's progress.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param task the task to monitor
 	 * @param title the title of the task
 	 * @param if the task is cancellable
 	 * @param modal if the task should be modal
 	 */
-	public TaskStage(Window owner, Task<?> task, String title, boolean cancellable, boolean modal)
+	public TaskStage(Stage stage, Task<?> task, String title, boolean cancellable, boolean modal)
 	{
 		this.task = task;
 		this.task.addEventHandler(WorkerStateEvent.WORKER_STATE_CANCELLED, event -> this.close());
@@ -55,7 +54,7 @@ public class TaskStage extends Stage
 		this.cancellable = cancellable;
 		
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.initModality(modal ? Modality.APPLICATION_MODAL : Modality.NONE);
 		this.setResizable(false);
 		this.setMinWidth(350);

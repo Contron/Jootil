@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.utilities.Fonts;
@@ -18,33 +17,33 @@ public class InputStage extends Stage
 {
 	/**
 	 * Creates a new input stage, and then wait for it.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
 	 * @return the message entered, or empty
 	 */
-	public static String showInputStage(Window owner, String title, String message)
+	public static String showInputStage(Stage stage, String title, String message)
 	{
 		//show
-		InputStage inputStage = new InputStage(owner, title, message);
+		InputStage inputStage = new InputStage(stage, title, message);
 		inputStage.showAndWait();
 		
 		//get text
 		String text = inputStage.textField.getText();
 		
 		return (text.isEmpty() ? null : text);
-	}
+	}	
 	
 	/**
 	 * Creates a new prompt dialog stage.
-	 * @param owner the owner of the stage
+	 * @param stage the owner of the stage
 	 * @param title the prompt's title
 	 * @param message the message on the prompt
 	 */
-	public InputStage(Window owner, String title, String message)
+	public InputStage(Stage stage, String title, String message)
 	{
 		//setup stage
-		this.initOwner(owner);
+		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle(title);
 		this.setResizable(false);

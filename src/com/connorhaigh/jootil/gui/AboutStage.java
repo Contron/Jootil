@@ -61,7 +61,7 @@ public class AboutStage extends Stage
 		
 		//image
 		ImageView imageView = new ImageView(image);
-		contentPane.add(imageView, 0, 0, 1, 2);
+		contentPane.add(imageView, 0, 0, 1, 3);
 		
 		//header label
 		Label headerLabel = new Label(name);

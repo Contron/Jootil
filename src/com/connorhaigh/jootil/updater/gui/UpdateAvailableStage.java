@@ -1,8 +1,5 @@
 package com.connorhaigh.jootil.updater.gui;
 
-import java.awt.Desktop;
-import java.net.URL;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,8 +10,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.gui.PromptStage;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
+import com.connorhaigh.jootil.utilities.Web;
 
 public class UpdateAvailableStage extends Stage
 {
@@ -67,17 +64,8 @@ public class UpdateAvailableStage extends Stage
 	 */
 	private void ok()
 	{
-		try
-		{
-			//open browser
-			Desktop desktop = Desktop.getDesktop();
-			desktop.browse(new URL(this.downloadPage).toURI());
-		}
-		catch (Exception exception)
-		{
-			//error
-			PromptStage.showPromptStage(this, "Error", "Your web browser could not be opened to display the update page.");
-		}
+		//navigate
+		Web.openBrowser(this.downloadPage);
 		
 		//close
 		this.close();

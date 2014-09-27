@@ -1,5 +1,6 @@
 package com.connorhaigh.jootil.utilities;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,6 +34,24 @@ public class Web
 				result.append(line + System.lineSeparator());
 			
 			return result.toString();
+		}
+	}
+	
+	/**
+	 * Opens the default Web browser to navigate to the specified page.
+	 * @param page the page
+	 */
+	public static void openBrowser(String page)
+	{
+		try
+		{
+			//open browser
+			Desktop desktop = Desktop.getDesktop();
+			desktop.browse(new URL(page).toURI());
+		}
+		catch (Exception exception)
+		{
+			
 		}
 	}
 }

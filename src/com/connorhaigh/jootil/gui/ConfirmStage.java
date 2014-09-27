@@ -68,8 +68,8 @@ public class ConfirmStage extends Stage
 		
 		//buttons box
 		ButtonsBox buttonsBox = new ButtonsBox(true, true);
-		buttonsBox.setOnOk(event -> this.ok());
-		buttonsBox.setOnCancel(event -> this.cancel());
+		buttonsBox.setOnOk(event -> this.exit(true));
+		buttonsBox.setOnCancel(event -> this.exit(false));
 		borderPane.setBottom(buttonsBox);
 		
 		//show
@@ -78,22 +78,13 @@ public class ConfirmStage extends Stage
 	}
 	
 	/**
-	 * Confirms and closes this stage.
+	 * Closes this stage with the specified result.
+	 * @param result the result
 	 */
-	private void ok()
+	private void exit(boolean result)
 	{
 		//close
-		this.confirmed = true;
-		this.close();
-	}
-	
-	/**
-	 * Cancels and closes this stage.
-	 */
-	private void cancel()
-	{
-		//close
-		this.confirmed = false;
+		this.confirmed = result;
 		this.close();
 	}
 	

@@ -69,7 +69,7 @@ public class NotificationStage extends Stage
 		vbox.setOnMouseClicked(event -> this.animate(1, true));
 		
 		//header label
-		Label headerLabel = new Label(stage.getTitle());
+		Label headerLabel = new Label(stage.getTitle().toUpperCase());
 		headerLabel.setTextFill(Color.GRAY);
 		vbox.getChildren().add(headerLabel);
 		

@@ -90,7 +90,7 @@ public class TaskStage extends Stage
 		
 		//buttons box
 		ButtonsBox buttonsBox = new ButtonsBox(false, true);
-		buttonsBox.setOnCancel(event -> this.cancel());
+		buttonsBox.setOnCancel(event -> this.task.cancel());
 		buttonsBox.getCancelButton().setDisable(!this.cancellable);
 		borderPane.setBottom(buttonsBox);
 		
@@ -108,22 +108,13 @@ public class TaskStage extends Stage
 		if (this.cancellable)
 		{
 			//cancel task
-			this.cancel();
+			this.task.cancel();
 		}
 		else
 		{
 			//ignore close
 			event.consume();
 		}
-	}
-	
-	/**
-	 * Cancels the current task.
-	 */
-	private void cancel()
-	{
-		//cancel
-		this.task.cancel();
 	}
 	
 	private Task<?> task;

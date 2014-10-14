@@ -85,10 +85,12 @@ public class Console
 	{
 		return String.format
 		(
-			"Java %s (%s), on %s (version %s)", 
-			System.getProperty("java.version"), 
-			System.getProperty("java.vendor"), 
-			System.getProperty("os.name"), 
+			"Java %s (%s-bit, %s, %s), on %s (version %s)",
+			System.getProperty("java.version"),
+			System.getProperty("sun.arch.data.model"),
+			System.getProperty("java.runtime.version"),
+			System.getProperty("java.vendor"),
+			System.getProperty("os.name"),
 			System.getProperty("os.version")
 		);
 	}

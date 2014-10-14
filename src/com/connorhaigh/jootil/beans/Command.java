@@ -7,7 +7,7 @@ public class Command
 	 * @param action the action
 	 * @param description the description of the command
 	 */
-	public Command(String name, String description, Action action)
+	public Command(String name, String description, Action<String> action)
 	{
 		this.name = name;
 		this.description = description;
@@ -45,5 +45,5 @@ public class Command
 	private String name;
 	private String description;
 	
-	private Action action;
+	private Action<String> action;
 }

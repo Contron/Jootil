@@ -1,10 +1,10 @@
 package com.connorhaigh.jootil.beans;
 
-public interface Action
+public interface Action<E>
 {
 	/**
 	 * Runs this action.
 	 * @return the output
 	 */
-	public String run();
+	public E run();
 }

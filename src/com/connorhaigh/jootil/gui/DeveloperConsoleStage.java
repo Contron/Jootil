@@ -80,7 +80,8 @@ public class DeveloperConsoleStage extends Stage
 			}
 			
 			//consume
-			event.consume();
+			if (keyCode == KeyCode.UP || keyCode == KeyCode.DOWN)
+				event.consume();
 		});
 		vbox.getChildren().add(this.inputTextField);
 		

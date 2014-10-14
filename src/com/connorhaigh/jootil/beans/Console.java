@@ -24,7 +24,7 @@ public class Console
 	/**
 	 * Executes the specified command if it can be found.
 	 * @param name the name of the command
-	 * @return the otput
+	 * @return the output
 	 */
 	public String execute(String name)
 	{

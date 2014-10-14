@@ -100,8 +100,23 @@ public class DeveloperConsoleStage extends Stage
 	{
 		//header text
 		this.logTextArea.clear();
-		this.logTextArea.appendText("Developer console initialised\n");
-		this.logTextArea.appendText("Type 'help' for available commands\n\n");
+		this.append(false, "Developer console initialised");
+		this.append(false, "Type 'help' for available commands\n");
+	}
+	
+	/**
+	 * Appends the specified text to the console.
+	 * @param user if this is user input
+	 * @param text the text
+	 */
+	public void append(boolean user, String text)
+	{
+		//prefix
+		if (user)
+			this.logTextArea.appendText("> ");
+		
+		//text
+		this.logTextArea.appendText(text + "\n");
 	}
 	
 	/**
@@ -111,7 +126,6 @@ public class DeveloperConsoleStage extends Stage
 	{
 		//get text
 		String name = this.inputTextField.getText().trim();
-		this.logTextArea.appendText("> " + name + "\n");
 		this.inputTextField.clear();
 		
 		//add to history
@@ -119,7 +133,8 @@ public class DeveloperConsoleStage extends Stage
 		this.historyIndex = -1;
 		
 		//execute
-		this.logTextArea.appendText(this.console.execute(name) + "\n");
+		this.append(true, name);
+		this.append(false, this.console.execute(name));
 	}
 	
 	/**

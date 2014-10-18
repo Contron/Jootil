@@ -44,7 +44,7 @@ public class Files
 	 * @param path the path
 	 * @return the name of the file
 	 */
-	public static String getName(String path)
+	public static String getNameFromPath(String path)
 	{
 		//get slash index
 		int slashIndex = path.lastIndexOf('/');
@@ -59,17 +59,14 @@ public class Files
 	 * @param path the file
 	 * @return the friendly name of the file
 	 */
-	public static String getFriendlyName(File file)
+	public static String getName(String file)
 	{
-		//get name
-		String name = file.getName();
-		
 		//get dot index
-		int dotIndex = name.lastIndexOf('.');
+		int dotIndex = file.lastIndexOf('.');
 		if (dotIndex == -1)
-			return name;
+			return file;
 		
-		return name.substring(0, dotIndex);
+		return file.substring(0, dotIndex);
 	}
 	
 	/**

@@ -1,28 +1,20 @@
 package com.connorhaigh.jootil.gui;
 
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.gui.components.ButtonsBox;
-import com.connorhaigh.jootil.utilities.Fonts;
+import com.connorhaigh.jootil.gui.base.BaseDialogStage;
 
-public class AboutStage extends Stage
+public class AboutStage extends BaseDialogStage
 {
 	/**
-	 * Creates a new about stage, and then wait for it.
-	 * @param stage the owner of the stage
-	 * @param image the large image for the display
+	 * Creates a new about stage, and waits for it.
+	 * @param stage the owner
+	 * @param image the image
 	 * @param name the name of the application
-	 * @param developer the developer (or developers) of the application
-	 * @param year the year of the release
-	 * @param website the web site for the application
+	 * @param developer the developer of the application
+	 * @param year the year of release
+	 * @param website the developer's Web site
 	 */
 	public static void showAboutStage(Stage stage, Image image, String name, String developer, String year, String website)
 	{
@@ -33,61 +25,15 @@ public class AboutStage extends Stage
 	
 	/**
 	 * Creates a new about stage.
-	 * @param stage the owner of the stage
-	 * @param image the large image for the display
+	 * @param stage the owner
+	 * @param image the image
 	 * @param name the name of the application
-	 * @param developer the developer (or developers) of the application
-	 * @param year the year of the release
-	 * @param website the web site for the application
+	 * @param developer the developer of the application
+	 * @param year the year of release
+	 * @param website the developer's Web site
 	 */
 	public AboutStage(Stage stage, Image image, String name, String developer, String year, String website)
 	{
-		//setup stage
-		this.initOwner(stage);
-		this.initModality(Modality.APPLICATION_MODAL);
-		this.setTitle("About");
-		this.setResizable(false);
-		this.getIcons().add(new Image("/images/icons/information.png"));
-		
-		//root pane
-		BorderPane borderPane = new BorderPane();
-		
-		//content pane
-		GridPane contentPane = new GridPane();
-		contentPane.setPadding(new Insets(10, 10, 10, 10));
-		contentPane.setHgap(10);
-		contentPane.setVgap(10);
-		borderPane.setCenter(contentPane);
-		
-		//image
-		ImageView imageView = new ImageView(image);
-		contentPane.add(imageView, 0, 0, 1, 3);
-		
-		//header label
-		Label headerLabel = new Label(name);
-		headerLabel.setFont(Fonts.LARGE_FONT);
-		contentPane.add(headerLabel, 1, 0);
-		
-		//description label
-		Label descriptionLabel = new Label(String.format("(C) %s %s\n%s", developer, year, website));
-		contentPane.add(descriptionLabel, 1, 1);
-		
-		//buttons box
-		ButtonsBox buttonsBox = new ButtonsBox(true, false);
-		buttonsBox.setOnOk(event -> this.ok());
-		borderPane.setBottom(buttonsBox);
-		
-		//show
-		this.setScene(new Scene(borderPane));
-		this.sizeToScene();
-	}
-	
-	/**
-	 * Confirms and closes this stage.
-	 */
-	private void ok()
-	{
-		//close
-		this.close();
+		super(stage, "About", name, String.format("(C) %s %s%n%s", developer, year, website), true, false);
 	}
 }

@@ -18,8 +18,7 @@ public abstract class BaseSettingsStage extends Stage
 {
 	/**
 	 * Creates a new base settings stage.
-	 * @param stage the owner of the stage
-	 * @param image the image of the stage
+	 * @param stage the owner
 	 */
 	public BaseSettingsStage(Stage stage)
 	{

@@ -14,6 +14,7 @@ public class HeaderBox extends VBox
 	 * Creates a new generic header and description box.
 	 * @param header the header
 	 * @param description the description
+	 * @param style if it should be styled
 	 */
 	public HeaderBox(String header, String description)
 	{

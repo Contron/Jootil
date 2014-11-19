@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 
 import com.connorhaigh.jootil.utilities.Styles;
 
@@ -27,7 +26,6 @@ public class StatusBar extends HBox
 		statusLabel.setMaxWidth(Double.MAX_VALUE);
 		statusLabel.textProperty().bind(this.statusProperty);
 		this.getChildren().add(statusLabel);
-		HBox.setHgrow(statusLabel, Priority.ALWAYS);
 	}
 	
 	/**

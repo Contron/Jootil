@@ -2,8 +2,11 @@ package com.connorhaigh.jootil.utilities;
 
 import java.io.File;
 
+import javafx.event.EventHandler;
+import javafx.scene.control.Control;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 
@@ -16,39 +19,8 @@ public class Shortcuts
 	 */
 	public static void createDragDroppableTextField(TextField textField)
 	{
-		//drag over
-		textField.setOnDragOver(event ->
-		{
-			//check files
-			Dragboard dragboard = event.getDragboard();
-			
-			if (dragboard.hasFiles())
-				event.acceptTransferModes(TransferMode.LINK);
-			
-			//consume
-			event.consume();
-		});
-		
-		//drag dropped
-		textField.setOnDragDropped(event ->
-		{
-			//check files
-			Dragboard dragboard = event.getDragboard();
-			if (!dragboard.hasFiles())
-				return;
-			
-			//get first file
-			File file = dragboard.getFiles().get(0);
-			if (!file.exists())
-				return;
-			
-			//update
-			textField.setText(file.getAbsolutePath());
-			
-			//consume
-			event.setDropCompleted(true);
-			event.consume();
-		});
+		//create
+		Shortcuts.createDragDroppableControl(textField, event -> textField.setText(event.getDragboard().getFiles().get(0).getAbsolutePath()));
 	}
 	
 	/**
@@ -58,32 +30,47 @@ public class Shortcuts
 	 */
 	public static void createDragDroppableListView(ListView<File> listView)
 	{
+		//create
+		Shortcuts.createDragDroppableControl(listView, event -> listView.getItems().addAll(event.getDragboard().getFiles()));
+	}
+	
+	/**
+	 * Creates the appropriate handlers for the control to receive drag-drop events.
+	 * @param control the control
+	 * @param eventHandler the event handler for a successful drag
+	 */
+	public static void createDragDroppableControl(Control control, EventHandler<DragEvent> eventHandler)
+	{
 		//drag over
-		listView.setOnDragOver(event ->
+		control.setOnDragOver(event ->
 		{
-			//check files
+			//get dragboard
 			Dragboard dragboard = event.getDragboard();
+			
+			//check
 			if (dragboard.hasFiles())
-				event.acceptTransferModes(TransferMode.LINK);
+				event.acceptTransferModes(TransferMode.ANY);
 			
 			//consume
 			event.consume();
 		});
 		
 		//drag dropped
-		listView.setOnDragDropped(event ->
+		control.setOnDragDropped(event ->
 		{
-			//check files
+			//get dragboard
 			Dragboard dragboard = event.getDragboard();
+			
+			//check
 			if (!dragboard.hasFiles())
 				return;
-			
-			//add files
-			listView.getItems().addAll(dragboard.getFiles());
 			
 			//consume
 			event.setDropCompleted(true);
 			event.consume();
+			
+			//fire
+			eventHandler.handle(event);
 		});
 	}
 }

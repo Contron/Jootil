@@ -19,7 +19,7 @@ public class DeveloperConsoleStage extends Stage
 {
 	/**
 	 * Creates a new developer console stage.
-	 * @param stage the owner of the stage
+	 * @param stage the owner
 	 */
 	public static void showDeveloperConsoleStage(Stage stage)
 	{
@@ -30,7 +30,7 @@ public class DeveloperConsoleStage extends Stage
 	
 	/**
 	 * Creates a new developer console stage.
-	 * @param stage the owner of the stage
+	 * @param stage the owner
 	 */
 	public DeveloperConsoleStage(Stage stage)
 	{

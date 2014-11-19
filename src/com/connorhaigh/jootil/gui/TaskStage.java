@@ -15,35 +15,32 @@ import javafx.stage.WindowEvent;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.utilities.Fonts;
-import com.connorhaigh.jootil.utilities.Tasks;
 
 public class TaskStage extends Stage
 {
 	/**
-	 * Creates a new task stage to monitor a task's progress, and then wait for it.
-	 * @param stage the owner of the stage
+	 * Creates a new task stage for the specified task, monitoring its progress.
+	 * This will not start the task - you will need to do this yourself.
+	 * @param stage the owner
 	 * @param task the task to monitor
-	 * @param title the title of the task
-	 * @param if the task is cancellable
-	 * @param modal if the task should be modal
+	 * @param title the title
+	 * @param cancellable if it is cancellable
+	 * @param modal if it should be modal
 	 */
 	public static void showTaskStage(Stage stage, Task<?> task, String title, boolean cancellable, boolean modal)
 	{
-		//start
-		Tasks.start(task);
-		
 		//show
 		TaskStage taskStage = new TaskStage(stage, task, title, cancellable, modal);
 		taskStage.showAndWait();
 	}
 	
 	/**
-	 * Creates a new progress stage to monitor a task's progress.
-	 * @param stage the owner of the stage
+	 * Creates a new task stage.
+	 * @param stage the owner
 	 * @param task the task to monitor
-	 * @param title the title of the task
-	 * @param if the task is cancellable
-	 * @param modal if the task should be modal
+	 * @param title the title
+	 * @param cancellable if it is cancellable
+	 * @param modal if it should be modal
 	 */
 	public TaskStage(Stage stage, Task<?> task, String title, boolean cancellable, boolean modal)
 	{

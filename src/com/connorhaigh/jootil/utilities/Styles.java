@@ -12,6 +12,15 @@ public class Styles
 		return String.join(Styles.DELIMITER + " ", rules);
 	}
 	
+	/**
+	 * Returns a string for no styles.
+	 * @return a string for no styles
+	 */
+	public static String none()
+	{
+		return "";
+	}
+	
 	private static final String DELIMITER = ";";
 	
 	public static final String CONTROL_BACKGROUND_COLOUR = "-fx-background-color: white";

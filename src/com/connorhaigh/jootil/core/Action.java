@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.beans;
+package com.connorhaigh.jootil.core;
 
 public interface Action<E>
 {

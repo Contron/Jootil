@@ -12,7 +12,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.beans.Console;
+import com.connorhaigh.jootil.core.Console;
 import com.connorhaigh.jootil.utilities.Fonts;
 
 public class DeveloperConsoleStage extends Stage

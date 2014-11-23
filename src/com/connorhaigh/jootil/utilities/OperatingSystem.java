@@ -1,6 +1,6 @@
 package com.connorhaigh.jootil.utilities;
 
-import com.connorhaigh.jootil.beans.Platform;
+import com.connorhaigh.jootil.core.Platform;
 
 public class OperatingSystem 
 {

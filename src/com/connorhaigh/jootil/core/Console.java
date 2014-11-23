@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.beans;
+package com.connorhaigh.jootil.core;
 
 import java.util.ArrayList;
 import java.util.Map.Entry;

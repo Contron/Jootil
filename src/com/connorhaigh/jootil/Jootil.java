@@ -2,7 +2,7 @@ package com.connorhaigh.jootil;
 
 import java.io.File;
 
-import com.connorhaigh.jootil.beans.Platform;
+import com.connorhaigh.jootil.core.Platform;
 import com.connorhaigh.jootil.utilities.OperatingSystem;
 
 public class Jootil 

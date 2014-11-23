@@ -3,8 +3,10 @@ package com.connorhaigh.jootil.gui.bases;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -111,8 +113,22 @@ public abstract class BaseFormStage extends Stage implements Form
 			//control
 			control.setMaxWidth(Double.MAX_VALUE);
 			control.setMaxHeight(150);
-			GridPane.setHgrow(control, Priority.ALWAYS);
+			
+			if (control instanceof ComboBox)
+			{
+				//placeholder
+				((ComboBox<?>) control).setPlaceholder(new Label("No available options"));
+			}
+			
+			if (control instanceof ListView)
+			{
+				//placeholder
+				((ListView<?>) control).setPlaceholder(new Label("No selectable options"));
+			}
+			
+			//add
 			this.gridPane.add(control, column, this.row, columnSpan, 1);
+			GridPane.setHgrow(control, Priority.ALWAYS);
 		}
 		
 		//increment

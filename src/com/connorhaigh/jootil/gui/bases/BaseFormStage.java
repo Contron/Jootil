@@ -67,18 +67,8 @@ public abstract class BaseFormStage extends Stage implements Form
 	 * @param control the control
 	 */
 	public void addRowForControl(String message, Control control)
-	{
-		//label
-		Label label = new Label(message);
-		this.gridPane.add(label, 0, this.row);
-		
-		//control
-		control.setMaxWidth(Double.MAX_VALUE);
-		GridPane.setHgrow(control, Priority.ALWAYS);
-		this.gridPane.add(control, 1, this.row);
-		
-		//increment
-		this.row++;
+	{	
+		this.addRow(message, control);
 	}
 	
 	/**
@@ -86,9 +76,38 @@ public abstract class BaseFormStage extends Stage implements Form
 	 */
 	public void addRowForSeparator()
 	{
-		//separator
-		Separator separator = new Separator();
-		this.gridPane.add(separator, 0, this.row, 2, 1);
+		this.addRow(null, new Separator());
+	}
+	
+	/**
+	 * Adds a row to this form.
+	 * @param message the message, or null
+	 * @param control the control, or null
+	 */
+	private void addRow(String message, Control control)
+	{
+		if (message != null)
+		{
+			//span
+			int columnSpan = (control != null ? 1 : 2);
+			
+			//label
+			Label label = new Label(message);
+			this.gridPane.add(label, 0, this.row, columnSpan, 1);
+		}
+		
+		if (control != null)
+		{
+			//span
+			int column = (control instanceof Separator ? 0 : 1);
+			int columnSpan = (column == 0 ? 2 : 1);
+			
+			//control
+			control.setMaxWidth(Double.MAX_VALUE);
+			control.setMaxHeight(150);
+			GridPane.setHgrow(control, Priority.ALWAYS);
+			this.gridPane.add(control, column, this.row, columnSpan, 1);
+		}
 		
 		//increment
 		this.row++;

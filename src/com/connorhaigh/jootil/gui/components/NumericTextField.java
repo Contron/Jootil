@@ -1,6 +1,6 @@
 package com.connorhaigh.jootil.gui.components;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.TextField;
 
 public class NumericTextField extends TextField
@@ -10,10 +10,12 @@ public class NumericTextField extends TextField
 	 * @param minimum the minimum value
 	 * @param maximum the maximum value
 	 */
-	public NumericTextField(int minimum, int maximum)
+	public NumericTextField(double minimum, double maximum)
 	{
-		this.minimumProperty = new SimpleIntegerProperty(minimum);
-		this.maximumProperty = new SimpleIntegerProperty(maximum);
+		this.valueProperty = new SimpleDoubleProperty(minimum);
+		
+		this.minimumProperty = new SimpleDoubleProperty(minimum);
+		this.maximumProperty = new SimpleDoubleProperty(maximum);
 	}
 	
 	/**
@@ -21,7 +23,7 @@ public class NumericTextField extends TextField
 	 */
 	public NumericTextField()
 	{
-		this(-100, 100);
+		this(0, 100);
 	}
 	
 	/**
@@ -57,16 +59,22 @@ public class NumericTextField extends TextField
     	if (text.isEmpty())
     		return true;
     	
-    	//basic check
-    	if (!text.matches("[0-9]"))
-    		return false;
-    	
     	try
     	{
     		//parse
-    		int number = Integer.parseInt(this.getText() + text);
+    		double number = Double.parseDouble(this.getText() + text);
     		
-    		return (number >= this.minimumProperty.get() && number <= this.maximumProperty.get());
+    		if (number >= this.minimumProperty.get() && number <= this.maximumProperty.get())
+    		{
+    			//update
+    			this.valueProperty.set(number);
+    			
+    			return true;
+    		}
+    		else
+    		{
+    			return false;
+    		}
     	}
     	catch (NumberFormatException numberFormatException)
     	{
@@ -78,25 +86,25 @@ public class NumericTextField extends TextField
      * Sets the value of this text field.
      * @param value the value
      */
-    public void setValue(int value)
+    public void setValue(double value)
     {
-    	this.setText(String.valueOf(value));
+    	this.valueProperty.set(value);
     }
     
     /**
      * Returns the value of this text field.
      * @return the value
      */
-    public int getValue()
+    public double getValue()
     {
-    	return Integer.parseInt(this.getText());
+    	return this.valueProperty.get();
     }
     
     /**
      * Sets the minimum value for this text field.
      * @param minimum the minimum value
      */
-    public void setMinimum(int minimum)
+    public void setMinimum(double minimum)
     {
     	this.minimumProperty.set(minimum);
     }
@@ -105,7 +113,7 @@ public class NumericTextField extends TextField
      * Returns the minimum value for this text field.
      * @return the minimum value
      */
-    public int getMinimum()
+    public double getMinimum()
     {
     	return this.minimumProperty.get();
     }
@@ -114,7 +122,7 @@ public class NumericTextField extends TextField
      * Sets the maximum value for this text field.
      * @param maximum the maximum value
      */
-    public void setMaximum(int maximum)
+    public void setMaximum(double maximum)
     {
     	this.maximumProperty.set(maximum);;
     }
@@ -123,16 +131,25 @@ public class NumericTextField extends TextField
      * Returns the maximum value for this text field.
      * @return the maximum value
      */
-    public int getMaximum()
+    public double getMaximum()
     {
     	return this.maximumProperty.get();
+    }
+    
+    /**
+     * Returns the value property.
+     * @return the value property
+     */
+    public SimpleDoubleProperty valueProperty()
+    {
+    	return this.valueProperty;
     }
     
     /**
      * Returns the minimum property.
      * @return the minimum property
      */
-    public SimpleIntegerProperty minimumProperty()
+    public SimpleDoubleProperty minimumProperty()
     {
     	return this.minimumProperty;
     }
@@ -141,11 +158,13 @@ public class NumericTextField extends TextField
      * Returns the maximum property.
      * @return the maximum property
      */
-    public SimpleIntegerProperty maximumProperty()
+    public SimpleDoubleProperty maximumProperty()
     {
     	return this.maximumProperty;
     }
     
-    private SimpleIntegerProperty minimumProperty;
-    private SimpleIntegerProperty maximumProperty;
+    private SimpleDoubleProperty valueProperty;
+    
+    private SimpleDoubleProperty minimumProperty;
+    private SimpleDoubleProperty maximumProperty;
 }

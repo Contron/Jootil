@@ -1,5 +1,6 @@
 package com.connorhaigh.jootil.gui.components;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TextField;
 
 public class NumericTextField extends TextField
@@ -11,8 +12,8 @@ public class NumericTextField extends TextField
 	 */
 	public NumericTextField(int minimum, int maximum)
 	{
-		this.minimum = minimum;
-		this.maximum = maximum;
+		this.minimumProperty = new SimpleIntegerProperty(minimum);
+		this.maximumProperty = new SimpleIntegerProperty(maximum);
 	}
 	
 	/**
@@ -65,7 +66,7 @@ public class NumericTextField extends TextField
     		//parse
     		int number = Integer.parseInt(this.getText() + text);
     		
-    		return (number >= this.minimum && number <= this.maximum);
+    		return (number >= this.minimumProperty.get() && number <= this.maximumProperty.get());
     	}
     	catch (NumberFormatException numberFormatException)
     	{
@@ -97,7 +98,16 @@ public class NumericTextField extends TextField
      */
     public void setMinimum(int minimum)
     {
-    	this.minimum = minimum;
+    	this.minimumProperty.set(minimum);
+    }
+    
+    /**
+     * Returns the minimum value for this text field.
+     * @return the minimum value
+     */
+    public int getMinimum()
+    {
+    	return this.minimumProperty.get();
     }
     
     /**
@@ -106,9 +116,36 @@ public class NumericTextField extends TextField
      */
     public void setMaximum(int maximum)
     {
-    	this.maximum = maximum;
+    	this.maximumProperty.set(maximum);;
     }
-	
-	private int minimum;
-	private int maximum;
+    
+    /**
+     * Returns the maximum value for this text field.
+     * @return the maximum value
+     */
+    public int getMaximum()
+    {
+    	return this.maximumProperty.get();
+    }
+    
+    /**
+     * Returns the minimum property.
+     * @return the minimum property
+     */
+    public SimpleIntegerProperty minimumProperty()
+    {
+    	return this.minimumProperty;
+    }
+    
+    /**
+     * Returns the maximum property.
+     * @return the maximum property
+     */
+    public SimpleIntegerProperty maximumProperty()
+    {
+    	return this.maximumProperty;
+    }
+    
+    private SimpleIntegerProperty minimumProperty;
+    private SimpleIntegerProperty maximumProperty;
 }

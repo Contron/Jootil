@@ -11,10 +11,9 @@ import com.connorhaigh.jootil.utilities.Styles;
 public class HeaderBox extends VBox
 {
 	/**
-	 * Creates a new generic header and description box.
+	 * Creates a new header box.
 	 * @param header the header
 	 * @param description the description
-	 * @param style if it should be styled
 	 */
 	public HeaderBox(String header, String description)
 	{
@@ -39,7 +38,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Creates a new blank header box.
+	 * Creates a new, default header box.
 	 */
 	public HeaderBox()
 	{
@@ -47,7 +46,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Sets the header of this box.
+	 * Sets the header of this header box.
 	 * @param header the header
 	 */
 	public void setHeader(String header)
@@ -56,7 +55,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Sets the description of this box.
+	 * Sets the description of this header box.
 	 * @param description the description
 	 */
 	public void setDescription(String description)
@@ -65,7 +64,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Returns the header of this box.
+	 * Returns the header of this header box.
 	 * @return the header
 	 */
 	public String getHeader()
@@ -74,7 +73,7 @@ public class HeaderBox extends VBox
 	}
 	
 	/**
-	 * Returns the description of this box.
+	 * Returns the description of this header box.
 	 * @return the description
 	 */
 	public String getDescription()

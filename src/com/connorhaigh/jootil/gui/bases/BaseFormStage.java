@@ -1,5 +1,6 @@
 package com.connorhaigh.jootil.gui.bases;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
@@ -28,6 +29,9 @@ public abstract class BaseFormStage extends Stage implements Form
 	{
 		this.row = 0;
 		
+		this.okDisabledProperty = new SimpleBooleanProperty(false);
+		this.cancelDisabledProperty = new SimpleBooleanProperty(false);
+		
 		//setup stage
 		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
@@ -54,6 +58,8 @@ public abstract class BaseFormStage extends Stage implements Form
 		ButtonsBox buttonsBox = new ButtonsBox(true, true);
 		buttonsBox.setOnOk(event -> this.confirm(true));
 		buttonsBox.setOnCancel(event -> this.confirm(false));
+		buttonsBox.okDisabledProperty().bind(this.okDisabledProperty);
+		buttonsBox.cancelDisabledProperty().bind(this.cancelDisabledProperty);
 		borderPane.setBottom(buttonsBox);
 		
 		//show
@@ -129,7 +135,66 @@ public abstract class BaseFormStage extends Stage implements Form
 		this.close();
 	}
 	
+	
+	/**
+	 * Sets if the OK button is disabled.
+	 * @param disabled if the OK button is disabled
+	 */
+	public void setOkDisabled(boolean disabled)
+	{
+		this.okDisabledProperty.set(disabled);
+	}
+	
+	/**
+	 * Returns if the OK button is disabled.
+	 * @return if the OK button is disabled
+	 */
+	public boolean getOkDisabled()
+	{
+		return this.okDisabledProperty.get();
+	}
+	
+	/**
+	 * Sets if the Cancel button is disabled.
+	 * @param disabled if the Cancel button is disabled
+	 */
+	public void setCancelDisabled(boolean disabled)
+	{
+		this.cancelDisabledProperty.set(disabled);
+	}
+	
+	
+	/**
+	 * Returns if the Cancel button is disabled.
+	 * @return if the Cancel button is disabled
+	 */
+	public boolean getCancelDisabled()
+	{
+		return this.cancelDisabledProperty.get();
+	}
+	
+	/**
+	 * Returns the OK disabled property.
+	 * @return the OK disabled property
+	 */
+	public SimpleBooleanProperty okDisabledProperty()
+	{
+		return this.okDisabledProperty;
+	}
+	
+	/**
+	 * Returns the Cancel disabled property.
+	 * @return the Cancel disabled property
+	 */
+	public SimpleBooleanProperty cancelDisabledProperty()
+	{
+		return this.cancelDisabledProperty;
+	}
+	
 	private int row;
+	
+	private SimpleBooleanProperty okDisabledProperty;
+	private SimpleBooleanProperty cancelDisabledProperty;
 	
 	private GridPane gridPane;
 }

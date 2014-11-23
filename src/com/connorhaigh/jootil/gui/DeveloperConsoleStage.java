@@ -56,14 +56,14 @@ public class DeveloperConsoleStage extends Stage
 		this.logTextArea.setPrefRowCount(15);
 		this.logTextArea.setPrefColumnCount(50);
 		this.logTextArea.setEditable(false);
-		this.logTextArea.setFont(Fonts.MONOSPACED_FONT);
+		this.logTextArea.setFont(Fonts.MONOSPACED);
 		vbox.getChildren().add(this.logTextArea);
 		VBox.setVgrow(this.logTextArea, Priority.ALWAYS);
 		
 		//input text field
 		this.inputTextField = new TextField();
 		this.inputTextField.setPrefColumnCount(50);
-		this.inputTextField.setFont(Fonts.MONOSPACED_FONT);
+		this.inputTextField.setFont(Fonts.MONOSPACED);
 		this.inputTextField.setOnAction(event -> this.executeCommand());
 		this.inputTextField.setOnKeyPressed(event ->
 		{

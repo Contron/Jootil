@@ -1,6 +1,5 @@
-package com.connorhaigh.jootil.gui.base;
+package com.connorhaigh.jootil.gui.bases;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -11,7 +10,7 @@ import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 import com.connorhaigh.jootil.utilities.Styles;
 
-public class BaseDialogStage extends Stage
+public abstract class BaseDialogStage extends Stage
 {
 	/**
 	 * Creates a new base dialog stage.
@@ -24,9 +23,6 @@ public class BaseDialogStage extends Stage
 	 */
 	public BaseDialogStage(Stage stage, String title, String header, String description, boolean ok, boolean cancel)
 	{
-		this.headerProperty = new SimpleStringProperty(header);
-		this.descriptionProperty = new SimpleStringProperty(description);
-		
 		this.confirmed = false;
 		
 		//setup stage
@@ -41,10 +37,8 @@ public class BaseDialogStage extends Stage
 		BorderPane borderPane = new BorderPane();
 
 		//header box
-		HeaderBox headerBox = new HeaderBox();
+		HeaderBox headerBox = new HeaderBox(header, description);
 		headerBox.setStyle(Styles.none());
-		headerBox.headerProperty().bind(this.headerProperty);
-		headerBox.descriptionProperty().bind(this.descriptionProperty);
 		borderPane.setTop(headerBox);
 		
 		//buttons box
@@ -87,9 +81,6 @@ public class BaseDialogStage extends Stage
 	{
 		return this.confirmed;
 	}
-	
-	private SimpleStringProperty headerProperty;
-	private SimpleStringProperty descriptionProperty;
 	
 	private boolean confirmed;
 }

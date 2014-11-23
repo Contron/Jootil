@@ -6,12 +6,9 @@ import javafx.scene.text.FontWeight;
 
 public class Fonts 
 {
-	public static final Font MONOSPACED_FONT = Font.font("Monospaced");
+	public static final Font MONOSPACED = Font.font("Monospaced");
 	
-	public static final Font LARGE_FONT = Font.font(18);
-	public static final Font BOLD_FONT = Font.font(Fonts.DEFAULT_NAME, FontWeight.BOLD, Fonts.DEFAULT_SIZE);
-	public static final Font ITALIC_FONT = Font.font(Fonts.DEFAULT_NAME, FontPosture.ITALIC, Fonts.DEFAULT_SIZE);
-	
-	private static final String DEFAULT_NAME = Font.getDefault().getName();
-	private static final double DEFAULT_SIZE = Font.getDefault().getSize();
+	public static final Font LARGE = Font.font(18);
+	public static final Font BOLD = Font.font(Font.getDefault().getName(), FontWeight.BOLD, Font.getDefault().getSize());
+	public static final Font ITALIC = Font.font(Font.getDefault().getName(), FontPosture.ITALIC, Font.getDefault().getSize());
 }

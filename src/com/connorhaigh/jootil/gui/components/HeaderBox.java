@@ -28,7 +28,7 @@ public class HeaderBox extends VBox
 		
 		//header label
 		Label headerLabel = new Label();
-		headerLabel.setFont(Fonts.LARGE_FONT);
+		headerLabel.setFont(Fonts.LARGE);
 		headerLabel.textProperty().bind(this.headerProperty);
 		this.getChildren().add(headerLabel);
 		

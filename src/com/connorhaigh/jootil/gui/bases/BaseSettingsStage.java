@@ -1,4 +1,4 @@
-package com.connorhaigh.jootil.gui.base;
+package com.connorhaigh.jootil.gui.bases;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,10 +11,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import com.connorhaigh.jootil.beans.Form;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 
-public abstract class BaseSettingsStage extends Stage
+public abstract class BaseSettingsStage extends Stage implements Form
 {
 	/**
 	 * Creates a new base settings stage.
@@ -31,25 +32,25 @@ public abstract class BaseSettingsStage extends Stage
 		this.getIcons().add(new Image("/images/icons/console.png"));
 		
 		//root pane
-		this.borderPane = new BorderPane();
+		BorderPane borderPane = new BorderPane();
 		
 		//header box
-		this.headerBox = new HeaderBox("Settings", "Configure application-specific settings.");
-		this.borderPane.setTop(this.headerBox);
+		HeaderBox headerBox = new HeaderBox("Settings", "Configure application-specific settings.");
+		borderPane.setTop(headerBox);
 		
 		//tab pane
 		this.tabPane = new TabPane();
 		this.tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-		this.borderPane.setCenter(this.tabPane);
+		borderPane.setCenter(this.tabPane);
 		
 		//buttons box
-		this.buttonsBox = new ButtonsBox(true, true);
-		this.buttonsBox.setOnOk(event -> this.ok());
-		this.buttonsBox.setOnCancel(event -> this.cancel());
-		this.borderPane.setBottom(this.buttonsBox);
+		ButtonsBox buttonsBox = new ButtonsBox(true, true);
+		buttonsBox.setOnOk(event -> this.confirm(true));
+		buttonsBox.setOnCancel(event -> this.confirm(false));
+		borderPane.setBottom(buttonsBox);
 		
 		//show
-		this.setScene(new Scene(this.borderPane));
+		this.setScene(new Scene(borderPane));
 		this.sizeToScene();
 	}
 	
@@ -76,51 +77,19 @@ public abstract class BaseSettingsStage extends Stage
 	
 	/**
 	 * Confirms and closes this stage.
+	 * @param confirmed if it was confirmed or cancelled
 	 */
-	public void ok()
+	private void confirm(boolean confirmed)
 	{
+		if (confirmed)
+		{
+			//confirmed
+			this.contentsConfirmed();
+		}
+		
 		//close
 		this.close();
 	}
 	
-	/**
-	 * Cancels and closes this stage.
-	 */
-	public void cancel()
-	{
-		//close
-		this.close();
-	}
-	
-	/**
-	 * Returns the border pane for this base.
-	 * @return the border pane
-	 */
-	public BorderPane getBorderPane()
-	{
-		return this.borderPane;
-	}
-	
-	/**
-	 * Returns the tab pane for this base.
-	 * @return the tab pane
-	 */
-	public TabPane getTabPane()
-	{
-		return this.tabPane;
-	}
-	
-	/**
-	 * Returns the buttons box for this base.
-	 * @return the buttons box
-	 */
-	public ButtonsBox getButtonsBox()
-	{
-		return this.buttonsBox;
-	}
-	
-	private HeaderBox headerBox;
-	private BorderPane borderPane;
 	private TabPane tabPane;
-	private ButtonsBox buttonsBox;
 }

@@ -70,7 +70,7 @@ public class TaskStage extends Stage
 		
 		//header label
 		Label headerLabel = new Label(title);
-		headerLabel.setFont(Fonts.LARGE_FONT);
+		headerLabel.setFont(Fonts.LARGE);
 		contentPane.getChildren().add(headerLabel);
 		
 		//description label
@@ -81,7 +81,6 @@ public class TaskStage extends Stage
 		//progress bar
 		ProgressBar progressBar = new ProgressBar();
 		progressBar.setMaxWidth(Double.MAX_VALUE);
-		progressBar.setPrefWidth(250);
 		progressBar.progressProperty().bind(this.task.progressProperty());
 		contentPane.getChildren().add(progressBar);
 		

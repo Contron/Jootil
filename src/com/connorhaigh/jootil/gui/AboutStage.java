@@ -3,7 +3,7 @@ package com.connorhaigh.jootil.gui;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.gui.base.BaseDialogStage;
+import com.connorhaigh.jootil.gui.bases.BaseDialogStage;
 
 public class AboutStage extends BaseDialogStage
 {

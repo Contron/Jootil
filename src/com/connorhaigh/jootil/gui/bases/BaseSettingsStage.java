@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import com.connorhaigh.jootil.core.FormBuilder;
 import com.connorhaigh.jootil.core.interfaces.Form;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
@@ -55,11 +56,26 @@ public abstract class BaseSettingsStage extends Stage implements Form
 	}
 	
 	/**
+	 * Assembles the settings on this form.
+	 */
+	public abstract void assembleSettings();
+	
+	/**
+	 * Initialises this settings.
+	 */
+	public void initialiseSettings()
+	{
+		//initialise
+		this.assembleSettings();
+		this.populateFields();
+	}
+	
+	/**
 	 * Creates a new tab that can have controls added to it.
 	 * @param name the name of the tab
-	 * @return the tab's grid pane
+	 * @return the form builder for the tab
 	 */
-	public GridPane createTab(String name)
+	public FormBuilder createTab(String name)
 	{
 		//tab
 		Tab tab = new Tab(name);
@@ -72,7 +88,10 @@ public abstract class BaseSettingsStage extends Stage implements Form
 		gridPane.setVgap(10);
 		tab.setContent(gridPane);
 		
-		return gridPane;
+		//form builder
+		FormBuilder formBuilder = new FormBuilder(gridPane);
+		
+		return formBuilder;
 	}
 	
 	/**

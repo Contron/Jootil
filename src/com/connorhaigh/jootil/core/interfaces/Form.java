@@ -7,7 +7,7 @@ public interface Form
 	 */
 	public void populateFields();
 	
-	/**
+	/**	
 	 * Confirms the contents of this form.
 	 */
 	public void contentsConfirmed();

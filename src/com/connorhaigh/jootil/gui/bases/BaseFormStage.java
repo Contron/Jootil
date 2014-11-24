@@ -3,18 +3,13 @@ package com.connorhaigh.jootil.gui.bases;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import com.connorhaigh.jootil.core.FormBuilder;
 import com.connorhaigh.jootil.core.interfaces.Form;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
@@ -29,8 +24,6 @@ public abstract class BaseFormStage extends Stage implements Form
 	 */
 	public BaseFormStage(Stage stage, String title, String description)
 	{
-		this.row = 0;
-		
 		this.okDisabledProperty = new SimpleBooleanProperty(false);
 		this.cancelDisabledProperty = new SimpleBooleanProperty(false);
 		
@@ -70,59 +63,19 @@ public abstract class BaseFormStage extends Stage implements Form
 	}
 	
 	/**
-	 * Adds a row to this form.
-	 * @param message the message, or null
-	 * @param control the control, or null
+	 * Assembles the controls on this form.
+	 * @param formBuilder the form builder
 	 */
-	public void addRow(String message, Control control)
-	{
-		if (message != null)
-		{
-			//span
-			int columnSpan = (control != null ? 1 : 2);
-			
-			//label
-			Label label = new Label(message);
-			this.gridPane.add(label, 0, this.row, columnSpan, 1);
-		}
-		
-		if (control != null)
-		{
-			//span
-			int column = (control instanceof Separator ? 0 : 1);
-			int columnSpan = (column == 0 ? 2 : 1);
-			
-			//control
-			control.setMaxWidth(Double.MAX_VALUE);
-			control.setMaxHeight(150);
-			
-			if (control instanceof ComboBox)
-			{
-				//placeholder
-				((ComboBox<?>) control).setPlaceholder(new Label("No available options"));
-			}
-			
-			if (control instanceof ListView)
-			{
-				//placeholder
-				((ListView<?>) control).setPlaceholder(new Label("No selectable options"));
-			}
-			
-			//add
-			this.gridPane.add(control, column, this.row, columnSpan, 1);
-			GridPane.setHgrow(control, Priority.ALWAYS);
-		}
-		
-		//increment
-		this.row++;
-	}
+	public abstract void assembleForm(FormBuilder formBuilder);
 	
 	/**
-	 * Adds a row for a separator.
+	 * Initialises this form.
 	 */
-	public void addSeparatorRow()
+	public void initialiseForm()
 	{
-		this.addRow(null, new Separator());
+		//initialise
+		this.assembleForm(new FormBuilder(this.gridPane));
+		this.populateFields();
 	}
 	
 	/**
@@ -140,7 +93,6 @@ public abstract class BaseFormStage extends Stage implements Form
 		//close
 		this.close();
 	}
-	
 	
 	/**
 	 * Sets if the OK button is disabled.
@@ -169,7 +121,6 @@ public abstract class BaseFormStage extends Stage implements Form
 		this.cancelDisabledProperty.set(disabled);
 	}
 	
-	
 	/**
 	 * Returns if the Cancel button is disabled.
 	 * @return if the Cancel button is disabled
@@ -196,8 +147,6 @@ public abstract class BaseFormStage extends Stage implements Form
 	{
 		return this.cancelDisabledProperty;
 	}
-	
-	private int row;
 	
 	private SimpleBooleanProperty okDisabledProperty;
 	private SimpleBooleanProperty cancelDisabledProperty;

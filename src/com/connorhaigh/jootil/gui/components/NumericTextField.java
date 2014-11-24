@@ -89,6 +89,7 @@ public class NumericTextField extends TextField
     public void setValue(double value)
     {
     	this.valueProperty.set(value);
+    	this.setText(String.valueOf(value));
     }
     
     /**

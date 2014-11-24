@@ -22,6 +22,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import com.connorhaigh.jootil.gui.ConfirmStage;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 
@@ -33,9 +34,11 @@ public abstract class BaseManagerStage<E> extends Stage
 	 * @param title the title
 	 * @param description the description
 	 * @param selectable if items are selectable
+	 * @param addable if items are addable
+	 * @param editable if items are editable
 	 * @param sourceProperty the source of items
 	 */
-	public BaseManagerStage(Stage stage, String title, String description, boolean selectable, SimpleListProperty<E> sourceProperty)
+	public BaseManagerStage(Stage stage, String title, String description, boolean selectable, boolean addable, boolean editable, SimpleListProperty<E> sourceProperty)
 	{
 		this.sourceProperty = sourceProperty;
 		
@@ -126,20 +129,26 @@ public abstract class BaseManagerStage<E> extends Stage
 			actionsBox.getChildren().add(this.selectButton);
 		}
 		
-		//add button
-		this.addButton = new Button();
-		this.addButton.setGraphic(new ImageView(new Image("/images/buttons/add.png")));
-		this.addButton.setTooltip(new Tooltip("Add"));
-		this.addButton.setOnAction(event -> this.performAdd());
-		actionsBox.getChildren().add(this.addButton);
+		if (addable)
+		{
+			//add button
+			this.addButton = new Button();
+			this.addButton.setGraphic(new ImageView(new Image("/images/buttons/add.png")));
+			this.addButton.setTooltip(new Tooltip("Add"));
+			this.addButton.setOnAction(event -> this.performAdd());
+			actionsBox.getChildren().add(this.addButton);
+		}
 		
-		//edit button
-		this.editButton = new Button();
-		this.editButton.setGraphic(new ImageView(new Image("/images/buttons/edit.png")));
-		this.editButton.setTooltip(new Tooltip("Edit"));
-		this.editButton.setOnAction(event -> this.performEdit(this.tableView.getSelectionModel().getSelectedItem()));
-		this.editButton.disableProperty().bind(this.tableView.getSelectionModel().selectedItemProperty().isNull());
-		actionsBox.getChildren().add(this.editButton);
+		if (editable)
+		{
+			//edit button
+			this.editButton = new Button();
+			this.editButton.setGraphic(new ImageView(new Image("/images/buttons/edit.png")));
+			this.editButton.setTooltip(new Tooltip("Edit"));
+			this.editButton.setOnAction(event -> this.performEdit(this.tableView.getSelectionModel().getSelectedItem()));
+			this.editButton.disableProperty().bind(this.tableView.getSelectionModel().selectedItemProperty().isNull());
+			actionsBox.getChildren().add(this.editButton);
+		}
 		
 		//remove button
 		this.removeButton = new Button();
@@ -183,13 +192,19 @@ public abstract class BaseManagerStage<E> extends Stage
 	/**
 	 * Performs an add operation.
 	 */
-	public abstract void performAdd();
+	public void performAdd()
+	{
+		
+	}
 	
 	/**
 	 * Performs an edit operation.
 	 * @param object the object
 	 */
-	public abstract void performEdit(E object);
+	public void performEdit(E object)
+	{
+		
+	}
 	
 	/**
 	 * Adds a column for the specified property.
@@ -241,6 +256,12 @@ public abstract class BaseManagerStage<E> extends Stage
 	 */
 	private void clear()
 	{
+		//confirm
+		boolean confirm = ConfirmStage.showConfirmStage(this, "Clear", "Are you sure you want to clear all entries?");
+		
+		if (!confirm)
+			return;
+		
 		//clear
 		this.sourceProperty.clear();
 	}

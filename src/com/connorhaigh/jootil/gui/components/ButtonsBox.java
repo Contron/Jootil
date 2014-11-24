@@ -14,8 +14,8 @@ public class ButtonsBox extends HBox
 {
 	/**
 	 * Creates a new buttons box.
-	 * @param okButton if an 'OK' button should be added
-	 * @param cancelButton if a 'Cancel' button should be added
+	 * @param okButton if an OK button should be added
+	 * @param cancelButton if a Cancel button should be added
 	 */
 	public ButtonsBox(boolean okButton, boolean cancelButton)
 	{
@@ -26,7 +26,7 @@ public class ButtonsBox extends HBox
 		this.setAlignment(Pos.BASELINE_RIGHT);
 		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setSpacing(10);
-		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND_COLOUR, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_TOP_BORDER));
+		this.setStyle(Styles.build(Styles.BACKGROUND_COLOUR, Styles.BORDER_COLOUR, Styles.TOP_BORDER));
 		
 		if (okButton)
 		{

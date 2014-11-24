@@ -12,27 +12,18 @@ public class Styles
 		return String.join(Styles.DELIMITER + " ", rules);
 	}
 	
-	/**
-	 * Returns a string for no styles.
-	 * @return a string for no styles
-	 */
-	public static String none()
-	{
-		return "";
-	}
-	
 	private static final String DELIMITER = ";";
 	
-	public static final String CONTROL_BACKGROUND_COLOUR = "-fx-background-color: white";
-	public static final String CONTROL_TRANSPARENT_BACKGROUND_COLOUR = "-fx-background-color: transparent";
+	public static final String BACKGROUND_COLOUR = "-fx-background-color: white";
+	public static final String TRANSPARENT_BACKGROUND_COLOUR = "-fx-background-color: transparent";
 	
-	public static final String CONTROL_BORDER_COLOUR = "-fx-border-color: gray";
+	public static final String BORDER_COLOUR = "-fx-border-color: gray";
 	
-	public static final String CONTROL_ALL_BORDER = "-fx-border-width: 1 1 1 1";
-	public static final String CONTROL_TOP_BORDER = "-fx-border-width: 1 0 0 0";
-	public static final String CONTROL_LEFT_BORDER = "-fx-border-width: 0 0 0 1";
-	public static final String CONTROL_BOTTOM_BORDER = "-fx-border-width: 0 0 1 0";
-	public static final String CONTROL_RIGHT_BORDER = "-fx-border-width: 0 1 0 0";
-	public static final String CONTROL_TOP_BOTTOM_BORDER = "-fx-border-width: 1 0 1 0";
-	public static final String CONTROL_LEFT_RIGHT_BORDER = "-fx-border-width: 0 1 0 1";
+	public static final String ALL_BORDER = "-fx-border-width: 1 1 1 1";
+	public static final String TOP_BORDER = "-fx-border-width: 1 0 0 0";
+	public static final String LEFT_BORDER = "-fx-border-width: 0 0 0 1";
+	public static final String BOTTOM_BORDER = "-fx-border-width: 0 0 1 0";
+	public static final String RIGHT_BORDER = "-fx-border-width: 0 1 0 0";
+	public static final String TOP_BOTTOM_BORDER = "-fx-border-width: 1 0 1 0";
+	public static final String LEFT_RIGHT_BORDER = "-fx-border-width: 0 1 0 1";
 }

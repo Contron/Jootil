@@ -19,7 +19,7 @@ public class StatusBar extends HBox
 		//setup box
 		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setSpacing(10);
-		this.setStyle(Styles.build(Styles.CONTROL_BACKGROUND_COLOUR, Styles.CONTROL_BORDER_COLOUR, Styles.CONTROL_TOP_BORDER));
+		this.setStyle(Styles.build(Styles.BACKGROUND_COLOUR, Styles.BORDER_COLOUR, Styles.TOP_BORDER));
 		
 		//status label
 		Label statusLabel = new Label();
@@ -29,17 +29,17 @@ public class StatusBar extends HBox
 	}
 	
 	/**
-	 * Sets this status bar's text.
-	 * @param text the text
+	 * Sets the status of this status bar.
+	 * @param status the status
 	 */
-	public void setStatus(String text)
+	public void setStatus(String status)
 	{
-		this.statusProperty.set(text);
+		this.statusProperty.set(status);
 	}
 	
 	/**
-	 * Returns this status bar's text.
-	 * @return this status bar's text
+	 * Returns the status of this status bar.
+	 * @return the status
 	 */
 	public String getStatus()
 	{

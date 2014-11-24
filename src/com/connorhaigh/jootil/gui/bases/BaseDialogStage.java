@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
-import com.connorhaigh.jootil.utilities.Styles;
 
 public abstract class BaseDialogStage extends Stage
 {
@@ -38,7 +37,7 @@ public abstract class BaseDialogStage extends Stage
 
 		//header box
 		HeaderBox headerBox = new HeaderBox(header, description);
-		headerBox.setStyle(Styles.none());
+		headerBox.setStyle(null);
 		borderPane.setTop(headerBox);
 		
 		//buttons box

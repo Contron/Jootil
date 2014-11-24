@@ -22,14 +22,5 @@ public enum Platform
 		return this.name;
 	}
 
-	/**
-	 * Returns the friendly name of this platform.
-	 * @return the friendly name
-	 */
-	public String getName()
-	{
-		return this.name;
-	}
-
 	private String name;
 }

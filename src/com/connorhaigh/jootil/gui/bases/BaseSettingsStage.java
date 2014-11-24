@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.core.Form;
+import com.connorhaigh.jootil.core.interfaces.Form;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 

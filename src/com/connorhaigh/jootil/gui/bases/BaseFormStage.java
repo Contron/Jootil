@@ -15,7 +15,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import com.connorhaigh.jootil.core.Form;
+import com.connorhaigh.jootil.core.interfaces.Form;
 import com.connorhaigh.jootil.gui.components.ButtonsBox;
 import com.connorhaigh.jootil.gui.components.HeaderBox;
 
@@ -40,7 +40,7 @@ public abstract class BaseFormStage extends Stage implements Form
 		this.setTitle(title);
 		this.setResizable(false);
 		this.setMinWidth(350);
-		this.getIcons().add(new Image("/images/icons/information.png"));
+		this.getIcons().add(new Image("/images/icons/input.png"));
 		
 		//border pane
 		BorderPane borderPane = new BorderPane();
@@ -70,29 +70,11 @@ public abstract class BaseFormStage extends Stage implements Form
 	}
 	
 	/**
-	 * Adds a row for a label and a control.
-	 * @param message the message
-	 * @param control the control
-	 */
-	public void addRowForControl(String message, Control control)
-	{	
-		this.addRow(message, control);
-	}
-	
-	/**
-	 * Adds a row for a separator.
-	 */
-	public void addRowForSeparator()
-	{
-		this.addRow(null, new Separator());
-	}
-	
-	/**
 	 * Adds a row to this form.
 	 * @param message the message, or null
 	 * @param control the control, or null
 	 */
-	private void addRow(String message, Control control)
+	public void addRow(String message, Control control)
 	{
 		if (message != null)
 		{
@@ -133,6 +115,14 @@ public abstract class BaseFormStage extends Stage implements Form
 		
 		//increment
 		this.row++;
+	}
+	
+	/**
+	 * Adds a row for a separator.
+	 */
+	public void addSeparatorRow()
+	{
+		this.addRow(null, new Separator());
 	}
 	
 	/**

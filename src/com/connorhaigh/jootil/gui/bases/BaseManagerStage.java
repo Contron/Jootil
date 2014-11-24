@@ -46,7 +46,6 @@ public abstract class BaseManagerStage<E> extends Stage
 		this.initOwner(stage);
 		this.initModality(Modality.APPLICATION_MODAL);
 		this.setTitle(title);
-		this.setResizable(false);
 		this.setMinWidth(350);
 		this.getIcons().add(new Image("/images/icons/information.png"));
 		
@@ -63,7 +62,7 @@ public abstract class BaseManagerStage<E> extends Stage
 		
 		//table view
 		this.tableView = new TableView<E>();
-		this.tableView.setPrefWidth(800);
+		this.tableView.setPrefWidth(600);
 		this.tableView.setPrefHeight(250);
 		this.tableView.setPlaceholder(new Label("No data to display"));
 		this.tableView.setOnKeyPressed(event ->

@@ -122,7 +122,7 @@ public abstract class BaseManagerStage<E> extends Stage
 		{
 			//select button
 			this.selectButton = new Button();
-			this.selectButton.setGraphic(new ImageView(new Image("/images/buttons/go.png")));
+			this.selectButton.setGraphic(new ImageView(new Image("/images/buttons/select.png")));
 			this.selectButton.setTooltip(new Tooltip("Select"));
 			this.selectButton.setOnAction(event -> this.select());
 			actionsBox.getChildren().add(this.selectButton);

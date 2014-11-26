@@ -22,27 +22,58 @@ public class FormBuilder
 	
 	/**
 	 * Adds a row to this form.
+	 * @param message the message
+	 * @param control the row
+	 */
+	public void addControlRow(String message, Control control)
+	{
+		this.addRow(message, control, 0, 1);
+	}
+	
+	/**
+	 * Adds a row to this form.
+	 * @param control the control
+	 */
+	public void addControlRow(Control control)
+	{
+		this.addControlRow(null, control);
+	}
+	
+	/**
+	 * Adds a full row to this form.
+	 * @param control the control
+	 */
+	public void addFullControlRow(Control control)
+	{
+		this.addRow(null, control, 0, 2);
+	}
+	
+	/**
+	 * Adds a row for a separator.
+	 */
+	public void addSeparatorRow()
+	{
+		this.addFullControlRow(new Separator());
+	}
+	
+	/**
+	 * Adds a row to this form.
 	 * @param message the message, or null
 	 * @param control the control, or null
+	 * @param column the column
+	 * @param columnSpan the column span
 	 */
-	public void addRow(String message, Control control)
+	private void addRow(String message, Control control, int column, int columnSpan)
 	{
 		if (message != null)
 		{
-			//span
-			int columnSpan = (control != null ? 1 : 2);
-			
 			//label
 			Label label = new Label(message);
-			this.gridPane.add(label, 0, this.currentRow, columnSpan, 1);
+			this.gridPane.add(label, 0, this.currentRow);
 		}
 		
 		if (control != null)
 		{
-			//span
-			int column = (control instanceof Separator ? 0 : 1);
-			int columnSpan = (column == 0 ? 2 : 1);
-			
 			//control
 			control.setMaxWidth(Double.MAX_VALUE);
 			control.setMaxHeight(150);
@@ -66,23 +97,6 @@ public class FormBuilder
 		
 		//increment
 		this.currentRow++;
-	}
-	
-	/**
-	 * Adds a row for a separator.
-	 */
-	public void addSeparatorRow()
-	{
-		this.addRow(null, new Separator());
-	}
-	
-	/**
-	 * Adds a row for a message.
-	 * @param message the message
-	 */
-	public void addLabelRow(String message)
-	{
-		this.addRow(null, new Label(message));
 	}
 	
 	private int currentRow;
